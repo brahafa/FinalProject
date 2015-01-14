@@ -1,0 +1,162 @@
+﻿.indentStock{
+
+    margin-right: 25px;
+}
+
+
+.Questionnaire{
+    width:100%;
+	overflow:hidden;
+    
+
+}
+
+.QuestionnaireIndent li{ 
+    
+    text-align:right;
+    
+     font-size:x-large;
+     //color:black;
+}
+
+#MainContent_NameQuestionnaire{
+
+    background:none;
+    border:none;
+margin-right: 5px;
+margin-top: 3px;
+font-size: large;
+color:white;
+}
+
+#MainContent_NameQuestionnaire:hover {
+
+    color: black;
+}
+
+.buttonStock{
+    background:none;
+ //   border:none;
+margin-right: 5px;
+//margin-top: 2px;
+font-size: large;
+color:white;
+border-color:black;
+}
+
+.buttonStock:hover {
+
+    color: black;
+}
+
+#classDisplayBtn{
+
+    float:left;
+    margin-left: 40px;
+    height: 30px;
+    
+}
+
+#staticBtn{
+
+    float:left;
+    margin-left: 40px;
+    height: 30px;
+    
+}
+
+.QuestionnaireIndent .liDive{
+
+    background-color: #FF0000 ;
+    //lighting-color:#E00000;
+   // opacity: 0.8;
+    height: 30px;
+    
+}
+
+/*.stockButton{
+
+    height: 30px;
+    color: #9e191e;
+}*/
+#NameQuestionnaire{
+
+    margin-right:8px;
+    padding-top: 4px;
+    
+}
+
+#NameQuestionnaire:hover{
+
+    color:white;
+}
+
+#NameQuestion{
+
+    margin-right:8px;
+    padding-top: 4px;
+    
+}
+
+#NameQuestion:hover{
+
+    color:white;
+}
+
+.QuestenClass{
+padding: 27px 33px 30px;
+border: 1px solid #eaeaea;
+background: url(../images/block-news-tail.gif) 0 0 repeat-x #f9f9f9;
+border-radius: 18px;
+-moz-border-radius: 18px;
+-webkit-border-radius: 18px;
+min-height: 240px;
+}
+
+#MainContent_courseName {
+margin-right: 28px;
+}
+
+#MainContent_logoutBtn{
+    margin-top: 30px;
+}
+
+.closeButton {
+	background-color:#f9f9f9;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:0px 6px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+    margin-right: 6px;
+}
+.closeButton:hover {
+	background-color:#e9e9e9;
+}
+.closeButton:active {
+	position:relative;
+	top:1px;
+}
+
+.buttonAddRemove{
+ float: right;
+margin-top: 180px;
+margin-right: -404px;
+/*position: static;*/
+/*height: 100px;*/
+}
+
+#inputAddRemove{
+    border: 1px solid #999999;
+width: 300px;
+}
+.buttonAddRemove li {
+
+    text-align:right
+
+}
