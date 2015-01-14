@@ -9,6 +9,9 @@ using WebApplication1.classes;
 
 namespace WebApplication1.DAL
 {
+
+
+
     public class CourseRegisterDAL
     {
         public static string s;
