@@ -28,7 +28,7 @@
                                         <option value="-1">:בחר קורס</option>
                                     </select>
                                      </li>
-                                    <li class="styled-select">
+                                    <li class="styled-select" >
                                     <br />
                                     <input type="text" class="Newquestionn"  id="Newquestionn"  placeholder="הכנס שם שאלון"  style="display: none" />
                                    <select class="styled-select" id="select_permit" runat="server" style="display: none">
@@ -47,18 +47,29 @@
                                     <asp:Button ID="yesNoQuestionBtn" runat="server" OnClientClick="return false;" Width="120px" CssClass="myButton" Text="כן/לא" />
                                 </li>
                                 <li>
-                                    <h5>:שאלה</h5>
+                                    <h5 id="questTitle">:שאלת ריבוי תשובות</h5>
                                 </li>
                                 <li>
-                                    <asp:TextBox ID="question1" CssClass="Question" Columns="2" placeholder="הכנס שאלה" Width="500px" runat="server" />
+                                    <asp:TextBox ID="question1" CssClass="Question" Columns="2" placeholder="הכנס שאלה" Width="530px" runat="server" />
 
                                 </li>
+                                <li>
+                                        <input type="text" class="Question"  id="inputFileName" runat="server" style="display: none"/>
+                                    <input id="QuestFileUpload" type="file" name="file" runat="server" />
+                                
+                                </li>
+                                <li id="NewQuestionnLi">
+                                    
+                                     <asp:Button runat="server"  ID="delFile"  onclick="deletFile_Click"  class="myButton" Width="89px" Height="35px" Text="הסר קובץ" Visible="false" />
+                                     <asp:Button runat="server" ID="upFile"  onclick="saveFile_Click"  class="myButton" Width="89" Height="35px" Text="שמור קובץ" />
+                                     
+                                    </li> 
 
                             </ul>
                             <div id="Americananswer" class="answer" style="display: inline">
                                 <ul>
                                     <li>
-                                        <h5>:תשובות</h5>
+                                        <h5 class="ansTytle">:תשובות</h5>
                                     </li>
                                     <li>
 <%--                                        <asp:TextBox ID="dans1" CssClass="Question" placeholder="הכנס תשובה נכונה" runat="server" />--%>
@@ -93,19 +104,19 @@
                             <div id="yesNoDiv" class="answer" style="display: none">
                                 <ul>
                                     <li>
-                                        <h5>:תשובות</h5>
+                                        <h5 class="ansTytle">:תשובות</h5>
                                     </li>
                                     <li>
 
                                         <%--<asp:TextBox ID="NoTxtBoxId" CssClass="Question" Columns="2" Text="YES" Width="500px" runat="server" />
                                         <input id="checkNo" class="check1" type="checkbox" name="check" value="check1"/>--%>
-                                        <label for="c1">NO</label>
+                                        <label for="c1">לא</label>
                                         <input id="CheckNo" class="check1"  type="checkbox" onclick="cleanCheckNo()"  />
 
 
                                     </li>
                                     <li>
-                                        <label for="c1">YES</label>
+                                        <label for="c1">כן</label>
                                         <input id="CheckYes" class="check1"  type="checkbox" onclick="cleanCheckYes()"  />
                                     </li>
                                 </ul>
@@ -114,7 +125,7 @@
                             <div id="OpenDiv" class="answer" style="display: none">
                                 <ul>
                                     <li>
-                                        <h5>:תשובה</h5>
+                                        <h5 class="ansTytle">:תשובה</h5>
                                     </li>
                                     <li>
 
@@ -127,7 +138,7 @@
                                  <input id="err"  type="text" class="errMesegeAddQuest" style="display: none"  />
                                 <br />
                                 <asp:Button ID="displayClass" runat="server" OnClientClick="return false;" Width="120px" CssClass="myButton" Text="הצג לכיתה" />
-                                <asp:Button ID="SaveAnswer" runat="server" OnClientClick="return false;"  Width="120px" CssClass="myButton" Text="שמור" />
+                                <asp:Button ID="SaveAnswer" runat="server"  OnClientClick="return false;"  Width="120px" CssClass="myButton" Text="שמור" />
                             </div>
                         </div>
                     </div>
@@ -148,7 +159,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <asp:Button ID="logoutBtn" runat="server" CssClass="myButton" Text="התנתק"></asp:Button>
+                                    <asp:Button ID="logoutBtn" runat="server" OnClick="logout_click" CssClass="myButton" Text="התנתק"></asp:Button>
                                 </li>
 
                             </ul>

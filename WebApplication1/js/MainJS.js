@@ -166,7 +166,7 @@ $(document).ready(function () {
         typeQuestion = 3;
         check = 0;
         checkYesNo = 0;
-
+        document.getElementById('questTitle').textContent = ":שאלה פתוחה";
         document.getElementById('Americananswer').style.display = 'none';
         document.getElementById('OpenDiv').style.display = 'inline';
         document.getElementById('yesNoDiv').style.display = 'none';
@@ -199,6 +199,7 @@ $(document).ready(function () {
     $("#MainContent_americanQuestionBtn").click(function () {
         typeQuestion = 1;
         checkYesNo = 0
+        document.getElementById('questTitle').textContent = ":שאלת ריבוי תשובות";
         document.getElementById('Americananswer').style.display = 'inline';
         document.getElementById('OpenDiv').style.display = 'none';
         document.getElementById('yesNoDiv').style.display = 'none';
@@ -216,6 +217,8 @@ $(document).ready(function () {
     $("#MainContent_yesNoQuestionBtn").click(function () {
         typeQuestion = 2;
         check = 0;
+        document.getElementById('questTitle').textContent = ":שאלת כן או לא";
+
         document.getElementById('Americananswer').style.display = 'none';
         document.getElementById('OpenDiv').style.display = 'none';
         document.getElementById('yesNoDiv').style.display = 'inline';
@@ -342,6 +345,8 @@ function buildAnsQuestStr(numAns) {
     }
     return AllAnsStr;
 }
+
+
 
 function SaveAmericanAnsAndQuest(numCorectAns) {
     var AllAnsStr =numCorectAns+"#"+ buildAnsQuestStr(numAns);

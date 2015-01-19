@@ -85,6 +85,42 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.WebControls.TextBox question1;
         
         /// <summary>
+        /// inputFileName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText inputFileName;
+        
+        /// <summary>
+        /// QuestFileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile QuestFileUpload;
+        
+        /// <summary>
+        /// delFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button delFile;
+        
+        /// <summary>
+        /// upFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button upFile;
+        
+        /// <summary>
         /// openAnswerID control.
         /// </summary>
         /// <remarks>

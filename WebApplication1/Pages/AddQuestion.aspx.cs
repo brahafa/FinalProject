@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -34,7 +36,55 @@ namespace WebApplication1.Pages
             {
                 select_Course.Items.Add(new ListItem(c.getName(), c.getId().ToString()));
             }
+            if (Session["id"] != null)
+            {
+                UserNameLabel.InnerText = Session["Name"].ToString();
+                userImage.ImageUrl = Session["Image"].ToString();
+            }
 
+        }
+        public void saveFile_Click(object sender, EventArgs e)
+        {
+            delFile.Visible = true;
+            upFile.Visible = false;
+            //int contentLength = QuestFileUpload.PostedFile.ContentLength;//You may need it for validation
+            //string contentType = QuestFileUpload.PostedFile.ContentType;//You may need it for validation
+            //string fileNameStr = QuestFileUpload.PostedFile.FileName;
+            //if (QuestFileUpload.PostedFile.ContentLength == 0)
+            //{
+            //    fileName.Value = "NullFile";
+            //    //fileNameStr = "NullFile";
+            //    return;
+            //}
+            //fileName.Value = fileNameStr;
+            //QuestFileUpload.PostedFile.SaveAs(Server.MapPath("~/files/") + fileName);//save file in files folder
+
+            int contentLength = QuestFileUpload.PostedFile.ContentLength;//You may need it for validation
+            string contentType = QuestFileUpload.PostedFile.ContentType;//You may need it for validation
+            string fileName = QuestFileUpload.PostedFile.FileName;
+            if (QuestFileUpload.PostedFile.ContentLength == 0)
+            {
+                inputFileName.Value = "not file";
+            }
+            else
+            {
+                inputFileName.Value = fileName;
+                QuestFileUpload.PostedFile.SaveAs(Server.MapPath("~/files/") + fileName);//save image in 
+            }
+        
+        }
+
+        public void deletFile_Click(object sender, EventArgs e)
+        {
+            inputFileName.Value = "";
+            delFile.Visible = false;
+            upFile.Visible = true;
+            String FileName = inputFileName.Value.ToString();
+           // if (File.Exists(@"C:\Users\David\Desktop\FinalProjectNew\WebApplication1\files\2014-02-25 17.44.39.jpg"))
+           if (File.Exists(Server.MapPath("~/files/") + FileName))
+            {
+                File.Delete(Server.MapPath("~/files/") + FileName);
+            }
         }
         [WebMethod]
         public static void save_ClientClick(String AllAnsStr)
@@ -85,6 +135,12 @@ namespace WebApplication1.Pages
             }
             questionBL.AddQuestion(maxQuestion, question, idQuestionnier, type, "sasa");
         }
+        protected void logout_click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("logIn.aspx");
+        }
+
         //addNewQuestionnaire
         [WebMethod]
         public static int addNewQuestionnaire(String newQuest)

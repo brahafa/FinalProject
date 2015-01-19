@@ -114,6 +114,39 @@ li{
      Width:500px;
 
 }
+#MainContent_QuestFileUpload{
+    color: red;
+font-size: 19px;
+font-family: fantasy;
+direction: rtl;
+width: 350px;
+}
+#questTitle{
+    font-size: 19px;
+color: rgb(187, 6, 6);
+font-stretch: extra-expanded;
+font-family: inherit;
+font-weight: 600;
+}
+.ansTytle{
+    font-size: 19px;
+color: rgb(187, 6, 6);
+font-stretch: extra-expanded;
+font-family: inherit;
+font-weight: 600;
+}
+/*#MainContent_upFile{
+    margin-right: -6em;
+}
+#MainContent_delFile{
+        margin-right: -6em;
+}
+#NewQuestionnLi{
+
+}*/
+#sendDiv{
+    margin-left: 120px;
+}
 .styled-select select {
 
   width: 200px;
@@ -759,7 +792,10 @@ h6 {
 	background:url(../images/block-news-tail.gif) 0 0 repeat-x #f9f9f9;
 	border-radius:18px;
 	-moz-border-radius:18px;
-	-webkit-border-radius:18px
+	-webkit-border-radius:18px;
+    height: 370px;
+    font-family: serif;
+    font-size: -webkit-xxx-large;
 }
 .button {
 	display:block;

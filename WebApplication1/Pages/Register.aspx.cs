@@ -51,6 +51,7 @@ namespace WebApplication1.Pages
             }
             avatarUpload.PostedFile.SaveAs(Server.MapPath("~/images/") + fileName);//save image in folder
             image = "~/images/" + fileName.ToString();
+
             name = contactName.Value.ToString();
             email = Email.Value.ToString();
             password = pass.Value.ToString();
