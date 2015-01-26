@@ -8,7 +8,6 @@
     text-align:right
 
 }
-
 #profile{  
     top: 40px;
     right: 350px;
@@ -113,6 +112,20 @@ li{
     text-align: right;
      Width:500px;
 
+}
+.QuestionUplode{
+    text-align: right;
+border: 0px;
+color: black;
+font-size: 17px;
+width: 200px;
+}
+.QuestionUplode1{
+    text-align: right;
+border: 0px;
+color: red;
+font-size: 17px;
+width: 85px;
 }
 #MainContent_QuestFileUpload{
     color: red;
@@ -225,6 +238,7 @@ height: 35px;
 border-color: white;
 text-align: center;
 }
+
 
 /*yael*/
 #new_released_section {

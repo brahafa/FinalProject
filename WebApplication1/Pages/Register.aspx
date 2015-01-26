@@ -42,11 +42,11 @@
                     </li>
                     <li>
                         <label class="RegisterLabel">*סיסמה:</label>
-                        <input id="pass" class="RegisterField" runat="server" name="password" type="text" />
+                        <input id="pass" class="RegisterField" runat="server" name="password" type="password" />
                     </li>
                     <li>
                         <label class="RegisterLabel">*אימות סיסמה:</label>
-                        <input id="pass1" class="RegisterField" runat="server" name="password" type="text" />
+                        <input id="pass1" class="RegisterField" runat="server" name="password" type="password" />
                     </li>
                     <li>
                         <label id="errMesege" visible="false" runat="server" class="errMesege">יש למלא את השדות סיסמה ודוא"ל*</label>

@@ -47,6 +47,9 @@ namespace WebApplication1.Pages
         {
             delFile.Visible = true;
             upFile.Visible = false;
+            inputFileName.Visible = true;
+            nameFile.Visible = true;
+            QuestFileUpload.Visible = false;
             //int contentLength = QuestFileUpload.PostedFile.ContentLength;//You may need it for validation
             //string contentType = QuestFileUpload.PostedFile.ContentType;//You may need it for validation
             //string fileNameStr = QuestFileUpload.PostedFile.FileName;
@@ -79,6 +82,11 @@ namespace WebApplication1.Pages
             inputFileName.Value = "";
             delFile.Visible = false;
             upFile.Visible = true;
+            inputFileName.Visible = false;
+            QuestFileUpload.Visible = true;
+            nameFile.Visible = false;
+
+
             String FileName = inputFileName.Value.ToString();
            // if (File.Exists(@"C:\Users\David\Desktop\FinalProjectNew\WebApplication1\files\2014-02-25 17.44.39.jpg"))
            if (File.Exists(Server.MapPath("~/files/") + FileName))

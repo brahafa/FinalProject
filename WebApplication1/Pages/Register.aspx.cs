@@ -57,6 +57,34 @@ namespace WebApplication1.Pages
             password = pass.Value.ToString();
             password1 = pass1.Value.ToString();
 
+
+            if (valid.checkNotNull(password,password1,name,email) == -1)
+            {
+                sendErrorMesege("מלא את כל השדות*");
+                return;
+            }
+            if (valid.validName(name) == false)
+            {
+                sendErrorMesege("הכנס שם עד 15 תוים*");
+                return;
+            }
+            if (valid.validEmail(email) == false)
+            {
+                sendErrorMesege("כתובת דואר אלקטרוני לא תקין*");
+                return;
+            }
+            if (valid.existEmail(email) == false)
+            {
+                sendErrorMesege("כתובת דואר אלקטרוני כבר קיים במערכת קליקר*");
+                return;
+            }
+            //send email 
+            if (sendRegisterEmail(image, name, email, password) == -1)
+            {
+                sendErrorMesege("כתובת דואר אלקטרוני לא קיים*");
+                return;
+            }
+
             if (valid.checkPassword(password) == false)
             {
                 sendErrorMesege("סיסמה חייבת להכיל בין 5 ל 8 תוים*");
@@ -67,15 +95,8 @@ namespace WebApplication1.Pages
                 sendErrorMesege("אמת את סיסמתך*");
                 return;
             }
-            if (valid.validName(name) == false)
-            {
-                sendErrorMesege("הכנס שם עד 15 תוים*");
-                return;
-            }
-            if(valid.existEmail(email)==false){
-                sendErrorMesege("כתובת דואר אלקטרוני לא תקין*");
-                return;
-            }
+            
+          
             if (selected_Type.Value.Equals("-1"))
             {
                 sendErrorMesege("בחר סוג משתמש*");
@@ -92,12 +113,9 @@ namespace WebApplication1.Pages
             {
                 index = studentBL.maxIdStudent() + 1;
                 studentBL.AddNewStudent(index, name, email, image, password);
-
-
             }
             initSessions(name, image, index);
-            //send email 
-            sendRegisterEmail(image, name,email,password);
+         
             Response.Redirect("HomePage.aspx");
         }
 
@@ -109,15 +127,17 @@ namespace WebApplication1.Pages
         }
 
         //send email whith the register ditayls
-        public void sendRegisterEmail(String image, String name, String email, String password)
+        public int sendRegisterEmail(String image, String name, String email, String password)
         {
+            int flagErr = 0;
             string emailTo = Email.Value;
             string subject = "מערכת קליקר - אישור הרשמה";
             string body = "<body dir=\"rtl\"><h3>זוהי הודעה אוטומטית ממערכת קליקר</h3>";
             body += "<p>לנוחיותך מצורפים פרטי ההתחברות.</p>";
             body += "<p>כתובת דואר אלקטרוני: " + Email.Value + "</p>";
             body += "<p>סיסמה: " + pass.Value + "</p></body>";
-            global.sendEmail(subject, body, emailTo);
+            flagErr= global.sendEmail(subject, body, emailTo);
+            return flagErr;
         }
         public void sendErrorMesege(String mesege)
         {

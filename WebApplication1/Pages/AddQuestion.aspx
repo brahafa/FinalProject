@@ -6,7 +6,6 @@
             <div class="padding">
                 <div class="wrapper margin-bot">
                     <div class="col-3">
-
                         <div id="buttonAddRemove">
                             <ul>
                                 <li>
@@ -54,8 +53,9 @@
 
                                 </li>
                                 <li>
-                                        <input type="text" class="Question"  id="inputFileName" runat="server" style="display: none"/>
-                                    <input id="QuestFileUpload" type="file" name="file" runat="server" />
+                                        <input type="text" class="QuestionUplode"  id="inputFileName" runat="server"   visible="false"/>
+                                         <input type="text" class="QuestionUplode1"  id="nameFile"  runat="server" value=":קובץ מצרף"  visible="false"/>
+                                     <input id="QuestFileUpload" type="file" name="file" runat="server" />
                                 
                                 </li>
                                 <li id="NewQuestionnLi">

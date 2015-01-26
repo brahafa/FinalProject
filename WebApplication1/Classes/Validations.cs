@@ -7,8 +7,15 @@ using WebApplication1.BL;
 
 namespace WebApplication1.Classes
 {
+   
     public class Validations
     {
+        public int checkNotNull(String password1,String password,String name, String email){
+            if (password.Length ==0 || password1.Length ==0 || name.Length==0|| email.Length==0){
+                return -1;
+            }
+            return 0;
+         }
 
         public bool checkPassword(string password)
         {

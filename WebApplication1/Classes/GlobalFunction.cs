@@ -9,7 +9,7 @@ namespace WebApplication1.Classes
 {
     public class GlobalFunction
     {
-        public void sendEmail(String subject, String body, String emailTo)
+        public int sendEmail(String subject, String body, String emailTo)
         {
             string smtpAddress = "smtp.gmail.com";
             int portNumber = 587;
@@ -33,10 +33,12 @@ namespace WebApplication1.Classes
                       {
                   
                         smtp.Send(mail);
+                        return 0;
                       }
                       catch (Exception ex)
                       {
                           Console.WriteLine(ex.Message);
+                          return -1;
                       }
                 }
 
