@@ -38,9 +38,18 @@ namespace WebApplication1.Pages
             }
             if (Session["id"] != null)
             {
-                UserNameLabel.InnerText = Session["Name"].ToString();
+               // UserNameLabel.InnerText = Session["Name"].ToString();
                 userImage.ImageUrl = Session["Image"].ToString();
             }
+
+            UserNameLabel.InnerText = "";
+            if (Session["degree"].ToString().Length > 0)
+            {
+                UserNameLabel.InnerText +=  Session["degree"].ToString();
+            }
+            UserNameLabel.InnerText += " " + Session["Name"].ToString();
+
+            userImage.ImageUrl = Session["Image"].ToString();
 
         }
         public void saveFile_Click(object sender, EventArgs e)

@@ -17,21 +17,47 @@ namespace WebApplication1.DAL
             s = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
             con = new SqlConnection(s); 
         }
+        public void UpdateLecturer(int id,string Name, string image, String password, String degree)
+        {
+            string sqlString = "UPDATE Lecturer SET Name = @val2, image=@val3, password=@val4 , degree=@val5  WHERE Id="+id+" ;";
+          using (SqlCommand comm = new SqlCommand())
+          {
+              comm.Connection = con;
+              comm.CommandText = sqlString;
+              comm.Parameters.AddWithValue("@val2", Name);
+              comm.Parameters.AddWithValue("@val3", image);
+              comm.Parameters.AddWithValue("@val4", password);
+              comm.Parameters.AddWithValue("@val5", degree);
+              try
+              {
+                  con.Open();
+                  comm.ExecuteNonQuery();
+                  con.Close();
+              }
 
-        public void AddNewLecturer(int Id, string Name, string email, string image, String password)
+
+              catch (System.Data.SqlClient.SqlException sqlException)
+              {
+                  Debug.WriteLine(sqlException.Message);
+              }
+
+          }
+        }
+        public void AddNewLecturer(int Id, string Name, string email, string image, String password, String degree)
         {
 
-            string sqlString = "INSERT INTO Lecturer (Id, Name, email, image, password) VALUES (@val1, @val2, @val3, @val4, @val5);";
+            string sqlString = "INSERT INTO Lecturer (Id, Name, email, image, password, degree) VALUES (@val1, @val2, @val3, @val4, @val5, @val6);";
             using (SqlCommand comm = new SqlCommand())
             {
                 comm.Connection = con;
                 comm.CommandText = sqlString;
-                Debug.WriteLine(Id+" "+ Name+"   "+ email);
                 comm.Parameters.AddWithValue("@val1", Id);
                 comm.Parameters.AddWithValue("@val2", Name);
                 comm.Parameters.AddWithValue("@val3", email);
                 comm.Parameters.AddWithValue("@val4", image);
                 comm.Parameters.AddWithValue("@val5", password);
+                comm.Parameters.AddWithValue("@val6", degree);
+
 
                 try
                 {
@@ -86,7 +112,7 @@ namespace WebApplication1.DAL
             {
                 while (rdr.Read())
                 {
-                    listLecturer.Add(new Lecturer(Convert.ToInt32(rdr["Id"]), rdr["Name"].ToString(), rdr["email"].ToString(), rdr["image"].ToString(), rdr["password"].ToString()));
+                    listLecturer.Add(new Lecturer(Convert.ToInt32(rdr["Id"]), rdr["Name"].ToString(), rdr["email"].ToString(), rdr["image"].ToString(), rdr["password"].ToString() , rdr["degree"].ToString()));
                 }
             }
             con.Close();
@@ -102,7 +128,7 @@ namespace WebApplication1.DAL
             {
                 while (rdr.Read())
                 {
-                    listLecturer.Add(new Lecturer(Convert.ToInt32(rdr["Id"]), rdr["Name"].ToString(), rdr["email"].ToString(), rdr["image"].ToString(), rdr["password"].ToString()));
+                    listLecturer.Add(new Lecturer(Convert.ToInt32(rdr["Id"]), rdr["Name"].ToString(), rdr["email"].ToString(), rdr["image"].ToString(), rdr["password"].ToString(), rdr["degree"].ToString()));
                 }
             }
             con.Close();

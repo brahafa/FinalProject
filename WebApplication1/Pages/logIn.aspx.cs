@@ -57,6 +57,7 @@ namespace WebApplication1.Pages
                 {
                     listCourse = courseRegisterBL.getCoursesByIdStudent(Convert.ToInt32((String)Session["id"]));// how i get id??
                 }
+                
 
                 //Session["listCourse"] = listCourse;
 
@@ -87,6 +88,8 @@ namespace WebApplication1.Pages
                     name = listLecturer[0]._Name.ToString();
                     Session["Name"] = name;
                     Session["Image"] = listLecturer[0]._image.ToString();
+                    Session["email"] = Email.Value.ToString();
+                    Session["degree"] = listLecturer[0]._degree.ToString(); ;
                 }
                 else if (listStudent.Count != 0)
                 {
@@ -95,6 +98,7 @@ namespace WebApplication1.Pages
                     name = listStudent[0]._Name.ToString();
                     Session["Name"] = name;
                     Session["Image"] = listStudent[0]._image.ToString();
+                    Session["email"] = Email.Value.ToString();
 
                 }
                 else

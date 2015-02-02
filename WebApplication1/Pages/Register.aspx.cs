@@ -79,11 +79,11 @@ namespace WebApplication1.Pages
                 return;
             }
             //send email 
-            if (sendRegisterEmail(image, name, email, password) == -1)
-            {
-                sendErrorMesege("כתובת דואר אלקטרוני לא קיים*");
-                return;
-            }
+            //if (sendRegisterEmail(image, name, email, password) == -1)
+            //{
+            //    sendErrorMesege("כתובת דואר אלקטרוני לא קיים*" + Email.Value.ToString());
+            //    return;
+            //}
 
             if (valid.checkPassword(password) == false)
             {
@@ -102,35 +102,41 @@ namespace WebApplication1.Pages
                 sendErrorMesege("בחר סוג משתמש*");
                 return;
             }
+            String degree;
             Session["userType"] = selected_Type.Value.ToString();
             if(((String)Session["userType"]).Equals("0"))
             {
                 index = lecturerBL.maxIdLecturer() + 1;
-                name= name + "  "+selected_Degree.Items.FindByValue(selected_Degree.SelectedIndex.ToString());
-                lecturerBL.AddNewLecturer(index, name, email, image, password);
+               
+                 degree = selected_Degree.Items.FindByValue(selected_Degree.SelectedIndex.ToString()).ToString();
+                 Session["Degree"] = degree;
+                lecturerBL.AddNewLecturer(index, name, email, image, password,degree);
+                Session["degree"] = degree;
+
             }
             else
             {
                 index = studentBL.maxIdStudent() + 1;
                 studentBL.AddNewStudent(index, name, email, image, password);
             }
-            initSessions(name, image, index);
+            initSessions(name, image, index, email);
          
             Response.Redirect("HomePage.aspx");
         }
 
-        public void initSessions(String name , String image, int index )
+        public void initSessions(String name , String image, int index, String email )
         {
             Session["id"] = index;
             Session["Name"] = name;
             Session["Image"] = image;
+            Session["email"] = email;
         }
 
         //send email whith the register ditayls
         public int sendRegisterEmail(String image, String name, String email, String password)
         {
             int flagErr = 0;
-            string emailTo = Email.Value;
+            string emailTo = Email.Value.ToString().Trim();
             string subject = "מערכת קליקר - אישור הרשמה";
             string body = "<body dir=\"rtl\"><h3>זוהי הודעה אוטומטית ממערכת קליקר</h3>";
             body += "<p>לנוחיותך מצורפים פרטי ההתחברות.</p>";

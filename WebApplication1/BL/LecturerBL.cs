@@ -15,9 +15,14 @@ namespace WebApplication1.BL
         {
             lecturerDAL = new LecturerDAL();
         }
-         public void AddNewLecturer(int Id, String Name, String email, String image, String password)
+        public void UpdateLecturer(int id,String Name, String image, String password, String degree)
         {
-            lecturerDAL.AddNewLecturer( Id,  Name,  email, image,password);
+            lecturerDAL.UpdateLecturer(id, Name,  image,  password, degree);
+        }
+
+        public void AddNewLecturer(int Id, String Name, String email, String image, String password, String degree)
+        {
+            lecturerDAL.AddNewLecturer( Id,  Name,  email, image,password, degree);
         }
          public void deleteLecturerById(int Id)
          {

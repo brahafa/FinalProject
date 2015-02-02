@@ -9,6 +9,7 @@
               <h3 class="title1">:כניסת מישתמש</h3><br/>
               <ul class="list-2">             
                 <li>
+                   <%-- <a href="Statistic.aspx">statisic</a>--%>
                     <label class="RegisterLabel">*:אימייל</label>
                     <input id="Email" class="RegisterField" runat="server" name="Email" type="text" /> 
                    </li>

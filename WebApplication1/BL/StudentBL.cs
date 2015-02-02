@@ -15,6 +15,10 @@ namespace WebApplication1.BL
         {
             studentDAL = new StudentDAL();
         }
+        public void UpdateStudent(int id, String Name, String image, String password)
+        {
+            studentDAL.UpdateStudent(id,Name, image, password);
+        }
         public void AddNewStudent(int Id, String Name, String email, String image, String password)
         {
             studentDAL.AddNewStudent(Id, Name, email, image, password);

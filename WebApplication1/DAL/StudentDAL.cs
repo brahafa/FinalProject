@@ -10,12 +10,12 @@ namespace WebApplication1.DAL
 {
     public class StudentDAL
     {
-            public static string s;
+        public static string s;
         public SqlConnection con;
         public StudentDAL()
         {
             s = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
-            con = new SqlConnection(s); 
+            con = new SqlConnection(s);
         }
         public void AddNewStudent(int Id, String Name, String email, String image, String password)
         {
@@ -89,7 +89,7 @@ namespace WebApplication1.DAL
             return listLecturer;
         }
 
-        public List<Student> getStudentByEmail(string email)
+        public List<Student> getStudentByEmail(String email)
         {
             con.Open();
             string sqlString = "select * from Student where email= '" + email + "';";
@@ -104,6 +104,33 @@ namespace WebApplication1.DAL
             }
             con.Close();
             return listStudent;
+        }
+
+        public void UpdateStudent(int id, String Name, String image, String password)
+        {
+            string sqlString = "UPDATE Student SET Name = @val2, image=@val3, password=@val4   WHERE Id=" + id + " ;";
+            using (SqlCommand comm = new SqlCommand())
+            {
+                comm.Connection = con;
+                comm.CommandText = sqlString;
+                comm.Parameters.AddWithValue("@val2", Name);
+                comm.Parameters.AddWithValue("@val3", image);
+                comm.Parameters.AddWithValue("@val4", password);
+
+                try
+                {
+                    con.Open();
+                    comm.ExecuteNonQuery();
+                    con.Close();
+                }
+
+
+                catch (System.Data.SqlClient.SqlException sqlException)
+                {
+                    Debug.WriteLine(sqlException.Message);
+                }
+
+            }
         }
     }
 }

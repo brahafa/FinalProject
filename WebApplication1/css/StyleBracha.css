@@ -238,7 +238,11 @@ height: 35px;
 border-color: white;
 text-align: center;
 }
-
+/*profile page*/
+.profileDiv{
+    width: 399px;
+    float: right;
+}
 
 /*yael*/
 #new_released_section {
