@@ -43,11 +43,12 @@ namespace WebApplication1.Pages
             }
 
             UserNameLabel.InnerText = "";
-            if (Session["degree"].ToString().Length > 0)
-            {
-                UserNameLabel.InnerText +=  Session["degree"].ToString();
-            }
             UserNameLabel.InnerText += " " + Session["Name"].ToString();
+            //if (Session["degree"].ToString().Length > 0)
+            //{
+            //    UserNameLabel.InnerText +=  Session["degree"].ToString();
+            //}
+            
 
             userImage.ImageUrl = Session["Image"].ToString();
 

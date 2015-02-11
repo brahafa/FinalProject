@@ -69,11 +69,12 @@ namespace WebApplication1.Pages
                     listCourse = courseRegisterBL.getCoursesByIdStudent(Convert.ToInt32(Session["id"]));// get all courses of this student
                 }
                 UserNameLabel.InnerText = "";
-                if (Session["degree"].ToString().Length > 0)
-                {
-                    UserNameLabel.InnerText +=  Session["degree"].ToString();
-                }
                 UserNameLabel.InnerText += " " + Session["Name"].ToString();
+                //if (Session["degree"].ToString().Length > 0)
+                //{
+                //    UserNameLabel.InnerText +=  Session["degree"].ToString();
+                //}
+   
               
                
                 //if (Session["degree"].ToString().Length > 0)
