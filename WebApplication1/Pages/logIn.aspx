@@ -6,7 +6,7 @@
          <div class="logInDiv">
             <div class="block-news1" id="existUser"  style="visibility:visible" >
                 <br /> <br />
-              <h3 class="title1">:כניסת מישתמש</h3><br/>
+              <h3 class="title1">: ליאור הנחמד כניסת מישתמש</h3><br/>
               <ul class="list-2">             
                 <li>
                    <%-- <a href="Statistic.aspx">statisic</a>--%>
