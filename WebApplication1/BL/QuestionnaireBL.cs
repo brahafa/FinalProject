@@ -71,5 +71,8 @@ namespace WebApplication1.BL
             QuestionnaireList = questionnaireDAL.getAllQuestionnaireByPermit();
             return QuestionnaireList;
         }
+        public String getNameById(int id){
+            return questionnaireDAL.getNameById(id);
+        }
     }
 }

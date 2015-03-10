@@ -17,7 +17,7 @@ namespace WebApplication1.BL
         }
 
         //get All QuestionAsked By IdQuestion
-        public List<QuestionAsked> getAllQuestionAskedByIdCourse(int IdQuestion)
+        public List<QuestionAsked> getAllQuestionAskedByIdQuestion(int IdQuestion)
         {
             return questionAskedDAL.getAllQuestionAskedByIdQuestion(IdQuestion);
         }
@@ -27,6 +27,16 @@ namespace WebApplication1.BL
         {
             questionAskedDAL.deleteQuestionAskedByIdQuestion(IdQuestion);
         }
+        public Boolean isQuestionAsk(int idQuestion){
+            List<QuestionAsked> listQuestionAsk = new List<QuestionAsked>();
+            listQuestionAsk=questionAskedDAL.getAllQuestionAskedByIdQuestion(idQuestion);
+            if (listQuestionAsk.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+       
 
     }
 }

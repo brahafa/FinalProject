@@ -578,3 +578,24 @@ function IsAnsChoose(idCheckChecked, numAns) {
         return -1;
     }
 }
+//$(document).ready(function () {
+//    $("#MainContent_TextBox1").on("click", function () { $("#MainContent_TextBox1").css("visibility", "hidden"); })
+//});
+
+$(document).ready(function () {
+    $("#MainContent_TextBoxFromDate").click(function () {
+
+        document.getElementById('divCalendar').style.display = 'inline';
+        document.getElementById('divCalendar2').style.display = 'none';
+
+    });
+});
+
+$(document).ready(function () {
+    $("#MainContent_TextBoxToDate").click(function () {
+
+        document.getElementById('divCalendar2').style.display = 'inline';
+        document.getElementById('divCalendar').style.display = 'none';
+
+    });
+});

@@ -7,11 +7,11 @@ namespace WebApplication1.classes
 {
     public class Question
     {
-        private int _Id;
-        private String _Question;
-        private int _IdQuestionnaire;
-        private int _Type;
-        private String _File;
+        public int _Id;
+        public String _Question;
+        public int _IdQuestionnaire;
+        public int _Type;
+        public String _File;
 
         public Question(int Id, String Question, int IdQuestionnaire, int Type, String File)
         {

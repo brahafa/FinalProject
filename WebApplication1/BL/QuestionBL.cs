@@ -52,5 +52,9 @@ namespace WebApplication1.BL
         {
             return questionDAL.maxIdQuestion();
         }
+        public String getNameQuestById(int id)
+        {
+            return questionDAL.getNameQuestById(id);
+        }
     }
 }

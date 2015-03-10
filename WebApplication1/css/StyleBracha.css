@@ -1,4 +1,27 @@
 
+#cointainDateDiv{
+margin: 251px;
+margin-bottom: 61px;
+margin-top: 12px;
+margin-right: 20px;
+}
+.divCalendar{
+    display: none;
+    float:left;
+}
+
+.calendar{
+border-width: 2px;
+background-color:white;
+width: 200px;
+font-size: 8pt;
+font-family: Verdana;
+border-color: #E4DA85;
+border-style: outset;
+
+}
+
+
 #MainContent_logoutBtn{
     margin-top: 30px;
 }

@@ -124,5 +124,25 @@ namespace WebApplication1.DAL
             con.Close();
             return maxId;
         }
+
+        public String getNameQuestById(int id)
+        {
+            con.Open();
+            String sqlString = "select Question from Question q where q.Id = " + id + ";";
+            SqlCommand com = new SqlCommand(sqlString, con);
+            String nameQuest="";
+            using (SqlDataReader rdr = com.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    nameQuest = (rdr["Question"].ToString());
+                }
+            }
+            con.Close();
+
+
+
+            return nameQuest;
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace WebApplication1.DAL
                 while (rdr.Read())
                 {
                     listQuestionAsked.Add(new QuestionAsked(Convert.ToInt32(rdr["Id"]), Convert.ToInt32(rdr["IdQuestion"]),
-                        Convert.ToInt32(rdr["IdStudent"]), Convert.ToDateTime(rdr["Date"]), Convert.ToInt32(rdr["YN"])));
+                        Convert.ToInt32(rdr["IdStudent"]), (rdr["Date"]).ToString(), Convert.ToInt32(rdr["YN"])));
                 }
             }
             con.Close();
@@ -46,5 +46,7 @@ namespace WebApplication1.DAL
             con.Close();
 
         }
+
+    
     }
 }

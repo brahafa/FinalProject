@@ -7,14 +7,14 @@ namespace WebApplication1.classes
 {
     public class QuestionAsked
     {
-        private int _Id;
-        private int _IdQuestion;
-        private int _IdStudent;
-        private DateTime _Date;
-        private int _YN;
+        public int _Id;
+        public int _IdQuestion;
+        public int _IdStudent;
+        public String _Date;
+        public int _YN;
 
 
-        public QuestionAsked(int Id, int IdQuestion, int IdStudent, DateTime Date, int YN)
+        public QuestionAsked(int Id, int IdQuestion, int IdStudent, String Date, int YN)
         {
             _Id = Id;
             _IdQuestion = IdQuestion;

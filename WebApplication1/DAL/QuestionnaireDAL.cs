@@ -181,6 +181,28 @@ namespace WebApplication1.DAL
             con.Close();
             return listQuestionnaire;
         }
- 
+
+
+        public string getNameById(int id)
+        {
+            
+                con.Open();
+                String name = "";
+                string sqlString = "select * from Questionnaire q where q.Id = id ;";
+                SqlCommand com = new SqlCommand(sqlString, con);
+                using (SqlDataReader rdr = com.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        if (Convert.ToInt32(rdr["Id"]) == id)
+                        {
+                            name = (rdr["Name"]).ToString();
+                        }
+                    }
+                }
+                con.Close();
+                return name;
+            
+        }
     }
 }
