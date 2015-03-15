@@ -14,6 +14,8 @@ namespace WebApplication1.Pages
 {
     public partial class WebForm6 : System.Web.UI.Page
     {
+
+
         QuestionBL questionBL;
         QuestionAskedBL questionAskedBL;
         QuestionnaireBL questionnaireBL;

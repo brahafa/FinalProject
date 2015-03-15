@@ -15,7 +15,10 @@ namespace WebApplication1.BL
         {
             questionAskedDAL = new QuestionAskedDAL();
         }
-
+        public void AddNewQuestionAsked(int Id, int IdQuestion, int IdStudent, String Date, int YN)
+        {
+            questionAskedDAL.AddNewQuestionAsked(Id,IdQuestion, IdStudent, Date, YN);
+        }
         //get All QuestionAsked By IdQuestion
         public List<QuestionAsked> getAllQuestionAskedByIdQuestion(int IdQuestion)
         {
@@ -35,6 +38,10 @@ namespace WebApplication1.BL
                 return true;
             }
             return false;
+        }
+        public int maxIdquestionAsk()
+        {
+            return questionAskedDAL.maxIdquestionAsk();
         }
        
 

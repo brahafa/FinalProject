@@ -433,39 +433,67 @@ function clean(){
 //ושולחת לשיטה המתאימה כדי למלא את המסד נתונים
 $(document).ready(function () {
     $("#MainContent_SaveAnswer").click(function () {
-        var numberAns = validSelect();
-        var numCorectAns = findeCorectAns();
-        if (numberAns == -1) {//err 
-            return;
-        }
-        var indexOfAns = validAmericanQ();
-        if (typeQuestion == 1) {//american
-            if (indexOfAns == -1) {
-                return;
-            }
-            else {
-                if (IsAnsChoose(numCorectAns, indexOfAns) == -1) {
-                    return;
-                }
-                SaveAmericanAnsAndQuest(numCorectAns);
-            }
-        }
-        else if (typeQuestion == 2) {//yesNo quest
-            if (isYesOrNoChoose() == -1) {
-                return;
-            }
-            SaveYesNoAnsAndQuest();
-        }
-        else {//open quest
-            if (isOpenQuestNull() == -1) {
-                return;
-            }
-            SaveOpenAnsAndQuest();
-        }
-        clean();
+        saveAndDisplayClick();
 
     });
 });
+
+$(document).ready(function () {
+    $("#MainContent_displayClass").click(function () {
+        saveAndDisplayClick();
+
+
+        var AllAnsStr = "";//numCorectAns + "#" + buildAnsQuestStr(numAns);
+        $.ajax({
+            type: "POST",
+            url: "AddQuestion.aspx/saveAndDisplay_ClientClick",
+            data: '{AllAnsStr: "' + AllAnsStr + '" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+            },
+            failure: function (response) {
+            }
+
+        });
+
+
+    });
+});
+
+function saveAndDisplayClick() {
+    var numberAns = validSelect();
+    var numCorectAns = findeCorectAns();
+    if (numberAns == -1) {//err 
+        return;
+    }
+    var indexOfAns = validAmericanQ();
+    if (typeQuestion == 1) {//american
+        if (indexOfAns == -1) {
+            return;
+        }
+        else {
+            if (IsAnsChoose(numCorectAns, indexOfAns) == -1) {
+                return;
+            }
+            SaveAmericanAnsAndQuest(numCorectAns);
+        }
+    }
+    else if (typeQuestion == 2) {//yesNo quest
+        if (isYesOrNoChoose() == -1) {
+            return;
+        }
+        SaveYesNoAnsAndQuest();
+    }
+    else {//open quest
+        if (isOpenQuestNull() == -1) {
+            return;
+        }
+        SaveOpenAnsAndQuest();
+    }
+    clean();
+
+}
 //בודק אם התשובה לשאלה הפתוחה ריקה
 function isOpenQuestNull() {
     if (document.getElementById('MainContent_openAnswerID').value == "") {
