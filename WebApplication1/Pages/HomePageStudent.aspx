@@ -1,7 +1,8 @@
-﻿<%@ Page Title="דף הבית" Language="C#" AutoEventWireup="true"  MasterPageFile="~/Pages/Site.Master"  CodeBehind="HomePage.aspx.cs" Inherits="WebApplication1.Pages.WebForm2" %>
- <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
-  
+﻿<%@ Page Title="דף הבית"  Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/SiteStudent.Master"  CodeBehind="HomePageStudent.aspx.cs" Inherits="WebApplication1.Pages.HomePageStudent" %>
+ 
 
+<asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
+  
  <form  runat="server" id="Form1" action="#" method="post" enctype="multipart/form-data"> 
     <section id="content">
       <div class="padding">
@@ -15,13 +16,13 @@
                     <%
                         int j = 0;
                     %>
-            <%  for (int i = 0; i < listCourse.Count; i++)
+            <%  for (int i = 0; i < listCourses.Count; i++)
                 { %>
-            <div class='new_released_box' id= '<% =listCourse[i].getId() %>'>
+            <div class='new_released_box' id= '<% =listCourses[i].getId() %>'>
                 
                 <%
                   
-                    courseBtn.Text = listCourse[i].getName().Trim();
+                    courseBtn.Text = listCourses[i].getName().Trim();
                     courseBtn.BackColor = colorCourses[j];
                     //courseInputBtn.Value = listCourse[i].getName().Trim();
                   j++;
@@ -44,8 +45,8 @@
               <div id="buttonAddRemove" class="buttonAddRemove" >
                   <ul>
                          <li>
-                            <input id="removeCourseBtn" class="myButton" runat="server"  name="removeCourseBtn" type="button" value="הסר קורס"/>
-                            <input id="addCourseBtn" class="myButton" runat="server"  name="addCourseBtn" type="button" value="הוסף קורס"/>
+                            <input id="removeCourseBtns" class="myButton" runat="server"  name="removeCourseBtn" type="button" value="הסר קורס"/>
+                            <input id="addCourseBtns" class="myButton" runat="server"  name="addCourseBtn" type="button" value="הוסף קורס"/>
                            <%--  <asp:Button id="" runat="server" OnClientClick="return false;" CssClass="myButton" Text="הוסף קורס"  />--%>
               </li>
                       
@@ -78,16 +79,16 @@
              <div class="block-newsHomPage" id="conectedUser" runat="server"    >
               <h3 class="color-4 p2">:אתה מחובר כ</h3>
                 <br/><br/>
-               <h3 class="color-4 p2"><label id="UserNameLabel" runat="server"> </label></h3> 
+               <h3 class="color-4 p2"><label id="UserNameLabels" runat="server"> </label></h3> 
             <br/><br/>
                   <ul class="list-2">
                    <li>  
                      <div   id="profile">
-                     <asp:Image runat="server" ID="userImage" CssClass="userImage" />
+                     <asp:Image runat="server" ID="userImages" CssClass="userImage" />
                    </div>
                 </li>   
                       <li>
-                           <asp:Button ID="logoutBtn" runat="server" CssClass="myButton" OnClick="logout_click" Text="התנתק"></asp:Button>
+                           <asp:Button ID="logoutBtns" runat="server" CssClass="myButton" OnClick="logout_click" Text="התנתק"></asp:Button>
                       </li>  
             
               </ul>

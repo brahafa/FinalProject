@@ -19,11 +19,14 @@ namespace WebApplication1.Pages
         private static CourseBL courseBL;
         private static QuestionnaireBL questionnaireBl;
         private static QuestionBL questionBL;
+        private static QuestionAskedBL questionAskedBL;
+
         private static AnswerBL answerBL;
         public static List<Course> listCourse;
         public static List<Questionnaire> listQuestionnarie;
         protected void Page_Load(object sender, EventArgs e)
         {
+            questionAskedBL = new QuestionAskedBL();
             courseBL = new CourseBL();
             answerBL = new AnswerBL();
             questionBL = new QuestionBL();
@@ -152,6 +155,17 @@ namespace WebApplication1.Pages
                 maxAnswer++;
             }
             questionBL.AddQuestion(maxQuestion, question, idQuestionnier, type, "sasa");
+        }
+
+        [WebMethod]
+        public static void saveAndDisplay_ClientClick(String AllAnsStr)
+        {
+            int maxIdQuestionAsk = questionAskedBL.maxIdquestionAsk()+1;
+            maxQuestion = questionBL.maxIdQuestion();
+            DateTime thisDay = DateTime.Today;
+
+            questionAskedBL.AddNewQuestionAsked(maxIdQuestionAsk, maxQuestion, -1, thisDay.ToString(), 2);
+
         }
         protected void logout_click(object sender, EventArgs e)
         {

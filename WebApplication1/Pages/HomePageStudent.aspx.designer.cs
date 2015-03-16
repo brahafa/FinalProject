@@ -10,7 +10,7 @@
 namespace WebApplication1.Pages {
     
     
-    public partial class WebForm2 {
+    public partial class HomePageStudent {
         
         /// <summary>
         /// Form1 control.
@@ -40,22 +40,22 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.WebControls.Button courseBtn;
         
         /// <summary>
-        /// removeCourseBtn control.
+        /// removeCourseBtns control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton removeCourseBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton removeCourseBtns;
         
         /// <summary>
-        /// addCourseBtn control.
+        /// addCourseBtns control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton addCourseBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton addCourseBtns;
         
         /// <summary>
         /// closeButton control.
@@ -112,30 +112,30 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl conectedUser;
         
         /// <summary>
-        /// UserNameLabel control.
+        /// UserNameLabels control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserNameLabel;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserNameLabels;
         
         /// <summary>
-        /// userImage control.
+        /// userImages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image userImage;
+        protected global::System.Web.UI.WebControls.Image userImages;
         
         /// <summary>
-        /// logoutBtn control.
+        /// logoutBtns control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button logoutBtn;
+        protected global::System.Web.UI.WebControls.Button logoutBtns;
     }
 }

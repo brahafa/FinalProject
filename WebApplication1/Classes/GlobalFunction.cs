@@ -4,11 +4,22 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Web;
+using WebApplication1.BL;
+using WebApplication1.classes;
 
 namespace WebApplication1.Classes
 {
+
     public class GlobalFunction
     {
+        private static QuestionnaireBL questionnaireBL;
+        private static QuestionBL questionBL;
+        private static QuestionAskedBL questionAskedBL;
+        private static List<Questionnaire> listQuestionnaire;
+        private static List<Question> listQuestion;
+        private static AnswerBL answerBL;
+        private static CourseBL courseBL;
+        private static CourseRegisterBL courseRegisterBL;
         public int sendEmail(String subject, String body, String emailTo)
         {
             string smtpAddress = "smtp.gmail.com";
@@ -44,6 +55,44 @@ namespace WebApplication1.Classes
 
 
             }
+        }
+
+        //Method removes all information related to this course
+        public void removeLecurerCourseFromDB(int idCourse)
+        {
+            listQuestionnaire = new List<Questionnaire>();
+            listQuestion = new List<Question>();
+            questionnaireBL = new QuestionnaireBL();
+            courseRegisterBL = new CourseRegisterBL();
+            courseBL = new CourseBL();
+            questionBL = new QuestionBL();
+            answerBL = new AnswerBL();
+            questionAskedBL = new QuestionAskedBL();
+
+            listQuestionnaire = questionnaireBL.getAllQuestionnaireByIdCourse(idCourse);
+            for (int i = 0; i < listQuestionnaire.Count; i++)
+            {
+                listQuestion = questionBL.getAllQuestionByQuestionnaire(listQuestionnaire[i].getId());
+                for (int j = 0; j < listQuestion.Count; j++)
+                {
+                    questionAskedBL.deleteQuestionAskedByIdQuestion(listQuestion[j].getId()); // delete all QuestionAsked By IdQuestion
+                    answerBL.deleteAnswerByIdQuestion(listQuestion[j].getId()); // delete all answer By IdQuestion
+                }
+                listQuestion = null;
+                questionBL.deleteQuestionByQuestionnaire(listQuestionnaire[i].getId()); //delete all Question By Questionnaire
+            }
+            listQuestionnaire = null;
+            questionnaireBL.deleteQuestionnaireByIdCours(idCourse);//delete all Questionnaire By IdCours
+
+            courseRegisterBL.deleteCourseRegisterByIdCourse(idCourse);//delete all CourseRegister By IdCourse
+
+            courseBL.deleteCoursesById(idCourse);//delete course from DB
+
+            //"free" object
+            questionnaireBL = null;
+            questionBL = null;
+            answerBL = null;
+            questionAskedBL = null;
         }
     }
 }

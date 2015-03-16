@@ -10,7 +10,7 @@
 namespace WebApplication1.Pages {
     
     
-    public partial class WebForm2 {
+    public partial class ProfileStudent {
         
         /// <summary>
         /// Form1 control.
@@ -22,120 +22,102 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// courseId control.
+        /// Avatar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText courseId;
+        protected global::System.Web.UI.WebControls.Image Avatar;
         
         /// <summary>
-        /// courseBtn control.
+        /// avatarUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button courseBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile avatarUpload;
         
         /// <summary>
-        /// removeCourseBtn control.
+        /// selected_Type control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton removeCourseBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect selected_Type;
         
         /// <summary>
-        /// addCourseBtn control.
+        /// UserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton addCourseBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText UserName;
         
         /// <summary>
-        /// closeButton control.
+        /// selected_Degree control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button closeButton;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect selected_Degree;
         
         /// <summary>
-        /// addOrremove control.
+        /// ImagePath control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText addOrremove;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ImagePath;
         
         /// <summary>
-        /// addRemoveBtn control.
+        /// InputPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton addRemoveBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden InputPassword;
         
         /// <summary>
-        /// courseName control.
+        /// Email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText courseName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Email;
         
         /// <summary>
-        /// errMesegeEmpty control.
+        /// pass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errMesegeEmpty;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword pass;
         
         /// <summary>
-        /// conectedUser control.
+        /// pass1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl conectedUser;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword pass1;
         
         /// <summary>
-        /// UserNameLabel control.
+        /// errMesege control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserNameLabel;
-        
-        /// <summary>
-        /// userImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image userImage;
-        
-        /// <summary>
-        /// logoutBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button logoutBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errMesege;
     }
 }

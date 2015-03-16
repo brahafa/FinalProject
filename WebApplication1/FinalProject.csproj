@@ -100,6 +100,8 @@
     <Content Include="js\PIE.htc" />
     <Content Include="js\tms-0.3.js" />
     <Content Include="js\tms_presets.js" />
+    <Content Include="Pages\HomePageStudent.aspx" />
+    <Content Include="Pages\ProfileStudent.aspx" />
     <Content Include="Pages\StockQuestionnaires.aspx" />
     <Content Include="Pages\Register.aspx" />
     <Content Include="Pages\HomePage.aspx" />
@@ -108,6 +110,7 @@
     <Content Include="Pages\Profile.aspx" />
     <Content Include="Bundle.config" />
     <Content Include="Pages\Site.Master" />
+    <Content Include="Pages\SiteStudent.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -148,7 +151,28 @@
     <Compile Include="DAL\QuestionDAL.cs" />
     <Compile Include="DAL\QuestionnaireDAL.cs" />
     <Compile Include="DAL\StudentDAL.cs" />
+    <Compile Include="Pages\HomePageStudent.aspx.cs">
+      <DependentUpon>HomePageStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\HomePageStudent.aspx.designer.cs">
+      <DependentUpon>HomePageStudent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProfileStudent.aspx.cs">
+      <DependentUpon>ProfileStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ProfileStudent.aspx.designer.cs">
+      <DependentUpon>ProfileStudent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Questionnaire.cs" />
+    <Compile Include="Pages\SiteStudent.Master.cs">
+      <DependentUpon>SiteStudent.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SiteStudent.Master.designer.cs">
+      <DependentUpon>SiteStudent.Master</DependentUpon>
+    </Compile>
     <Compile Include="Pages\StockQuestionnaires.aspx.cs">
       <DependentUpon>StockQuestionnaires.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

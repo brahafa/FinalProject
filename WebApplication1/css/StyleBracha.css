@@ -839,6 +839,19 @@ h6 {
     font-family: serif;
     font-size: -webkit-xxx-large;
 }
+
+.block-newsHomPage {
+    position: absolute;
+    float: right;
+    width: 205px;
+    padding: 27px 33px 30px;
+    margin: -22px 678px;
+    border: 1px solid #eaeaea;
+    background: url(../images/block-news-tail.gif) 0 0 repeat-x #f9f9f9;
+    border-radius: 18px;
+    -moz-border-radius: 18px;
+    -webkit-border-radius: 18px;
+}
 .button {
 	display:block;
 	width:43px;

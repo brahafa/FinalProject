@@ -12,33 +12,33 @@ using WebApplication1.BL;
 using WebApplication1.classes;
 using WebApplication1.Classes;
 
+
 namespace WebApplication1.Pages
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    public partial class HomePageStudent : System.Web.UI.Page
     {
-
         private const int MAX_LENGTH_NAME_COURSE = 15;
-        static LecturerBL lectureBL;
-        static StudentBL studentBl;
+        static LecturerBL lectureBLs;
+        static StudentBL studentBls;
         private static CourseBL courseBL;
-        private static CourseRegisterBL courseRegisterBL;
-        private static GlobalFunction global;
+        private static CourseRegisterBL courseRegisterBLs;
+        private static GlobalFunction globals;
 
-        public static List<Course> listCourse;
-        static List<Student> listStudent;
-        static List<Lecturer> listLecturer;
+        public static List<Course> listCourses;
+        static List<Student> listStudents;
+        static List<Lecturer> listLecturers;
         public Color[] colorCourses;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            global = new GlobalFunction();
-            lectureBL = new LecturerBL();
-            studentBl = new StudentBL();
-            listStudent = new List<Student>();
-            listLecturer = new List<Lecturer>();
+            globals = new GlobalFunction();
+            lectureBLs = new LecturerBL();
+            studentBls = new StudentBL();
+            listStudents = new List<Student>();
+            listLecturers = new List<Lecturer>();
             courseBL = new CourseBL();
-            courseRegisterBL = new CourseRegisterBL();
-            listCourse = new List<Course>();
+            courseRegisterBLs = new CourseRegisterBL();
+            listCourses = new List<Course>();
             colorCourses = new Color[9];
 
             colorCourses[0] = System.Drawing.Color.LightSalmon;
@@ -59,23 +59,23 @@ namespace WebApplication1.Pages
                 if (Session["userType"] != null && (Session["userType"]).Equals("0"))
                 {
 
-                    listCourse = courseBL.getCoursesByIdLecturer(Convert.ToInt32(Session["id"]));// get all courses of this lecturer
+                    listCourses = courseBL.getCoursesByIdLecturer(Convert.ToInt32(Session["id"]));// get all courses of this lecturer
                 }
                 else if (Session["userType"] != null && (Session["userType"]).Equals("1"))
                 {
-                    listCourse = courseRegisterBL.getCoursesByIdStudent(Convert.ToInt32(Session["id"]));// get all courses of this student
+                    listCourses = courseRegisterBLs.getCoursesByIdStudent(Convert.ToInt32(Session["id"]));// get all courses of this student
                 }
 
-                UserNameLabel.InnerText = Session["Name"].ToString();
-                userImage.ImageUrl = Session["Image"].ToString();
+                UserNameLabels.InnerText = Session["Name"].ToString();
+                userImages.ImageUrl = Session["Image"].ToString();
 
 
             }
             else // if no one connected
             {
-                addCourseBtn.Style.Add("display", "none");
-                removeCourseBtn.Style.Add("display", "none");
-                logoutBtn.Style.Add("display", "none");
+                addCourseBtns.Style.Add("display", "none");
+                removeCourseBtns.Style.Add("display", "none");
+                logoutBtns.Style.Add("display", "none");
             }
 
 
@@ -98,7 +98,7 @@ namespace WebApplication1.Pages
         }
 
         //add new course 
-       [System.Web.Services.WebMethod(EnableSession = true)]
+        [System.Web.Services.WebMethod(EnableSession = true)]
         public static string addCourse_click(String courseInput)
         {
 
@@ -128,10 +128,10 @@ namespace WebApplication1.Pages
                 String tempName;
                 int maxIdCourse;
 
-                for (int i = 0; i < listCourse.Count; i++)// check if this course exist
+                for (int i = 0; i < listCourses.Count; i++)// check if this course exist
                 {
 
-                    tempName = listCourse[i].getName().Trim();
+                    tempName = listCourses[i].getName().Trim();
                     if (tempName.Equals(courseInput))
                     {
                         return "שם הקורס כבר קיים";
@@ -162,16 +162,16 @@ namespace WebApplication1.Pages
                 }
                 else// this course exist in courses table
                 {
-                    for (int i = 0; i < listCourse.Count; i++)// check if this course exist
+                    for (int i = 0; i < listCourses.Count; i++)// check if this course exist
                     {
-                        if (listCourse[i].getId().ToString().Equals(courseInput))
+                        if (listCourses[i].getId().ToString().Equals(courseInput))
                         {
                             return "שם הקורס כבר קיים";
                         }
                     }
                     //add course to courseRegister table
-                    maxCourseIdRegister = courseRegisterBL.maxIdCourseRegister();
-                    courseRegisterBL.AddCourseRegister(maxCourseIdRegister + 1, courseCode, userId);
+                    maxCourseIdRegister = courseRegisterBLs.maxIdCourseRegister();
+                    courseRegisterBLs.AddCourseRegister(maxCourseIdRegister + 1, courseCode, userId);
                 }
             }
 
@@ -187,15 +187,15 @@ namespace WebApplication1.Pages
 
             if (HttpContext.Current.Session["userType"].Equals("0"))//lecurer
             {
-                for (int i = 0; i < listCourse.Count; i++)// check if this course exist
+                for (int i = 0; i < listCourses.Count; i++)// check if this course exist
                 {
-                    tempName = listCourse[i].getName().Trim();
+                    tempName = listCourses[i].getName().Trim();
 
                     if (nameCourse.Equals(tempName))
                     {
-                        idCourse = listCourse[i].getId();
-                        listCourse.RemoveAt(i);
-                        global.removeLecurerCourseFromDB(idCourse); // remove Lecurer course
+                        idCourse = listCourses[i].getId();
+                        listCourses.RemoveAt(i);
+                        globals.removeLecurerCourseFromDB(idCourse); // remove Lecurer course
                         return ".הקורס הוסר בהצלחה";
                     }
                 }
@@ -210,15 +210,15 @@ namespace WebApplication1.Pages
                 {
                     return "הכנס מספר קורס להסרה.";
                 }
-                for (int i = 0; i < listCourse.Count; i++)// check if this course exist
+                for (int i = 0; i < listCourses.Count; i++)// check if this course exist
                 {
                     int tempId;
 
-                    tempId = listCourse[i].getId();//courseBL.getIdByIdLecturerAndCourseName(Convert.ToInt32(HttpContext.Current.Session["id"]), nameCourse);  /////////////////////// get id course by course name and lecturer id
+                    tempId = listCourses[i].getId();//courseBL.getIdByIdLecturerAndCourseName(Convert.ToInt32(HttpContext.Current.Session["id"]), nameCourse);  /////////////////////// get id course by course name and lecturer id
 
                     if (tempId == idCourse)
                     {
-                        courseRegisterBL.deleteCourseRegisterByIdCourseAndStudent(idCourse, Convert.ToInt32(HttpContext.Current.Session["id"]));
+                        courseRegisterBLs.deleteCourseRegisterByIdCourseAndStudent(idCourse, Convert.ToInt32(HttpContext.Current.Session["id"]));
                         return ".הקורס הוסר בהצלחה";
                     }
 
@@ -240,5 +240,4 @@ namespace WebApplication1.Pages
         }
 
     }
-
 }

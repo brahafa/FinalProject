@@ -89,7 +89,9 @@ namespace WebApplication1.Pages
                     Session["Name"] = name;
                     Session["Image"] = listLecturer[0]._image.ToString();
                     Session["email"] = Email.Value.ToString();
-                    Session["degree"] = listLecturer[0]._degree.ToString(); ;
+                    Session["degree"] = listLecturer[0]._degree.ToString();
+                    Response.Redirect("HomePage.aspx");
+
                 }
                 else if (listStudent.Count != 0)
                 {
@@ -99,6 +101,8 @@ namespace WebApplication1.Pages
                     Session["Name"] = name;
                     Session["Image"] = listStudent[0]._image.ToString();
                     Session["email"] = Email.Value.ToString();
+                    Response.Redirect("HomePageStudent.aspx");
+
 
                 }
                 else
@@ -109,7 +113,6 @@ namespace WebApplication1.Pages
                 }
 
 
-                Response.Redirect("HomePage.aspx");
             }
         }
 
