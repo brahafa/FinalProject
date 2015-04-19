@@ -5,18 +5,36 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using MySql.Data.MySqlClient;
 
 
 namespace WebApplication1.DAL
 {
     public class QuestionDAL
     {
-            public static string s;
-        public SqlConnection con;
+        //    public static string s;
+        //    public SqlConnection con;
+        private MySqlConnection con = null;
+        private MySqlConnectionStringBuilder sb = null;
+        private MySqlCommand cmd = null;
         public QuestionDAL()
         {
-            s = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
-            con = new SqlConnection(s); 
+            //s = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
+            //con = new SqlConnection(s); 
+            sb = new MySqlConnectionStringBuilder();
+            sb.Server = "1dca19b5-5ffe-4e06-a129-a4650083dc91.mysql.sequelizer.com";
+            sb.UserID = "kybmpfzqrrkskryu";
+            sb.Password = "GxNAiPtZ2pFVYEetBzQEDi6m56QvhNKkr8qk4NKSLjJuNhViLfpaazsyAAEk87Sn";
+            sb.Database = "db1dca19b55ffe4e06a129a4650083dc91";
+            sb.CharacterSet = "utf8";
+            try
+            {
+                con = new MySqlConnection(sb.ToString());
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error: {0}", e.ToString());
+            }
         }
 
         // add Question
@@ -25,7 +43,7 @@ namespace WebApplication1.DAL
 
             String sqlString = "INSERT INTO Question (Id, Question, IdQuestionnaire, Type, File1" +
             ") VALUES (@val1, @val2, @val3, @val4, @val5);";
-            using (SqlCommand comm = new SqlCommand())
+            using (MySqlCommand comm = new MySqlCommand())
             {
                 comm.Connection = con;
                 comm.CommandText = sqlString;
@@ -53,7 +71,7 @@ namespace WebApplication1.DAL
         {
             con.Open();
             string sqlString = @"DELETE FROM Question WHERE Id = " + Id + ";";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             com.ExecuteNonQuery();
             con.Close();
 
@@ -64,7 +82,7 @@ namespace WebApplication1.DAL
         {
             con.Open();
             string sqlString = @"DELETE FROM Question WHERE IdQuestionnaire = " + IdQuestionnaire + ";";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             com.ExecuteNonQuery();
             con.Close();
 
@@ -75,14 +93,14 @@ namespace WebApplication1.DAL
         {
             con.Open();
             string sqlString = "select * from Question q where q.IdQuestionnaire = " + IdQuestionnaire + ";";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             List<Question> listQuestion = new List<Question>();
-            using (SqlDataReader rdr = com.ExecuteReader())
+            using (MySqlDataReader rdr = com.ExecuteReader())
             {
                 while (rdr.Read())
                 {
                     listQuestion.Add(new Question(Convert.ToInt32(rdr["Id"]), rdr["Question"].ToString(), Convert.ToInt32(rdr["IdQuestionnaire"]),
-                        Convert.ToInt32(rdr["Type"]), rdr["File"].ToString()));
+                        Convert.ToInt32(rdr["Type"]), rdr["File1"].ToString()));
                 }
             }
             con.Close();
@@ -94,9 +112,9 @@ namespace WebApplication1.DAL
         {
             con.Open();
             string sqlString = "select * from Question q where q.Type = " + Type + ";";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             List<Question> listQuestion = new List<Question>();
-            using (SqlDataReader rdr = com.ExecuteReader())
+            using (MySqlDataReader rdr = com.ExecuteReader())
             {
                 while (rdr.Read())
                 {
@@ -111,9 +129,9 @@ namespace WebApplication1.DAL
         {
             con.Open();
             string sqlString = "select Max(Id) as Id from Question;";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             int maxId = 0;
-            using (SqlDataReader rdr = com.ExecuteReader())
+            using (MySqlDataReader rdr = com.ExecuteReader())
             {
                 while (rdr.Read())
                 {
@@ -129,9 +147,9 @@ namespace WebApplication1.DAL
         {
             con.Open();
             String sqlString = "select Question from Question q where q.Id = " + id + ";";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             String nameQuest="";
-            using (SqlDataReader rdr = com.ExecuteReader())
+            using (MySqlDataReader rdr = com.ExecuteReader())
             {
                 while (rdr.Read())
                 {

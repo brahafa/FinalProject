@@ -1,4 +1,4 @@
-﻿<%@ Page Title="סטטיסטיקה" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/Site.Master" CodeBehind="Statistic.aspx.cs" Inherits="WebApplication1.Pages.WebForm6" %>
+﻿<%@ Page Title="סטטיסטיקה" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/SiteStudent.Master" CodeBehind="StatisticStudent.aspx.cs" Inherits="WebApplication1.Pages.StatisticStudent" %>
 
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
@@ -16,22 +16,7 @@
                                         <h2 class="p0">סטטיסטיקה</h2>
                                     </div>
                                 </li>
-                                  <li class="styled-select">
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-
-                                    <select class="styled-select" id="selected_Questionnaires" onchange="selectQuestion()" runat="server">
-                                        <option value="-1">:בחר שאלון</option>
-                                    </select>
-
-                                    <select class="styled-select" id="select_Course" onchange="SelectCurseStatistic()" runat="server">
-                                        <option value="-1">:בחר קורס</option>
-                                    </select>
-                                    <asp:TextBox ID="selectTest" Style="display: inline" runat="server"></asp:TextBox>
-                                     <asp:TextBox ID="selectQuestion" Style="display: inline" runat="server"></asp:TextBox>
-                                     </li>
+                               
                                 <li style: height="70px" ;>
                                     <br />
                                     <br />
@@ -66,11 +51,7 @@
                                 <li>
                                 
                                 </li>
-                                <li>
-                                    <asp:Button ID="BtnTest2" runat="server" OnClick="BtnselectStatistic_Click" CssClass="myButton" Text="הצג סטטיסטיקה"></asp:Button>
-
-                                    <asp:Button ID="BtnTest" runat="server" OnClick="test_Click" CssClass="myButton" Text="test11"></asp:Button>
-                                </li>
+                
                                 <li>
                                     <div>
                                         <asp:Chart ID="cTestChart" runat="server" BackColor="Tomato" BackGradientStyle="Center" Palette="Chocolate" RightToLeft="Yes" Width="600px">

@@ -112,16 +112,18 @@ namespace WebApplication1.Pages
                  Session["Degree"] = degree;
                 lecturerBL.AddNewLecturer(index, name, email, image, password,degree);
                 Session["degree"] = degree;
+                initSessions(name, image, index, email);
+                Response.Redirect("HomePage.aspx");
 
             }
             else
             {
                 index = studentBL.maxIdStudent() + 1;
                 studentBL.AddNewStudent(index, name, email, image, password);
+                initSessions(name, image, index, email);
+                Response.Redirect("HomePageStudent.aspx");
             }
-            initSessions(name, image, index, email);
-         
-            Response.Redirect("HomePage.aspx");
+            
         }
 
         public void initSessions(String name , String image, int index, String email )

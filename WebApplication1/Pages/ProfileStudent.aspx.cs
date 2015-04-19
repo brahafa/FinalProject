@@ -17,49 +17,14 @@ namespace WebApplication1.Pages
         StudentBL studentBL;
         Validations valid;
         GlobalFunction global;
-        int indexDegree = 0;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             valid = new Validations();
             global = new GlobalFunction();
             lecturerBL = new LecturerBL();
             studentBL = new StudentBL();
-            selected_Type.Disabled = true;
             Email.Disabled = true;
-
-            if (Session["id"] != null)
-            {
-                //UserName.Value = Session["Name"].ToString();
-                Email.Value = Session["email"].ToString();
-                Avatar.ImageUrl = Session["Image"].ToString();
-
-                if (Session["userType"].ToString().Equals("0"))
-                {
-                    if (Session["degree"].ToString().Trim().Equals("מר/ת"))
-                    {
-                        indexDegree = 0;
-                    }
-                    else if (Session["degree"].ToString().Trim().Equals("דוקטור"))
-                    {
-                        indexDegree = 1;
-                    }
-                    else if (Session["degree"].ToString().Trim().Equals("פרופסור"))
-                    {
-                        indexDegree = 2;
-                    }
-                    //selected_Degree.Value = indexDegree.ToString();
-                    selected_Degree.Style.Add("display", "inline");
-                }
-                else
-                {
-                    selected_Degree.Style.Add("display", "none");
-                    selected_Type.Style.Add("display", "none");
-
-                }
-                // selected_Type.Value = Session["userType"].ToString();
-            }
-
+            Avatar.ImageUrl = Session["Image"].ToString();
 
 
         }
@@ -87,7 +52,7 @@ namespace WebApplication1.Pages
                 }
                 avatarUpload.PostedFile.SaveAs(Server.MapPath("~/images/") + fileName);//save image in folder
                 image = "~/images/" + fileName.ToString();
-
+                Session["Image"] = image;
             }
             name = UserName.Value.ToString().Trim();
             email = Email.Value.ToString();
@@ -117,28 +82,6 @@ namespace WebApplication1.Pages
                 return;
             }
 
-
-
-            //if (!Session["userType"].ToString().Equals("-1"))
-            //{
-            //    Session["userType"] = selected_Type.Value.ToString();
-            //}
-            if (((String)Session["userType"]).Equals("0"))
-            {
-                if (selected_Degree.Value.Equals("-1"))
-                {
-                    sendErrorMesege("בחר תואר*");
-                    return;
-                }
-                // selected_Degree.Value = Session["Degree"].ToString();
-                degree = selected_Degree.Items.FindByValue(selected_Degree.Value.ToString()).ToString();
-                // degree = selected_Degree.Items.FindByValue("0").ToString();
-
-                // name = name.Trim() + "  " + selected_Degree.Items.FindByValue(selected_Degree.SelectedIndex.ToString());
-                //  degree = selected_Degree.Value.ToString();
-                lecturerBL.UpdateLecturer(Convert.ToInt32(Session["id"].ToString()), name, image, password, degree);
-
-            }
             else
             {
                 //index = studentBL.maxIdStudent() + 1;
@@ -146,14 +89,14 @@ namespace WebApplication1.Pages
             }
             initSessions(name, image, email, degree);
 
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("HomePageStudent.aspx");
         }
         public void initSessions(String name, String image, String email, String degree)
         {
             Session["Name"] = name;
             Session["Image"] = image;
             Session["email"] = email;
-            Session["degree"] = degree;
+            //Session["degree"] = degree;
         }
         public void sendErrorMesege(String mesege)
         {

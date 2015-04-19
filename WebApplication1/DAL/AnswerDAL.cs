@@ -5,27 +5,44 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using MySql.Data.MySqlClient;
 
 
 namespace WebApplication1.DAL
 {
     public class AnswerDAL
     {
-        public static string s;
-        public SqlConnection con;
+    //    public static string s;
+    //    public SqlConnection con;
+        private MySqlConnection con = null;
+        private MySqlConnectionStringBuilder sb = null;
+        private MySqlCommand cmd = null;
         public AnswerDAL()
         {
-            s = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
-            con = new SqlConnection(s); 
+            //s = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
+            //con = new SqlConnection(s); 
+            sb = new MySqlConnectionStringBuilder();
+            sb.Server = "1dca19b5-5ffe-4e06-a129-a4650083dc91.mysql.sequelizer.com";
+            sb.UserID = "kybmpfzqrrkskryu";
+            sb.Password = "GxNAiPtZ2pFVYEetBzQEDi6m56QvhNKkr8qk4NKSLjJuNhViLfpaazsyAAEk87Sn";
+            sb.Database = "db1dca19b55ffe4e06a129a4650083dc91";
+            sb.CharacterSet = "utf8";
+            try
+            {
+                con = new MySqlConnection(sb.ToString());
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error: {0}", e.ToString());
+            }
         }
 
         // add Answer
         public void AddAnswer(int Id, String Answer, int IdQuestion, int CorrectAnswer)
         {
-
             string sqlString = "INSERT INTO Answer (Id, Answer, IdQuestion, CorrectAnswer" +
             ") VALUES (@val1, @val2, @val3, @val4);";
-            using (SqlCommand comm = new SqlCommand())
+            using (MySqlCommand comm = new MySqlCommand())
             {
                 comm.Connection = con;
                 comm.CommandText = sqlString;
@@ -52,7 +69,7 @@ namespace WebApplication1.DAL
         {
             con.Open();
             string sqlString = @"DELETE FROM Answer WHERE Id = " + Id + ";";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             com.ExecuteNonQuery();
             con.Close();
 
@@ -63,7 +80,7 @@ namespace WebApplication1.DAL
         {
             con.Open();
             string sqlString = @"DELETE FROM Answer WHERE IdQuestion = " + IdQuestion + ";";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             com.ExecuteNonQuery();
             con.Close();
 
@@ -74,9 +91,9 @@ namespace WebApplication1.DAL
         {
             con.Open();
             string sqlString = "select * from Answer a where a.IdQuestion = " + IdQuestion + ";";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             List<Answer> listAnswer = new List<Answer>();
-            using (SqlDataReader rdr = com.ExecuteReader())
+            using (MySqlDataReader rdr = com.ExecuteReader())
             {
                 while (rdr.Read())
                 {
@@ -90,9 +107,9 @@ namespace WebApplication1.DAL
         {
             con.Open();
             string sqlString = "select Max(Id) as Id from Answer;";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             int maxId = 0;
-            using (SqlDataReader rdr = com.ExecuteReader())
+            using (MySqlDataReader rdr = com.ExecuteReader())
             {
                 while (rdr.Read())
                 {

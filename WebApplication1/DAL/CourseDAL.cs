@@ -1,4 +1,5 @@
 ﻿using FinalProject.classes;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,19 +12,36 @@ namespace FinalProject.DAL
 {
     public class CourseDAL
     {
-        public static string s;
-        public SqlConnection con;
+        //public static string s;
+        //public SqlConnection con;
+        private MySqlConnection con = null;
+        private MySqlConnectionStringBuilder sb = null;
+        private MySqlCommand cmd = null;
         public CourseDAL()
         {
-            s = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
-            con = new SqlConnection(s); 
+            //s = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
+            //con = new SqlConnection(s);
+            sb = new MySqlConnectionStringBuilder();
+            sb.Server = "1dca19b5-5ffe-4e06-a129-a4650083dc91.mysql.sequelizer.com";
+            sb.UserID = "kybmpfzqrrkskryu";
+            sb.Password = "GxNAiPtZ2pFVYEetBzQEDi6m56QvhNKkr8qk4NKSLjJuNhViLfpaazsyAAEk87Sn";
+            sb.Database = "db1dca19b55ffe4e06a129a4650083dc91";
+            sb.CharacterSet = "utf8";
+            try
+            {
+                con = new MySqlConnection(sb.ToString());
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error: {0}", e.ToString());
+            }
         }
 
         public void AddCourse(int Id, String Name, int LecturerID)
         {
 
             string sqlString = "INSERT INTO Course (Id, Name, LecturerID) VALUES (@val1, @val2, @val3);";
-            using (SqlCommand comm = new SqlCommand())
+            using (MySqlCommand comm = new MySqlCommand())
             {
                 comm.Connection = con;
                 comm.CommandText = sqlString;
@@ -47,7 +65,7 @@ namespace FinalProject.DAL
         {
             con.Open();
             string sqlString = @"DELETE FROM Course WHERE Id = " + Id + ";";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             com.ExecuteNonQuery();
             con.Close();
 
@@ -56,9 +74,9 @@ namespace FinalProject.DAL
         {
             con.Open();
             string sqlString = "select Max(Id) as Id from Course;";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             int maxId = 0;
-            using (SqlDataReader rdr = com.ExecuteReader())
+            using (MySqlDataReader rdr = com.ExecuteReader())
             {
                 while (rdr.Read())
                 {
@@ -74,9 +92,9 @@ namespace FinalProject.DAL
         {
             con.Open();
             string sqlString = "select * from Course c where c.LecturerID = " + Id + ";";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             List<Course> listCourse = new List<Course>();
-            using (SqlDataReader rdr = com.ExecuteReader())
+            using (MySqlDataReader rdr = com.ExecuteReader())
             {
                 while (rdr.Read())
                 {
@@ -90,9 +108,9 @@ namespace FinalProject.DAL
         {
             con.Open();
             string sqlString = "select c.Name from Course c where c.Id = " + Id + ";";
-            SqlCommand com = new SqlCommand(sqlString, con);
+            MySqlCommand com = new MySqlCommand(sqlString, con);
             String nameCourse = "";
-            using (SqlDataReader rdr = com.ExecuteReader())
+            using (MySqlDataReader rdr = com.ExecuteReader())
             {
                 while (rdr.Read())
                 {

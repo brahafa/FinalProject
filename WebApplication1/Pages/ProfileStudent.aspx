@@ -21,23 +21,11 @@
                             <input id="avatarUpload" type="file" name="file" onchange="previewFile()" runat="server" />
                         </div>
                     </li>
-                    <li>
-                        <select class="DropeDownListServer" id="selected_Type" runat="server" onchange="Type()">
-                          
-                            <option value="0">מרצה</option>
-                            <option value="1">סטודנט</option>
-                        </select>
-                    </li>
+               
                     <li>
                            <label class="RegisterLabel">*שם:</label>
 
-                        <input id="UserName" class="RegisterField" runat="server" name="ContactName" type="text" />
-                   <select class="DropeDownListServer" id="selected_Degree" runat="server" onchange="Degree()" style="display: none">
-                            <option value="-1">בחר תואר</option>
-                            <option value="0">מר/ת</option>
-                            <option value="1">דוקטור</option>
-                            <option value="2">פרופסור</option>
-                        </select>
+                        <input id="UserName" class="RegisterField" runat="server" name="ContactName" type="text" /> 
                     </li>
                     <li>
                         <input id="ImagePath" type="hidden" runat="server" />

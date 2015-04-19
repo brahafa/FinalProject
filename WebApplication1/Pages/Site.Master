@@ -8,7 +8,7 @@
 
     
 <title> קליקר -<%: Page.Title %> </title>
-<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen"/>
 <link rel="stylesheet" href="../css/StyleBracha.css" type="text/css" media="screen"/>
 <link rel="stylesheet" href="../css/StyleYael.css" type="text/css" media="screen"/>
@@ -47,7 +47,8 @@
             <li><a class="active" href="HomePage.aspx">דף הבית</a></li>
             <li><a href="AddQuestion.aspx">הוספת שאלה</a></li>
             <li><a href="StockQuestionnaires.aspx">מאגר שאלונים</a></li>
-            <li><a href="Profile.aspx">פרטים אישיים</a></li>
+            <li><a href="Statistic.aspx">סטטיסטיקה</a></li>
+                <li class="last-item"><a href="Profile.aspx">פרטים אישיים</a></li>
             <%--<li class="last-item"><a href="new.aspx">home_page</a></li>--%>
           </ul>
             <%}
@@ -57,8 +58,9 @@
             <li><a href="HomePage.aspx">דף הבית</a></li>
             <li><a class="active" href="AddQuestion.aspx">הוספת שאלה</a></li>
             <li><a href="StockQuestionnaires.aspx">מאגר שאלונים</a></li>
-            <li><a href="Profile.aspx">פרטים אישיים</a></li>
-            <%--<li class="last-item"><a href="new.aspx">home_page</a></li>--%>
+            <li><a href="Statistic.aspx">סטטיסטיקה</a></li>
+                     <li class="last-item"><a href="Profile.aspx">פרטים אישיים</a></li>
+                     <%--<li class="last-item"><a href="new.aspx">home_page</a></li>--%>
           </ul>
             <%}
               else if (Page.Title.Equals("מאגר שאלונים"))
@@ -67,7 +69,8 @@
             <li><a href="HomePage.aspx">דף הבית</a></li>
             <li><a href="AddQuestion.aspx">הוספת שאלה</a></li>
             <li><a class="active" href="StockQuestionnaires.aspx">מאגר שאלונים</a></li>
-            <li><a href="Profile.aspx">פרטים אישיים</a></li>
+           <li><a href="Statistic.aspx">סטטיסטיקה</a></li>
+                      <li class="last-item"><a href="Profile.aspx">פרטים אישיים</a></li>
             <%--<li class="last-item"><a href="new.aspx">home_page</a></li>--%>
           </ul>
             <%}
@@ -77,10 +80,24 @@
             <li><a href="HomePage.aspx">דף הבית</a></li>
             <li><a href="AddQuestion.aspx">הוספת שאלה</a></li>
             <li><a href="StockQuestionnaires.aspx">מאגר שאלונים</a></li>
-            <li><a class="active" href="Profile.aspx">פרטים אישיים</a></li>
+                   <li><a href="Statistic.aspx">סטטיסטיקה</a></li>
+            <li class="last-item"><a class="active" href="Profile.aspx">פרטים אישיים</a></li>
+           
             <%--<li class="last-item"><a href="new.aspx">home_page</a></li>--%>
           </ul>
+            <%}
+
+              else if (Page.Title.Equals("סטטיסטיקה"))
+              { %>
+              <ul class="menu">
+            <li><a href="HomePage.aspx">דף הבית</a></li>
+            <li><a href="AddQuestion.aspx">הוספת שאלה</a></li>
+            <li><a href="StockQuestionnaires.aspx">מאגר שאלונים</a></li>
+            <li><a class="active" href="Statistic.aspx">סטטיסטיקה</a></li>
+            <li class="last-item" ><a href="Profile.aspx">פרטים אישיים</a></li>
+          </ul>
             <%} %>
+
 
         </nav>
             

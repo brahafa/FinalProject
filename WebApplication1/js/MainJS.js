@@ -133,6 +133,40 @@ function SelectCurse() {
         }
     }
 }
+
+
+function selectQuestion() {
+    var select_Quest = $("#MainContent_selected_Questionnaires").val();
+    MainContent_selectQuestion.value = select_Quest.toString();
+}
+function SelectCurseStatistic() {
+    var select_CourseS = $("#MainContent_select_Course").val();//selectQuestion
+    MainContent_selectTest.value = select_CourseS.toString();
+    if (select_CourseS != "-1") {
+        $.ajax({
+            type: "POST",
+            url: "Statistic.aspx/updateSelectQuestionnaires",
+            data: '{SelectValue: "' + select_CourseS + '" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var tmp = data.d;
+                //create option of  questionnaires select
+                initQuestionnairesS(tmp);
+            },
+            failure: function (response) {
+            }
+        });
+    }
+    else {
+        var select = document.getElementById('MainContent_selected_Questionnaires');
+        var length1 = select.options.length;
+        //clear the questionnaires select 
+        for (var i = length1; i > 0; i--) {
+            select.remove(i);
+        }
+    }
+}
 //init the Questionnaires select by cours id
 //איתחול הסלקט של השאלונים ומחיקתם לפני תחילת המילוי כדי שלא יהיה כפל שאלונים
 function initQuestionnaires(tmp){
@@ -158,6 +192,24 @@ function initQuestionnaires(tmp){
     select.appendChild(opt);
 }
 
+function initQuestionnairesS(tmp) {
+    var select = document.getElementById('MainContent_selected_Questionnaires');
+    var words = tmp.split(",");
+    var length1 = select.options.length;
+    //clear the questionnaires select 
+    for (var i = length1; i > 0; i--) {
+        select.remove(i);
+    }
+    //create option of  questionnaires select 
+    for (var i = 0; i < words.length - 1; i++) {
+        var opt = document.createElement('option');
+        opt.value = words[i];
+        opt.innerHTML = words[i + 1];
+        i++;
+        select.appendChild(opt);
+    }
+    var opt = document.createElement('option');
+}
 ///display or hide the answer divs
 //כל אחת מהשיטות הבאות שומרת את סוג השאלה הנוכחית של המשתמש
 //ומציגה רק את הדיב המבוקש, למשל רק שאלות כן לא או רק ריבוי תשובות

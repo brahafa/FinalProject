@@ -27,6 +27,7 @@ namespace WebApplication1.Pages
             studentBL = new StudentBL();
             selected_Type.Disabled = true;
             Email.Disabled = true;
+            Avatar.ImageUrl = Session["Image"].ToString();
 
             if (Session["id"] != null)
             {
@@ -87,6 +88,7 @@ namespace WebApplication1.Pages
                 }
                 avatarUpload.PostedFile.SaveAs(Server.MapPath("~/images/") + fileName);//save image in folder
                 image = "~/images/" + fileName.ToString();
+                Session["Image"] = image;
 
             }
             name = UserName.Value.ToString().Trim();

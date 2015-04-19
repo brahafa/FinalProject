@@ -39,6 +39,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.9.6\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -102,6 +105,7 @@
     <Content Include="js\tms_presets.js" />
     <Content Include="Pages\HomePageStudent.aspx" />
     <Content Include="Pages\ProfileStudent.aspx" />
+    <Content Include="Pages\StatisticStudent.aspx" />
     <Content Include="Pages\StockQuestionnaires.aspx" />
     <Content Include="Pages\Register.aspx" />
     <Content Include="Pages\HomePage.aspx" />
@@ -111,6 +115,7 @@
     <Content Include="Bundle.config" />
     <Content Include="Pages\Site.Master" />
     <Content Include="Pages\SiteStudent.Master" />
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -151,6 +156,7 @@
     <Compile Include="DAL\QuestionDAL.cs" />
     <Compile Include="DAL\QuestionnaireDAL.cs" />
     <Compile Include="DAL\StudentDAL.cs" />
+    <Compile Include="DAL\UsersDAL.cs" />
     <Compile Include="Pages\HomePageStudent.aspx.cs">
       <DependentUpon>HomePageStudent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -172,6 +178,13 @@
     </Compile>
     <Compile Include="Pages\SiteStudent.Master.designer.cs">
       <DependentUpon>SiteStudent.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StatisticStudent.aspx.cs">
+      <DependentUpon>StatisticStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\StatisticStudent.aspx.designer.cs">
+      <DependentUpon>StatisticStudent.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\StockQuestionnaires.aspx.cs">
       <DependentUpon>StockQuestionnaires.aspx</DependentUpon>

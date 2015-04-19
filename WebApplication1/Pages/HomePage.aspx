@@ -2,7 +2,7 @@
  <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
   
 
- <form  runat="server" id="Form1" action="#" method="post" enctype="multipart/form-data"> 
+ <form accept-charset="utf-8"  runat="server" id="Form1" action="#" method="post" enctype="multipart/form-data"> 
     <section id="content">
       <div class="padding">
         <div class="wrapper margin-bot">
