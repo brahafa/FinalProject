@@ -383,7 +383,7 @@ function buildAnsQuestStr(numAns) {
     }
     //ditayls ans and quest
     //מאתחל את המחרוזת  עם התשובות, השאלון, השאלה ומספר התשובות הקיימות
-    var AllAnsStr = StrAns
+    var AllAnsStr = StrAns;
     AllAnsStr += "#";
     AllAnsStr += QuestionnaireSelect;
     AllAnsStr += "#";

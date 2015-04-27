@@ -73,23 +73,23 @@
                                     </li>
                                     <li>
 <%--                                        <asp:TextBox ID="dans1" CssClass="Question" placeholder="הכנס תשובה נכונה" runat="server" />--%>
-                                          <input type="text"  id="answer1" runat="server" placeholder="הכנס תשובה" class="Question"/>
+                                          <input type="text"  id="answer1" placeholder="הכנס תשובה" class="Question"/>
                                           <input id="check1" type="checkbox"  name="Gender" onclick="cleanCheck1()"  />
                                     </li>
                                     <li>
-                                          <input type="text"   id="answer2" runat="server" placeholder="הכנס תשובה" class="Question"/>
+                                          <input type="text" id="answer2" placeholder="הכנס תשובה" class="Question"/>
                                         <input id="check2" type="checkbox" onclick="cleanCheck2()"  />
                                     </li>
                                     <li>
-                                          <input type="text"  id="answer3" runat="server" placeholder="הכנס תשובה" class="Question"/>
+                                          <input type="text"  id="answer3" placeholder="הכנס תשובה" class="Question"/>
                                         <input id="check3" type="checkbox" onclick="cleanCheck3()"  />
                                     </li>
                                     <li>
-                                          <input type="text"   id="answer4" runat="server" placeholder="הכנס תשובה" class="Question"/>
+                                          <input type="text"   id="answer4" placeholder="הכנס תשובה" class="Question"/>
                                         <input id="check4" type="checkbox" onclick="cleanCheck4()"/>
                                     </li>
                                     <li>
-                                          <input type="text"  id="answer5" runat="server" placeholder="הכנס תשובה" class="Question"/>
+                                          <input type="text"  id="answer5" placeholder="הכנס תשובה" class="Question"/>
                                         <input id="check5" type="checkbox" onclick="cleanCheck5()" />
 
                                     </li>
