@@ -10,9 +10,6 @@ using WebApplication1.classes;
 
 namespace WebApplication1.DAL
 {
-
-
-
     public class CourseRegisterDAL
     {
         //    public static string s;
@@ -30,7 +27,7 @@ namespace WebApplication1.DAL
             sb.UserID = "kybmpfzqrrkskryu";
             sb.Password = "GxNAiPtZ2pFVYEetBzQEDi6m56QvhNKkr8qk4NKSLjJuNhViLfpaazsyAAEk87Sn";
             sb.Database = "db1dca19b55ffe4e06a129a4650083dc91";
-            sb.CharacterSet = "utf8";
+            sb.CharacterSet ="utf8";
             try
             {
                 con = new MySqlConnection(sb.ToString());
