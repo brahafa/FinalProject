@@ -96,6 +96,7 @@ namespace WebApplication1.Pages
              String valX =questionnaireBL.getNameById(idQuestionnare);
              int numOfYes = 0, numOfNo = 0;
              s1 = cTestChart.Series["Testing"];
+         String    ImageLocation = "~/images/ChartPic_#SEQ(300,3)";
 
             //מוצא שאלות שנשאלו משאלון idQuestionnare0
             listQuestion = questionBL.getAllQuestionByQuestionnaire(idQuestionnare);
