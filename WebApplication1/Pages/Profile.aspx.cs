@@ -86,8 +86,8 @@ namespace WebApplication1.Pages
                     sendErrorMesege("הקובץ אינו תואם*");
                     return;
                 }
-                avatarUpload.PostedFile.SaveAs(Server.MapPath("~/images/") + fileName);//save image in folder
-                image = "~/images/" + fileName.ToString();
+                avatarUpload.PostedFile.SaveAs(Server.MapPath("../images/") + fileName);//save image in folder
+                image = "../images/" + fileName.ToString();
                 Session["Image"] = image;
 
             }
