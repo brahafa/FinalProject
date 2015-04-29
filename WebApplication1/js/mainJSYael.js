@@ -19,12 +19,15 @@ function onClickQuestionnaire() {
 //}
 
 //save name of Questionnaire
-function setQuestionnaireName(id) {
-    $("#MainContent_QuestionnaireName").val(id);
-  
+function setQuestionnaireName(nameAndId) {
+
+    var nameAndIdArry = nameAndId.split(",");
+    $("#MainContent_QuestionnaireName").val(nameAndIdArry[0]);
+    $("#MainContent_idQuestnaire").val(nameAndIdArry[1].trim());
+
 }
 
-function setQuestionID(id) {
+function setQuestionId(id) {
     $("#MainContent_QuestionId").val(id);
     alert(id);
 }
@@ -42,10 +45,10 @@ $(document).ready(function () {
         }
         else//input not empty
         {
-            
-            if($("#MainContent_addRemoveBtn").val() == "הסר")// remove course
+
+            if ($("#MainContent_addRemoveBtn").val() == "הסר")// remove course
             {
-                
+
                 var isRemove = confirm("אתה בטוח שברצונך להסיר את הקורס?");
 
                 if (isRemove)// want remove course
@@ -78,7 +81,7 @@ $(document).ready(function () {
             }
             else // add new course
             {
-               
+
                 $.ajax({
                     type: "POST",
                     url: "HomePage.aspx/addCourse_click",
@@ -139,7 +142,7 @@ $(document).ready(function () {
 // remove course FromQ
 $(document).ready(function () {
     $("#MainContent_removeCourseBtnFromQ").click(function () {
-        
+
         var remove = confirm("האם אתה בטוח שברצונך להסיר את הקורס כולל השאלונים?");
         if (remove) {
             $.ajax({
@@ -167,11 +170,11 @@ $(document).ready(function () {
         document.getElementById('MainContent_removeCourseBtn').style.display = 'inline';
         document.getElementById('MainContent_addCourseBtn').style.display = 'inline';
         document.getElementById('buttonAddRemove').style.display = 'inline';
-        
-        
+
+
         document.getElementById('MainContent_errMesegeEmpty').style.display = 'none';
         document.getElementById('inputAddRemove').style.display = 'none';
-        
+
 
     });
 });
@@ -182,6 +185,8 @@ $(document).ready(function () {
 
         document.getElementById('MainContent_StockQuestion').style.display = 'none';
         document.getElementById('MainContent_stockQuestionnaire').style.display = 'inline';
+        document.getElementById('MainContent_removeQuestionnaireBtn').style.display = 'none';
+        document.getElementById('MainContent_selectCourse').style.display = 'none';
 
     });
 });
@@ -199,8 +204,67 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#MainContent_removeQuestionnaireBtn").click(function () {
 
-        document.getElementById('inputQtoRemove').style.display = 'inline';
+        var remove = confirm("האם אתה בטוח שברצונך להסיר את השאלון כולל כל הסטטיסטיקות?");
+        if (remove) {
+            $.ajax({
+                type: "POST",
+                url: "StockQuestionnaires.aspx/removeQuestionnaire",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (idCourse) {
+
+                    window.location.replace("StockQuestionnaires.aspx?IdCourse=" + idCourse.d);
+                },
+                failure: function (response) {
+                    alert("ajax failure");
+
+                }
+            });
+        }
     });
 });
 
 
+
+// copy Questionnaire
+$(document).ready(function () {
+    $("#MainContent_copyQuestionnaireBtn").click(function () {
+
+
+        selectCourse = $("#MainContent_selectCourse").val();
+        if (selectCourse != "-1") {
+
+            var idQ = $("#MainContent_idQuestnaire").val();
+            var SelectValue = idQ + "," + selectCourse;
+
+            $.ajax({
+                type: "POST",
+                url: "StockQuestionnaires.aspx/copyQuestionnaire",
+                data: '{SelectValue: "' + SelectValue + '" }',// idCourse 
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (idCourse) {
+
+                    window.location.replace("StockQuestionnaires.aspx?IdCourse=" + idCourse.d);
+                },
+                failure: function (response) {
+                    alert("ajax failure");
+
+                }
+            });
+        }
+        else {
+            alert("בחר תחילה קורס אליו ברצונך להעתיק את השאלון.");
+        }
+    });
+});
+
+// show Questionnaire
+$(document).ready(function () {
+    $("#MainContent_classDisplayBtn").click(function () {
+
+
+        window.location.replace("ShowQuestionnaire.aspx");
+    });
+});

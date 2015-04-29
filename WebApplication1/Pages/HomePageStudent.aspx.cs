@@ -56,12 +56,13 @@ namespace WebApplication1.Pages
             if (Session["id"] != null)
             {
 
-                if (Session["userType"] != null && (Session["userType"]).Equals("0"))
-                {
+                //if (Session["userType"] != null && (Session["userType"]).Equals("0"))
+                //{
 
-                    listCourses = courseBL.getCoursesByIdLecturer(Convert.ToInt32(Session["id"]));// get all courses of this lecturer
-                }
-                else if (Session["userType"] != null && (Session["userType"]).Equals("1"))
+                //    listCourses = courseBL.getCoursesByIdLecturer(Convert.ToInt32(Session["id"]));// get all courses of this lecturer
+                //}
+                //else 
+                    if (Session["userType"] != null && (Session["userType"]).Equals("1"))
                 {
                     listCourses = courseRegisterBLs.getCoursesByIdStudent(Convert.ToInt32(Session["id"]));// get all courses of this student
                 }
@@ -114,34 +115,35 @@ namespace WebApplication1.Pages
             userType = (String)HttpContext.Current.Session["userType"];
             userId = Convert.ToInt32(HttpContext.Current.Session["id"]);
 
-            if (userType.Equals("0"))// lecturer
-            {
-                try
-                {
-                    courseName = courseInput;
-                }
-                catch (FormatException)
-                {
-                    return "נסה שם קורס אחר.";
-                }
+            //if (userType.Equals("0"))// lecturer
+            //{
+            //    try
+            //    {
+            //        courseName = courseInput;
+            //    }
+            //    catch (FormatException)
+            //    {
+            //        return "נסה שם קורס אחר.";
+            //    }
 
-                String tempName;
-                int maxIdCourse;
+            //    String tempName;
+            //    int maxIdCourse;
 
-                for (int i = 0; i < listCourses.Count; i++)// check if this course exist
-                {
+            //    for (int i = 0; i < listCourses.Count; i++)// check if this course exist
+            //    {
 
-                    tempName = listCourses[i].getName().Trim();
-                    if (tempName.Equals(courseInput))
-                    {
-                        return "שם הקורס כבר קיים";
-                    }
-                }
-                // add course to DB
-                maxIdCourse = courseBL.getMaxIdCourse();
-                courseBL.AddCourse(maxIdCourse + 1, courseInput, userId);
-            }
-            else// student
+            //        tempName = listCourses[i].getName().Trim();
+            //        if (tempName.Equals(courseInput))
+            //        {
+            //            return "שם הקורס כבר קיים";
+            //        }
+            //    }
+            //    // add course to DB
+            //    maxIdCourse = courseBL.getMaxIdCourse();
+            //    courseBL.AddCourse(maxIdCourse + 1, courseInput, userId);
+            //}
+            //else
+            if (userType.Equals("1"))// student
             {
                 try
                 {
@@ -185,22 +187,23 @@ namespace WebApplication1.Pages
             String tempName, nameCourse = courseInput;
             int idCourse;
 
-            if (HttpContext.Current.Session["userType"].Equals("0"))//lecurer
-            {
-                for (int i = 0; i < listCourses.Count; i++)// check if this course exist
-                {
-                    tempName = listCourses[i].getName().Trim();
+            //if (HttpContext.Current.Session["userType"].Equals("0"))//lecurer
+            //{
+            //    for (int i = 0; i < listCourses.Count; i++)// check if this course exist
+            //    {
+            //        tempName = listCourses[i].getName().Trim();
 
-                    if (nameCourse.Equals(tempName))
-                    {
-                        idCourse = listCourses[i].getId();
-                        listCourses.RemoveAt(i);
-                        globals.removeLecurerCourseFromDB(idCourse); // remove Lecurer course
-                        return ".הקורס הוסר בהצלחה";
-                    }
-                }
-            }
-            else//student
+            //        if (nameCourse.Equals(tempName))
+            //        {
+            //            idCourse = listCourses[i].getId();
+            //            listCourses.RemoveAt(i);
+            //            globals.removeLecurerCourseFromDB(idCourse); // remove Lecurer course
+            //            return ".הקורס הוסר בהצלחה";
+            //        }
+            //    }
+            //}
+            //else
+            if (HttpContext.Current.Session["userType"].Equals("1"))//student
             {
                 try
                 {

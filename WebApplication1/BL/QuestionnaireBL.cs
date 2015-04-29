@@ -74,5 +74,14 @@ namespace WebApplication1.BL
         public String getNameById(int id){
             return questionnaireDAL.getNameById(id);
         }
+
+        public int getIdQuestionnaireByIdCourseAndName(int IdCourse, String Name)
+        {
+            QuestionnaireList = questionnaireDAL.getIdQuestionnaireByIdCourseAndName(IdCourse);
+            for (int i = 0; i < QuestionnaireList.Count; i++)
+                if (Name.Trim().Equals(QuestionnaireList[i].getName().Trim()))
+                    return QuestionnaireList[i].getId();
+            return 0;
+        }
     }
 }
