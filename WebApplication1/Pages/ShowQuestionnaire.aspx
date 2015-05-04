@@ -19,9 +19,9 @@
 
                                     </div>
                                 </li>
+<%--                                <br />
                                 <br />
-                                <br />
-                                <br />
+                                <br />--%>
 
                                 <li>
                                     <input runat="server" type="text" id="questTitle" value=""/>

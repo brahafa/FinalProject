@@ -74,8 +74,8 @@ namespace WebApplication1.Pages
             }
             else // if no one connected
             {
-                addCourseBtns.Style.Add("display", "none");
-                removeCourseBtns.Style.Add("display", "none");
+                addCourseBtn.Style.Add("display", "none");
+                removeCourseBtn.Style.Add("display", "none");
                 logoutBtns.Style.Add("display", "none");
             }
 
@@ -110,7 +110,7 @@ namespace WebApplication1.Pages
 
             //student(courseInput=courseCode) or lecturer(courseInput=courseName)
             int courseCode, userId;
-            String courseName, userType;
+            String userType;
 
             userType = (String)HttpContext.Current.Session["userType"];
             userId = Convert.ToInt32(HttpContext.Current.Session["id"]);
@@ -184,7 +184,7 @@ namespace WebApplication1.Pages
         [System.Web.Services.WebMethod(EnableSession = true)]
         public static String removeCourse_click(String courseInput)
         {
-            String tempName, nameCourse = courseInput;
+            String nameCourse = courseInput;
             int idCourse;
 
             //if (HttpContext.Current.Session["userType"].Equals("0"))//lecurer

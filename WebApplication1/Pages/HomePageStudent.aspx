@@ -45,8 +45,8 @@
               <div id="buttonAddRemove" class="buttonAddRemove" >
                   <ul>
                          <li>
-                            <input id="removeCourseBtns" class="myButton" runat="server"  name="removeCourseBtn" type="button" value="הסר קורס"/>
-                            <input id="addCourseBtns" class="myButton" runat="server"  name="addCourseBtn" type="button" value="הוסף קורס"/>
+                            <input id="removeCourseBtn" class="myButton" runat="server"  name="removeCourseBtn" type="button" value="הסר קורס"/>
+                            <input id="addCourseBtn" class="myButton" runat="server"  name="addCourseBtn" type="button" value="הוסף קורס"/>
                            <%--  <asp:Button id="" runat="server" OnClientClick="return false;" CssClass="myButton" Text="הוסף קורס"  />--%>
               </li>
                       

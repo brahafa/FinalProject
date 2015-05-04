@@ -10,7 +10,7 @@ namespace WebApplication1.BL
     public class StudentBL
     {
         public static StudentDAL studentDAL;
-        List<Student> accessoriesList;
+        //List<Student> accessoriesList;
         public StudentBL()
         {
             studentDAL = new StudentDAL();

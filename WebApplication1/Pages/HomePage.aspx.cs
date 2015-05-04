@@ -108,7 +108,7 @@ namespace WebApplication1.Pages
             }
 
             //student(courseInput=courseCode) or lecturer(courseInput=courseName)
-            int courseCode, userId;
+            int userId;
             String courseName, userType;
 
             userType = (String)HttpContext.Current.Session["userType"];

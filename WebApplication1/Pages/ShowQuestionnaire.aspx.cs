@@ -23,7 +23,7 @@ namespace WebApplication1.Pages
         protected String courseName;
         private  GlobalFunction global;
         private IList<Course> listCourse;
-        private int questionnaireId;
+       // private int questionnaireId;
         private String questionnaireName;
 
         protected void Page_Load(object sender, EventArgs e)
