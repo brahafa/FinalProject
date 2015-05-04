@@ -33,7 +33,7 @@ function setQuestionId(id) {
 }
 
 
-//addRemove course click
+//addRemove course click in home page 
 $(document).ready(function () {
     $("#MainContent_addRemoveBtn").click(function () {
 
@@ -85,6 +85,80 @@ $(document).ready(function () {
                 $.ajax({
                     type: "POST",
                     url: "HomePage.aspx/addCourse_click",
+                    data: '{courseInput: "' + courseInput + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+
+                        alert(result.d);// display string to client an explanation of what happened
+                        location.reload();
+                    },
+                    failure: function (response) {
+                        alert("ajax failure");
+
+                    }
+                });
+
+
+            }
+        }
+
+
+    });
+});
+
+//addRemove course click in HomePageStudent
+$(document).ready(function () {
+    $("#MainContent_addRemoveBtnStudent").click(function () {
+
+        var courseInput = $("#MainContent_courseName").val();
+
+        if (courseInput == "") {
+
+            document.getElementById('MainContent_errMesegeEmpty').style.display = 'inline';
+        }
+        else//input not empty
+        {
+
+            if ($("#MainContent_addRemoveBtn").val() == "הסר")// remove course
+            {
+
+                var isRemove = confirm("אתה בטוח שברצונך להסיר את הקורס?");
+
+                if (isRemove)// want remove course
+                {
+
+                    $.ajax({
+                        type: "POST",
+                        url: "HomePageStudent.aspx/removeCourse_click",
+                        data: '{courseInput: "' + courseInput + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (result) {
+
+                            alert(result.d);// display string to client an explanation of what happened
+                            location.reload();
+
+                        },
+                        failure: function (response) {
+                            alert("ajax failure");
+
+                        }
+                    });
+
+
+                }
+                else// dont want remove course
+                {
+                    location.reload();
+                }
+            }
+            else // add new course
+            {
+
+                $.ajax({
+                    type: "POST",
+                    url: "HomePageStudent.aspx/addCourse_click",
                     data: '{courseInput: "' + courseInput + '"}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
