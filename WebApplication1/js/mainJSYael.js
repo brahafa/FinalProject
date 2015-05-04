@@ -190,6 +190,7 @@ $(document).ready(function () {
         document.getElementById('inputAddRemove').style.display = 'inline';
 
         document.getElementById('MainContent_addRemoveBtn').value = "הוסף";
+        document.getElementById('MainContent_addRemoveBtnStudent').value = "הוסף";
         //document.getElementById('<%=MainContent_addRemoveBtn.ClientID%>').value = "הוסף";
         $("#MainContent_addOrremove").val("הוסף");
 
@@ -206,6 +207,7 @@ $(document).ready(function () {
         document.getElementById('inputAddRemove').style.display = 'inline';
 
         document.getElementById('MainContent_addRemoveBtn').value = "הסר";
+        document.getElementById('MainContent_addRemoveBtnStudent').value = "הסר";
         //document.getElementById('<%=MainContent_addRemoveBtn.ClientID%>').value = "הסר";
         $("#MainContent_addOrremove").val("הסר");
 
