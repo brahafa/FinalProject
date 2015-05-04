@@ -239,7 +239,7 @@ namespace WebApplication1.Pages
         {
             String id = courseId.Value;
             //HttpContext.Current.Response.Redirect("StockQuestionnaires.aspx?IdCourse=" + id);
-            Response.Redirect("StockQuestionnaires.aspx?IdCourse=" + id);
+            Response.Redirect("ShowQuestionnaire.aspx?IdCourse=" + id);
         }
 
     }
