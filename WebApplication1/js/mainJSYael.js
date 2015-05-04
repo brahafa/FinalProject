@@ -120,7 +120,7 @@ $(document).ready(function () {
         else//input not empty
         {
 
-            if ($("#MainContent_addRemoveBtn").val() == "הסר")// remove course
+            if ($("#MainContent_addRemoveBtnStudent").val() == "הסר")// remove course
             {
 
                 var isRemove = confirm("אתה בטוח שברצונך להסיר את הקורס?");
@@ -245,6 +245,7 @@ $(document).ready(function () {
 
         document.getElementById('MainContent_removeCourseBtn').style.display = 'inline';
         document.getElementById('MainContent_addCourseBtn').style.display = 'inline';
+        //document.getElementById('MainContent_addCourseBtnStudent').style.display = 'inline';
         document.getElementById('buttonAddRemove').style.display = 'inline';
 
 
