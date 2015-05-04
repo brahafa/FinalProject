@@ -76,13 +76,13 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlInputText addOrremove;
         
         /// <summary>
-        /// addRemoveBtnStudent control.
+        /// addRemoveBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton addRemoveBtnStudent;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton addRemoveBtn;
         
         /// <summary>
         /// courseName control.

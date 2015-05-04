@@ -39,6 +39,8 @@ $(document).ready(function () {
 
         var courseInput = $("#MainContent_courseName").val();
 
+        $('input,select').attr('disabled', '<%=Session["userType"].ToString() %>');
+
         if (courseInput == "") {
 
             document.getElementById('MainContent_errMesegeEmpty').style.display = 'inline';
@@ -53,24 +55,49 @@ $(document).ready(function () {
 
                 if (isRemove)// want remove course
                 {
+                    if (select === "0")
+                    {
+                        $.ajax({
+                            type: "POST",
+                            url: "HomePage.aspx/removeCourse_click",
+                            data: '{courseInput: "' + courseInput + '"}',
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (result) {
 
-                    $.ajax({
-                        type: "POST",
-                        url: "HomePage.aspx/removeCourse_click",
-                        data: '{courseInput: "' + courseInput + '"}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function (result) {
+                                alert(result.d);// display string to client an explanation of what happened
+                                location.reload();
 
-                            alert(result.d);// display string to client an explanation of what happened
-                            location.reload();
+                            },
+                            failure: function (response) {
+                                alert("ajax failure");
 
-                        },
-                        failure: function (response) {
-                            alert("ajax failure");
+                            }
+                        });
+                    }
+                    else//student
+                    {
 
-                        }
-                    });
+                        $.ajax({
+                            type: "POST",
+                            url: "HomePageStudent.aspx/removeCourse_click",
+                            data: '{courseInput: "' + courseInput + '"}',
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (result) {
+
+                                alert(result.d);// display string to client an explanation of what happened
+                                location.reload();
+
+                            },
+                            failure: function (response) {
+                                alert("ajax failure");
+
+                            }
+                        });
+                    }
+
+                    
 
 
                 }
@@ -81,56 +108,11 @@ $(document).ready(function () {
             }
             else // add new course
             {
-
-                $.ajax({
-                    type: "POST",
-                    url: "HomePage.aspx/addCourse_click",
-                    data: '{courseInput: "' + courseInput + '"}',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        alert(result.d);// display string to client an explanation of what happened
-                        location.reload();
-                    },
-                    failure: function (response) {
-                        alert("ajax failure");
-
-                    }
-                });
-
-
-            }
-        }
-
-
-    });
-});
-
-//addRemove course click in HomePageStudent
-$(document).ready(function () {
-    $("#MainContent_addRemoveBtnStudent").click(function () {
-
-        var courseInput = $("#MainContent_courseName").val();
-
-        if (courseInput == "") {
-
-            document.getElementById('MainContent_errMesegeEmpty').style.display = 'inline';
-        }
-        else//input not empty
-        {
-
-            if ($("#MainContent_addRemoveBtnStudent").val() == "הסר")// remove course
-            {
-
-                var isRemove = confirm("אתה בטוח שברצונך להסיר את הקורס?");
-
-                if (isRemove)// want remove course
+                if (select === "0")
                 {
-
                     $.ajax({
                         type: "POST",
-                        url: "HomePageStudent.aspx/removeCourse_click",
+                        url: "HomePage.aspx/addCourse_click",
                         data: '{courseInput: "' + courseInput + '"}',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -138,40 +120,33 @@ $(document).ready(function () {
 
                             alert(result.d);// display string to client an explanation of what happened
                             location.reload();
-
                         },
                         failure: function (response) {
                             alert("ajax failure");
 
                         }
                     });
-
-
                 }
-                else// dont want remove course
+                else
                 {
-                    location.reload();
+                    $.ajax({
+                        type: "POST",
+                        url: "HomePageStudent.aspx/addCourse_click",
+                        data: '{courseInput: "' + courseInput + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (result) {
+
+                            alert(result.d);// display string to client an explanation of what happened
+                            location.reload();
+                        },
+                        failure: function (response) {
+                            alert("ajax failure");
+
+                        }
+                    });
                 }
-            }
-            else // add new course
-            {
-
-                $.ajax({
-                    type: "POST",
-                    url: "HomePageStudent.aspx/addCourse_click",
-                    data: '{courseInput: "' + courseInput + '"}',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (result) {
-
-                        alert(result.d);// display string to client an explanation of what happened
-                        location.reload();
-                    },
-                    failure: function (response) {
-                        alert("ajax failure");
-
-                    }
-                });
+               
 
 
             }
@@ -180,7 +155,6 @@ $(document).ready(function () {
 
     });
 });
-
 
 // display input to inser name new course
 $(document).ready(function () {
@@ -190,7 +164,7 @@ $(document).ready(function () {
         document.getElementById('inputAddRemove').style.display = 'inline';
 
         document.getElementById('MainContent_addRemoveBtn').value = "הוסף";
-        document.getElementById('MainContent_addRemoveBtnStudent').value = "הוסף";
+        //document.getElementById('MainContent_addRemoveBtnStudent').value = "הוסף";
         //document.getElementById('<%=MainContent_addRemoveBtn.ClientID%>').value = "הוסף";
         $("#MainContent_addOrremove").val("הוסף");
 
@@ -207,7 +181,7 @@ $(document).ready(function () {
         document.getElementById('inputAddRemove').style.display = 'inline';
 
         document.getElementById('MainContent_addRemoveBtn').value = "הסר";
-        document.getElementById('MainContent_addRemoveBtnStudent').value = "הסר";
+        //document.getElementById('MainContent_addRemoveBtnStudent').value = "הסר";
         //document.getElementById('<%=MainContent_addRemoveBtn.ClientID%>').value = "הסר";
         $("#MainContent_addOrremove").val("הסר");
 

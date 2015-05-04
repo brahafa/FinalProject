@@ -60,7 +60,7 @@
                          </li>
                          <li>
                               <input type="text" id="addOrremove" style="display: none" runat="server" value="0" />
-                             <input id="addRemoveBtnStudent" class="myButton" runat="server" name="addRemoveBtn" type="button" value=""/>
+                             <input id="addRemoveBtn" class="myButton" runat="server" name="addRemoveBtn" type="button" value=""/>
 <%--                             <asp:Button ID="addRemoveBtn" runat="server" OnClientClick="return false;" CssClass="myButton" Text="" />--%>
                             <input id="courseName" class="RegisterField" runat="server" name="courseName" type="text" />
 
