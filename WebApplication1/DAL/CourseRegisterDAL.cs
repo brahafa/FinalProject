@@ -5,10 +5,10 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
-using WebApplication1.classes;
+using Clicker.Classes;
 
 
-namespace WebApplication1.DAL
+namespace Clicker.DAL
 {
     public class CourseRegisterDAL
     {

@@ -1,4 +1,4 @@
-﻿using WebApplication1.classes;
+﻿using Clicker.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,7 +8,7 @@ using System.Web;
 using MySql.Data.MySqlClient;
 
 
-namespace WebApplication1.DAL
+namespace Clicker.DAL
 {
     public class QuestionnaireDAL
     {

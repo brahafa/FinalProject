@@ -1,4 +1,4 @@
-﻿using FinalProject.classes;
+﻿using Clicker.Classes;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,9 +6,8 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
-using WebApplication1.classes;
 
-namespace FinalProject.DAL
+namespace Clicker.DAL
 {
     public class CourseDAL
     {

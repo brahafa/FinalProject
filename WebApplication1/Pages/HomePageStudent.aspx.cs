@@ -8,12 +8,11 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebApplication1.BL;
-using WebApplication1.classes;
-using WebApplication1.Classes;
+using Clicker.BL;
+using Clicker.Classes;
 
 
-namespace WebApplication1.Pages
+namespace Clicker.Pages
 {
     public partial class HomePageStudent : System.Web.UI.Page
     {
@@ -234,7 +233,7 @@ namespace WebApplication1.Pages
 
 
 
-        // [System.Web.Services.WebMethod(EnableSession = true)]
+         [System.Web.Services.WebMethod(EnableSession = true)]
         public void goStock_Click(object sender, EventArgs e)
         {
             String id = courseId.Value;

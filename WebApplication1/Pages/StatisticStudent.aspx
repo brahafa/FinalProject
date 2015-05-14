@@ -1,4 +1,4 @@
-﻿<%@ Page Title="סטטיסטיקה" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/SiteStudent.Master" CodeBehind="StatisticStudent.aspx.cs" Inherits="WebApplication1.Pages.StatisticStudent" %>
+﻿<%@ Page Title="סטטיסטיקה" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/SiteStudent.Master" CodeBehind="StatisticStudent.aspx.cs" Inherits="Clicker.Pages.StatisticStudent" %>
 
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">

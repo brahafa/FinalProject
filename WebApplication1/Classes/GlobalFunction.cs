@@ -4,10 +4,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Web;
-using WebApplication1.BL;
-using WebApplication1.classes;
+using Clicker.BL;
+using Clicker.Classes;
 
-namespace WebApplication1.Classes
+namespace Clicker.Classes
 {
 
     public class GlobalFunction

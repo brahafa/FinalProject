@@ -1,4 +1,4 @@
-﻿<%@ Page Title="מאגר שאלונים" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/Site.Master" CodeBehind="StockQuestionnaires.aspx.cs" Inherits="WebApplication1.Pages.c" %>
+﻿<%@ Page Title="מאגר שאלונים" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/Site.Master" CodeBehind="StockQuestionnaires.aspx.cs" Inherits="Clicker.Pages.c" %>
 
 <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
 

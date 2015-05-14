@@ -1,4 +1,4 @@
-﻿<%@ Page Title="הוספת שאלה" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/Site.Master" CodeBehind="AddQuestion.aspx.cs" Inherits="WebApplication1.Pages.WebForm3" %>
+﻿<%@ Page Title="הוספת שאלה" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/Site.Master" CodeBehind="AddQuestion.aspx.cs" Inherits="Clicker.Pages.WebForm3" %>
 
 <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
     <form runat="server" id="Form1" action="#" method="post" enctype="multipart/form-data">

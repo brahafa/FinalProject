@@ -4,11 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebApplication1.BL;
-using WebApplication1.classes;
-using WebApplication1.Classes;
+using Clicker.BL;
+using Clicker.Classes;
 
-namespace WebApplication1.Pages
+namespace Clicker.Pages
 {
     public partial class ShowQuestionnaire : System.Web.UI.Page
     {

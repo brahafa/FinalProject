@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalProject", "WebApplication1\FinalProject.csproj", "{78C233C5-01AF-45B3-9F5F-C36C1C156F58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicker", "WebApplication1\Clicker.csproj", "{78C233C5-01AF-45B3-9F5F-C36C1C156F58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="דף הבית" Language="C#" AutoEventWireup="true"  MasterPageFile="~/Pages/Site.Master"  CodeBehind="HomePage.aspx.cs" Inherits="WebApplication1.Pages.WebForm2" %>
+﻿<%@ Page Title="דף הבית" Language="C#" AutoEventWireup="true"  MasterPageFile="~/Pages/Site.Master"  CodeBehind="HomePage.aspx.cs" Inherits="Clicker.Pages.WebForm2" %>
  <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
   
 

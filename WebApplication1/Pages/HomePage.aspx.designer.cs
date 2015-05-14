@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.Pages {
+namespace Clicker.Pages {
     
     
     public partial class WebForm2 {
