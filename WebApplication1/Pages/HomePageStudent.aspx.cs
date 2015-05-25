@@ -64,6 +64,8 @@ namespace Clicker.Pages
                     if (Session["userType"] != null && (Session["userType"]).Equals("1"))
                 {
                     listCourses = courseRegisterBLs.getCoursesByIdStudent(Convert.ToInt32(Session["id"]));// get all courses of this student
+                    sessionInput.Value = Session["userType"].ToString();
+                    
                 }
 
                 UserNameLabels.InnerText = Session["Name"].ToString();

@@ -8,7 +8,8 @@
         <div class="wrapper margin-bot">
           <div  class="col-3">
             <div class="indent">
-              <h2 class="p0"> רשימת קורסים</h2> 
+              <h2 class="p0"> רשימת קורסים</h2>
+                <input type="text" class="sessionInput" id="sessionInput" style="display: none" runat="server" /> 
                 <br /><br /><br /><br /><br />
                 <div id="new_released_section">
                      <input type="text" id="courseId" style="display: none" runat="server" value="0" />

@@ -59,6 +59,7 @@ namespace Clicker.Pages
                 {
 
                     listCourse = courseBL.getCoursesByIdLecturer(Convert.ToInt32(Session["id"]));// get all courses of this lecturer
+                    sessionInput.Value = Session["userType"].ToString();
                 }
                 //else if (Session["userType"] != null && (Session["userType"]).Equals("1"))
                 //{

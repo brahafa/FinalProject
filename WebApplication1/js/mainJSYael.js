@@ -38,9 +38,8 @@ $(document).ready(function () {
     $("#MainContent_addRemoveBtn").click(function () {
 
         var courseInput = $("#MainContent_courseName").val();
-
-        $('input,select').attr('disabled', '<%=Session["userType"].ToString() %>');
-
+        var userType = $('#MainContent_sessionInput').val();
+        //alert(userType);
         if (courseInput == "") {
 
             document.getElementById('MainContent_errMesegeEmpty').style.display = 'inline';
@@ -55,7 +54,7 @@ $(document).ready(function () {
 
                 if (isRemove)// want remove course
                 {
-                    if (select === "0")
+                    if (userType === "0")
                     {
                         $.ajax({
                             type: "POST",
@@ -75,7 +74,7 @@ $(document).ready(function () {
                             }
                         });
                     }
-                    else//student
+                    else if (userType === "1")//student
                     {
 
                         $.ajax({
@@ -108,7 +107,7 @@ $(document).ready(function () {
             }
             else // add new course
             {
-                if (select === "0")
+                if (userType === "0")
                 {
                     $.ajax({
                         type: "POST",
@@ -127,7 +126,7 @@ $(document).ready(function () {
                         }
                     });
                 }
-                else
+                else if(userType === "1")
                 {
                     $.ajax({
                         type: "POST",
