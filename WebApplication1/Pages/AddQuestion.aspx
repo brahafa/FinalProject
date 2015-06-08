@@ -73,7 +73,8 @@
                                     </li>
                                     <li>
 <%--                                        <asp:TextBox ID="dans1" CssClass="Question" placeholder="הכנס תשובה נכונה" runat="server" />--%>
-                                          <input type="text"  id="answer1" placeholder="הכנס תשובה" class="Question"/>
+<%--                                          <input type="text"  id="answer1" placeholder="הכנס תשובה" class="Question"/>--%>
+                                           <asp:TextBox ID="answer1" CssClass="Question" Columns="2" placeholder="הכנס תשובה" Width="530px" runat="server" />
                                           <input id="check1" type="checkbox"  name="Gender" onclick="cleanCheck1()"  />
                                     </li>
                                     <li>
