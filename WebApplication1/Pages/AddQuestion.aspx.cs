@@ -9,10 +9,10 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using WebApplication1.BL;
-using WebApplication1.classes;
+using Clicker.BL;
+using Clicker.Classes;
 
-namespace WebApplication1.Pages
+namespace Clicker.Pages
 {
     public partial class WebForm3 : System.Web.UI.Page
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
-using WebApplication1.BL;
+using Clicker.BL;
 
-namespace WebApplication1.Classes
+namespace Clicker.Classes
 {
    
     public class Validations

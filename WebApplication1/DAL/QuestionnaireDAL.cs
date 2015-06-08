@@ -1,4 +1,4 @@
-﻿using WebApplication1.classes;
+﻿using Clicker.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,7 +8,7 @@ using System.Web;
 using MySql.Data.MySqlClient;
 
 
-namespace WebApplication1.DAL
+namespace Clicker.DAL
 {
     public class QuestionnaireDAL
     {
@@ -167,7 +167,7 @@ namespace WebApplication1.DAL
         public List<Questionnaire> getAllQuestionnaireByIdCours(int IdCours)
         {
             con.Open();
-            string sqlString = "select * from Questionnaire q where q.IdCours = " + IdCours + "AND q.Permit ="+ 1+" ;";
+            string sqlString = "select * from Questionnaire q where q.IdCours = " + IdCours + " AND q.Permit ="+1+" ;";
             MySqlCommand com = new MySqlCommand(sqlString, con);
             List<Questionnaire> listQuestionnaire = new List<Questionnaire>();
             using (MySqlDataReader rdr = com.ExecuteReader())
@@ -221,6 +221,25 @@ namespace WebApplication1.DAL
                 con.Close();
                 return name;
             
+        }
+
+        public List<Questionnaire> getIdQuestionnaireByIdCourseAndName(int IdCourse)
+        {
+            con.Open();
+            string sqlString = "select * from Questionnaire q where q.IdCours = " + IdCourse + " AND q.Permit = 1 ;";
+            MySqlCommand com = new MySqlCommand(sqlString, con);
+            List<Questionnaire> listQuestionnaire = new List<Questionnaire>();
+            using (MySqlDataReader rdr = com.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    listQuestionnaire.Add(new Questionnaire(Convert.ToInt32(rdr["Id"]), rdr["Name"].ToString(),
+                        Convert.ToInt32(rdr["IdCours"]), Convert.ToInt32(rdr["Permit"])));
+                }
+            }
+
+            con.Close();
+            return listQuestionnaire;
         }
     }
 }

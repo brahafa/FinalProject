@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication1.classes;
-using WebApplication1.DAL;
+using Clicker.Classes;
+using Clicker.DAL;
 
-namespace WebApplication1.BL
+namespace Clicker.BL
 {
     public class StudentBL
     {
         public static StudentDAL studentDAL;
-        List<Student> accessoriesList;
+        //List<Student> accessoriesList;
         public StudentBL()
         {
             studentDAL = new StudentDAL();

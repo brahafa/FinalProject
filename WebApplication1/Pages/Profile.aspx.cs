@@ -4,12 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using WebApplication1.BL;
+using Clicker.BL;
 using System.Web.UI.WebControls;
-using WebApplication1.Classes;
+using Clicker.Classes;
 using System.Text.RegularExpressions;
 
-namespace WebApplication1.Pages
+namespace Clicker.Pages
 {
     public partial class WebForm5 : System.Web.UI.Page
     {

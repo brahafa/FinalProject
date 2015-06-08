@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.Pages {
+namespace Clicker.Pages {
     
     
     public partial class c {
@@ -31,13 +31,40 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl stockQuestionnaire;
         
         /// <summary>
-        /// QuestionnaireId control.
+        /// idQuestnaire control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText QuestionnaireId;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText idQuestnaire;
+        
+        /// <summary>
+        /// QuestionnaireName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText QuestionnaireName;
+        
+        /// <summary>
+        /// classDisplayBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton classDisplayBtn;
+        
+        /// <summary>
+        /// staticBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton staticBtn;
         
         /// <summary>
         /// NameQuestionnaire control.
@@ -58,6 +85,15 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl StockQuestion;
         
         /// <summary>
+        /// closeButtonQuestions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button closeButtonQuestions;
+        
+        /// <summary>
         /// QuestionId control.
         /// </summary>
         /// <remarks>
@@ -76,12 +112,93 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.WebControls.Button NameQuestion;
         
         /// <summary>
-        /// fade control.
+        /// answer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fade;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText answer;
+        
+        /// <summary>
+        /// removeCourseBtnFromQ control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton removeCourseBtnFromQ;
+        
+        /// <summary>
+        /// copyQuestionnaireBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton copyQuestionnaireBtn;
+        
+        /// <summary>
+        /// removeQuestionnaireBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton removeQuestionnaireBtn;
+        
+        /// <summary>
+        /// addQuestionnaireBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addQuestionnaireBtn;
+        
+        /// <summary>
+        /// selectCourse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect selectCourse;
+        
+        /// <summary>
+        /// conectedUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl conectedUser;
+        
+        /// <summary>
+        /// UserNameLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserNameLabel;
+        
+        /// <summary>
+        /// userImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image userImage;
+        
+        /// <summary>
+        /// logoutBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button logoutBtn;
     }
 }

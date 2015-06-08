@@ -8,12 +8,11 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebApplication1.BL;
-using WebApplication1.classes;
-using WebApplication1.Classes;
+using Clicker.BL;
+using Clicker.Classes;
 
 
-namespace WebApplication1.Pages
+namespace Clicker.Pages
 {
     public partial class HomePageStudent : System.Web.UI.Page
     {
@@ -56,14 +55,17 @@ namespace WebApplication1.Pages
             if (Session["id"] != null)
             {
 
-                if (Session["userType"] != null && (Session["userType"]).Equals("0"))
-                {
+                //if (Session["userType"] != null && (Session["userType"]).Equals("0"))
+                //{
 
-                    listCourses = courseBL.getCoursesByIdLecturer(Convert.ToInt32(Session["id"]));// get all courses of this lecturer
-                }
-                else if (Session["userType"] != null && (Session["userType"]).Equals("1"))
+                //    listCourses = courseBL.getCoursesByIdLecturer(Convert.ToInt32(Session["id"]));// get all courses of this lecturer
+                //}
+                //else 
+                    if (Session["userType"] != null && (Session["userType"]).Equals("1"))
                 {
                     listCourses = courseRegisterBLs.getCoursesByIdStudent(Convert.ToInt32(Session["id"]));// get all courses of this student
+                    sessionInput.Value = Session["userType"].ToString();
+                    
                 }
 
                 UserNameLabels.InnerText = Session["Name"].ToString();
@@ -73,8 +75,8 @@ namespace WebApplication1.Pages
             }
             else // if no one connected
             {
-                addCourseBtns.Style.Add("display", "none");
-                removeCourseBtns.Style.Add("display", "none");
+                addCourseBtn.Style.Add("display", "none");
+                removeCourseBtn.Style.Add("display", "none");
                 logoutBtns.Style.Add("display", "none");
             }
 
@@ -109,39 +111,40 @@ namespace WebApplication1.Pages
 
             //student(courseInput=courseCode) or lecturer(courseInput=courseName)
             int courseCode, userId;
-            String courseName, userType;
+            String userType;
 
             userType = (String)HttpContext.Current.Session["userType"];
             userId = Convert.ToInt32(HttpContext.Current.Session["id"]);
 
-            if (userType.Equals("0"))// lecturer
-            {
-                try
-                {
-                    courseName = courseInput;
-                }
-                catch (FormatException)
-                {
-                    return "נסה שם קורס אחר.";
-                }
+            //if (userType.Equals("0"))// lecturer
+            //{
+            //    try
+            //    {
+            //        courseName = courseInput;
+            //    }
+            //    catch (FormatException)
+            //    {
+            //        return "נסה שם קורס אחר.";
+            //    }
 
-                String tempName;
-                int maxIdCourse;
+            //    String tempName;
+            //    int maxIdCourse;
 
-                for (int i = 0; i < listCourses.Count; i++)// check if this course exist
-                {
+            //    for (int i = 0; i < listCourses.Count; i++)// check if this course exist
+            //    {
 
-                    tempName = listCourses[i].getName().Trim();
-                    if (tempName.Equals(courseInput))
-                    {
-                        return "שם הקורס כבר קיים";
-                    }
-                }
-                // add course to DB
-                maxIdCourse = courseBL.getMaxIdCourse();
-                courseBL.AddCourse(maxIdCourse + 1, courseInput, userId);
-            }
-            else// student
+            //        tempName = listCourses[i].getName().Trim();
+            //        if (tempName.Equals(courseInput))
+            //        {
+            //            return "שם הקורס כבר קיים";
+            //        }
+            //    }
+            //    // add course to DB
+            //    maxIdCourse = courseBL.getMaxIdCourse();
+            //    courseBL.AddCourse(maxIdCourse + 1, courseInput, userId);
+            //}
+            //else
+            if (userType.Equals("1"))// student
             {
                 try
                 {
@@ -182,25 +185,26 @@ namespace WebApplication1.Pages
         [System.Web.Services.WebMethod(EnableSession = true)]
         public static String removeCourse_click(String courseInput)
         {
-            String tempName, nameCourse = courseInput;
+            String nameCourse = courseInput;
             int idCourse;
 
-            if (HttpContext.Current.Session["userType"].Equals("0"))//lecurer
-            {
-                for (int i = 0; i < listCourses.Count; i++)// check if this course exist
-                {
-                    tempName = listCourses[i].getName().Trim();
+            //if (HttpContext.Current.Session["userType"].Equals("0"))//lecurer
+            //{
+            //    for (int i = 0; i < listCourses.Count; i++)// check if this course exist
+            //    {
+            //        tempName = listCourses[i].getName().Trim();
 
-                    if (nameCourse.Equals(tempName))
-                    {
-                        idCourse = listCourses[i].getId();
-                        listCourses.RemoveAt(i);
-                        globals.removeLecurerCourseFromDB(idCourse); // remove Lecurer course
-                        return ".הקורס הוסר בהצלחה";
-                    }
-                }
-            }
-            else//student
+            //        if (nameCourse.Equals(tempName))
+            //        {
+            //            idCourse = listCourses[i].getId();
+            //            listCourses.RemoveAt(i);
+            //            globals.removeLecurerCourseFromDB(idCourse); // remove Lecurer course
+            //            return ".הקורס הוסר בהצלחה";
+            //        }
+            //    }
+            //}
+            //else
+            if (HttpContext.Current.Session["userType"].Equals("1"))//student
             {
                 try
                 {
@@ -231,12 +235,12 @@ namespace WebApplication1.Pages
 
 
 
-        // [System.Web.Services.WebMethod(EnableSession = true)]
+         [System.Web.Services.WebMethod(EnableSession = true)]
         public void goStock_Click(object sender, EventArgs e)
         {
             String id = courseId.Value;
             //HttpContext.Current.Response.Redirect("StockQuestionnaires.aspx?IdCourse=" + id);
-            Response.Redirect("StockQuestionnaires.aspx?IdCourse=" + id);
+            Response.Redirect("ShowQuestionnaire.aspx?IdCourse=" + id);
         }
 
     }

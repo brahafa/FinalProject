@@ -1,4 +1,4 @@
-﻿<%@ Page Title="הוספת שאלה" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/Site.Master" CodeBehind="AddQuestion.aspx.cs" Inherits="Clicker.Pages.WebForm3" %>
+﻿<%@ Page Title="הצגת שאלון" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/SiteStudent.Master" CodeBehind="ShowQuestionnaire.aspx.cs" Inherits="Clicker.Pages.ShowQuestionnaire" %>
 
 <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
     <form runat="server" id="Form1" action="#" method="post" enctype="multipart/form-data">
@@ -10,74 +10,40 @@
                             <ul>
                                 <li>
                                     <div class="indent">
-                                        <h2 class="p0">הוספת שאלה</h2>
+                                        
+                                        <h2 class="p0">קורס <% =courseName %></h2>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <h2 id="QuestionnaireTitle" >שאלון <% =courseName %></h2>
+
                                     </div>
                                 </li>
-                                <li class="styled-select">
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
+<%--                                <br />
+                                <br />
+                                <br />--%>
 
-                                    <select class="styled-select" id="selected_Questionnaires" onchange="SelectQuestionnaires()" runat="server">
-                                        <option value="-1">:בחר שאלון</option>
-                                    </select>
-
-                                    <select class="styled-select" id="select_Course" onchange="SelectCurse()" runat="server">
-                                        <option value="-1">:בחר קורס</option>
-                                    </select>
-                                     </li>
-                                    <li class="styled-select" >
-                                    <br />
-                                    <input type="text" class="Newquestionn"  id="Newquestionn"  placeholder="הכנס שם שאלון"  style="display: none" />
-                                   <select class="styled-select" id="select_permit" runat="server" style="display: none">
-                                        <option value="0">פרטי</option>
-                                        <option value="1">ציבורי</option>
-                                    </select>
-                                   
-                                     </li>
                                 <li>
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <asp:Button ID="openQuestionBtn" runat="server" OnClientClick="return false;" CssClass="myButton" Width="120px" Text="פתוחה" />
-                                    <asp:Button ID="americanQuestionBtn" runat="server" OnClientClick="return false;" Width="120px" CssClass="myButton" Text="ריבוי תשובות" />
-                                    <asp:Button ID="yesNoQuestionBtn" runat="server" OnClientClick="return false;" Width="120px" CssClass="myButton" Text="כן/לא" />
+                                    <input runat="server" type="text" id="questTitle" value=""/>
                                 </li>
-                                <li>
-                                    <h5 id="questTitle">:שאלת ריבוי תשובות</h5>
-                                </li>
-                                <li>
-                                    <asp:TextBox ID="question1" CssClass="Question" Columns="2" placeholder="הכנס שאלה" Width="530px" runat="server" />
-
-                                </li>
-                                <li>
-                                        <input type="text" class="QuestionUplode"  id="inputFileName" runat="server"   visible="false"/>
-                                         <input type="text" class="QuestionUplode1"  id="nameFile"  runat="server" value=":קובץ מצרף"  visible="false"/>
-                                     <input id="QuestFileUpload" type="file" name="file" runat="server" />
-                                
-                                </li>
-                                <li id="NewQuestionnLi">
-                                    
-                                     <asp:Button runat="server"  ID="delFile"  onclick="deletFile_Click"  class="myButton" Width="89px" Height="35px" Text="הסר קובץ" Visible="false" />
-                                     <asp:Button runat="server" ID="upFile"  onclick="saveFile_Click"  class="myButton" Width="89" Height="35px" Text="שמור קובץ" />
-                                     
-                                    </li> 
 
                             </ul>
-                            <div id="Americananswer" class="answer" style="display: inline">
+                            <div id="Americananswer" runat="server" class="answer" style="display: none">
                                 <ul>
                                     <li>
                                         <h5 class="ansTytle">:תשובות</h5>
                                     </li>
+                                    <%for (int i = 0; i < listQuestion.Count; i++)
+                                      {
+%>
+                                      
                                     <li>
-<%--                                        <asp:TextBox ID="dans1" CssClass="Question" placeholder="הכנס תשובה נכונה" runat="server" />--%>
-                                          <input type="text"  id="answer1" placeholder="הכנס תשובה" class="Question"/>
-                                          <input id="check1" type="checkbox"  name="Gender" onclick="cleanCheck1()"  />
+                                          <input type="text"  id='<% =listQuestion[i].getId() %>' class="Question"/>
+                                          <input id="check"+'<% =listQuestion[i].getId() %>' type="checkbox"  name="Gender" onclick="cleanCheck1()"  />
                                     </li>
+                                   <% } %>
                                     <li>
-                                          <input type="text" id="answer2" placeholder="הכנס תשובה" class="Question"/>
+                                          <input type="text"   id="answer2" placeholder="הכנס תשובה" class="Question"/>
                                         <input id="check2" type="checkbox" onclick="cleanCheck2()"  />
                                     </li>
                                     <li>
@@ -101,7 +67,7 @@
                             </div>
 
 
-                            <div id="yesNoDiv" class="answer" style="display: none">
+                            <div id="yesNoDiv" runat="server" class="answer" style="display: none">
                                 <ul>
                                     <li>
                                         <h5 class="ansTytle">:תשובות</h5>
@@ -122,7 +88,7 @@
                                 </ul>
                             </div>
 
-                            <div id="OpenDiv" class="answer" style="display: none">
+                            <div id="OpenDiv" runat="server" class="answer" style="display: none">
                                 <ul>
                                     <li>
                                         <h5 class="ansTytle">:תשובה</h5>
@@ -137,8 +103,8 @@
                             <div id="sendDiv">
                                  <input id="err"  type="text" class="errMesegeAddQuest" style="display: none"  />
                                 <br />
-                                <asp:Button ID="displayClass" runat="server" OnClientClick="return false;" Width="120px" CssClass="myButton" Text="הצג לכיתה" />
-                                <asp:Button ID="SaveAnswer" runat="server"  OnClientClick="return false;"  Width="120px" CssClass="myButton" Text="שמור" />
+                                <asp:Button ID="nextQuestion" runat="server" OnClientClick="return false;" Width="120px" CssClass="myButton" Text="הבא" />
+                                <asp:Button ID="prevQuestion" runat="server"  OnClientClick="return false;"  Width="120px" CssClass="myButton" Text="הקודם" />
                             </div>
                         </div>
                     </div>
@@ -179,3 +145,4 @@
     </form>
 
 </asp:Content>
+

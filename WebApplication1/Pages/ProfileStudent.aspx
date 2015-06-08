@@ -1,4 +1,4 @@
-﻿<%@ Page Title="פרטים אישיים" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/SiteStudent.Master" CodeBehind="ProfileStudent.aspx.cs" Inherits="WebApplication1.Pages.ProfileStudent" %>
+﻿<%@ Page Title="פרטים אישיים" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/SiteStudent.Master" CodeBehind="ProfileStudent.aspx.cs" Inherits="Clicker.Pages.ProfileStudent" %>
 
 
  <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">

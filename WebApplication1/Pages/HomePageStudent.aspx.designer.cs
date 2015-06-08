@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.Pages {
+namespace Clicker.Pages {
     
     
     public partial class HomePageStudent {
@@ -20,6 +20,15 @@ namespace WebApplication1.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+        
+        /// <summary>
+        /// sessionInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText sessionInput;
         
         /// <summary>
         /// courseId control.
@@ -40,22 +49,22 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.WebControls.Button courseBtn;
         
         /// <summary>
-        /// removeCourseBtns control.
+        /// removeCourseBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton removeCourseBtns;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton removeCourseBtn;
         
         /// <summary>
-        /// addCourseBtns control.
+        /// addCourseBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton addCourseBtns;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton addCourseBtn;
         
         /// <summary>
         /// closeButton control.

@@ -8,11 +8,10 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebApplication1.BL;
-using WebApplication1.classes;
-using WebApplication1.Classes;
+using Clicker.BL;
+using Clicker.Classes;
 
-namespace WebApplication1.Pages
+namespace Clicker.Pages
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
@@ -60,11 +59,12 @@ namespace WebApplication1.Pages
                 {
 
                     listCourse = courseBL.getCoursesByIdLecturer(Convert.ToInt32(Session["id"]));// get all courses of this lecturer
+                    sessionInput.Value = Session["userType"].ToString();
                 }
-                else if (Session["userType"] != null && (Session["userType"]).Equals("1"))
-                {
-                    listCourse = courseRegisterBL.getCoursesByIdStudent(Convert.ToInt32(Session["id"]));// get all courses of this student
-                }
+                //else if (Session["userType"] != null && (Session["userType"]).Equals("1"))
+                //{
+                //    listCourse = courseRegisterBL.getCoursesByIdStudent(Convert.ToInt32(Session["id"]));// get all courses of this student
+                //}
 
                 UserNameLabel.InnerText = Session["Name"].ToString();
                 userImage.ImageUrl = Session["Image"].ToString();
@@ -108,7 +108,7 @@ namespace WebApplication1.Pages
             }
 
             //student(courseInput=courseCode) or lecturer(courseInput=courseName)
-            int courseCode, userId;
+            int userId;
             String courseName, userType;
 
             userType = (String)HttpContext.Current.Session["userType"];
@@ -141,39 +141,39 @@ namespace WebApplication1.Pages
                 maxIdCourse = courseBL.getMaxIdCourse();
                 courseBL.AddCourse(maxIdCourse + 1, courseInput, userId);
             }
-            else// student
-            {
-                try
-                {
-                    courseCode = Convert.ToInt32(courseInput);
-                }
-                catch (FormatException)
-                {
-                    return "הכנס קוד קורס.";
-                }
+            //else// student
+            //{
+            //    try
+            //    {
+            //        courseCode = Convert.ToInt32(courseInput);
+            //    }
+            //    catch (FormatException)
+            //    {
+            //        return "הכנס קוד קורס.";
+            //    }
 
-                int maxCourseId, maxCourseIdRegister;
+            //    int maxCourseId, maxCourseIdRegister;
 
-                //lecturerId = courseBL.getIdLecturerByCourseId(courseCode);
-                maxCourseId = courseBL.getMaxIdCourse();
-                if (courseCode > maxCourseId)
-                {
-                    return "הקורס לא קיים במערכת.";
-                }
-                else// this course exist in courses table
-                {
-                    for (int i = 0; i < listCourse.Count; i++)// check if this course exist
-                    {
-                        if (listCourse[i].getId().ToString().Equals(courseInput))
-                        {
-                            return "שם הקורס כבר קיים";
-                        }
-                    }
-                    //add course to courseRegister table
-                    maxCourseIdRegister = courseRegisterBL.maxIdCourseRegister();
-                    courseRegisterBL.AddCourseRegister(maxCourseIdRegister + 1, courseCode, userId);
-                }
-            }
+            //    //lecturerId = courseBL.getIdLecturerByCourseId(courseCode);
+            //    maxCourseId = courseBL.getMaxIdCourse();
+            //    if (courseCode > maxCourseId)
+            //    {
+            //        return "הקורס לא קיים במערכת.";
+            //    }
+            //    else// this course exist in courses table
+            //    {
+            //        for (int i = 0; i < listCourse.Count; i++)// check if this course exist
+            //        {
+            //            if (listCourse[i].getId().ToString().Equals(courseInput))
+            //            {
+            //                return "שם הקורס כבר קיים";
+            //            }
+            //        }
+            //        //add course to courseRegister table
+            //        maxCourseIdRegister = courseRegisterBL.maxIdCourseRegister();
+            //        courseRegisterBL.AddCourseRegister(maxCourseIdRegister + 1, courseCode, userId);
+            //    }
+            //}
 
             return ".הקורס נוסף בהצלחה";
         }
@@ -200,30 +200,30 @@ namespace WebApplication1.Pages
                     }
                 }
             }
-            else//student
-            {
-                try
-                {
-                    idCourse = Convert.ToInt32(nameCourse);
-                }
-                catch (FormatException)
-                {
-                    return "הכנס מספר קורס להסרה.";
-                }
-                for (int i = 0; i < listCourse.Count; i++)// check if this course exist
-                {
-                    int tempId;
+            //else//student
+            //{
+            //    try
+            //    {
+            //        idCourse = Convert.ToInt32(nameCourse);
+            //    }
+            //    catch (FormatException)
+            //    {
+            //        return "הכנס מספר קורס להסרה.";
+            //    }
+            //    for (int i = 0; i < listCourse.Count; i++)// check if this course exist
+            //    {
+            //        int tempId;
 
-                    tempId = listCourse[i].getId();//courseBL.getIdByIdLecturerAndCourseName(Convert.ToInt32(HttpContext.Current.Session["id"]), nameCourse);  /////////////////////// get id course by course name and lecturer id
+            //        tempId = listCourse[i].getId();//courseBL.getIdByIdLecturerAndCourseName(Convert.ToInt32(HttpContext.Current.Session["id"]), nameCourse);  /////////////////////// get id course by course name and lecturer id
 
-                    if (tempId == idCourse)
-                    {
-                        courseRegisterBL.deleteCourseRegisterByIdCourseAndStudent(idCourse, Convert.ToInt32(HttpContext.Current.Session["id"]));
-                        return ".הקורס הוסר בהצלחה";
-                    }
+            //        if (tempId == idCourse)
+            //        {
+            //            courseRegisterBL.deleteCourseRegisterByIdCourseAndStudent(idCourse, Convert.ToInt32(HttpContext.Current.Session["id"]));
+            //            return ".הקורס הוסר בהצלחה";
+            //        }
 
-                }
-            }
+            //    }
+            //}
 
             // this course not exist
             return "הקורס לא קיים במערכת.";

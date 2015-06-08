@@ -1,11 +1,11 @@
-﻿using FinalProject.DAL;
+﻿using Clicker.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication1.classes;
+using Clicker.Classes;
 
-namespace WebApplication1.BL
+namespace Clicker.BL
 {
     public class CourseBL
     {

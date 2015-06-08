@@ -1,4 +1,4 @@
-﻿<%@ Page Title="דף הבית"  Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/SiteStudent.Master"  CodeBehind="HomePageStudent.aspx.cs" Inherits="WebApplication1.Pages.HomePageStudent" %>
+﻿<%@ Page Title="דף הבית"  Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/SiteStudent.Master"  CodeBehind="HomePageStudent.aspx.cs" Inherits="Clicker.Pages.HomePageStudent" %>
  
 
 <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
@@ -10,8 +10,10 @@
           <div  class="col-3">
             <div class="indent">
               <h2 class="p0"> רשימת קורסים</h2> 
+                <input type="text" class="sessionInput" id="sessionInput" style="display: none" runat="server" />
                 <br /><br /><br /><br /><br />
                 <div id="new_released_section">
+                    
                      <input type="text" id="courseId" style="display: none" runat="server" value="0" />
                     <%
                         int j = 0;
@@ -45,8 +47,8 @@
               <div id="buttonAddRemove" class="buttonAddRemove" >
                   <ul>
                          <li>
-                            <input id="removeCourseBtns" class="myButton" runat="server"  name="removeCourseBtn" type="button" value="הסר קורס"/>
-                            <input id="addCourseBtns" class="myButton" runat="server"  name="addCourseBtn" type="button" value="הוסף קורס"/>
+                            <input id="removeCourseBtn" class="myButton" runat="server"  name="removeCourseBtn" type="button" value="הסר קורס"/>
+                            <input id="addCourseBtn" class="myButton" runat="server"  name="addCourseBtn" type="button" value="הוסף קורס"/>
                            <%--  <asp:Button id="" runat="server" OnClientClick="return false;" CssClass="myButton" Text="הוסף קורס"  />--%>
               </li>
                       

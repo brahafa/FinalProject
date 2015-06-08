@@ -10,7 +10,7 @@
 namespace Clicker.Pages {
     
     
-    public partial class ProfileStudent {
+    public partial class ShowQuestionnaire {
         
         /// <summary>
         /// Form1 control.
@@ -22,84 +22,102 @@ namespace Clicker.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// Avatar control.
+        /// questTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Avatar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText questTitle;
         
         /// <summary>
-        /// avatarUpload control.
+        /// Americananswer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile avatarUpload;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Americananswer;
         
         /// <summary>
-        /// UserName control.
+        /// yesNoDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText UserName;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl yesNoDiv;
         
         /// <summary>
-        /// ImagePath control.
+        /// OpenDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ImagePath;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OpenDiv;
         
         /// <summary>
-        /// InputPassword control.
+        /// openAnswerID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden InputPassword;
+        protected global::System.Web.UI.WebControls.TextBox openAnswerID;
         
         /// <summary>
-        /// Email control.
+        /// nextQuestion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Email;
+        protected global::System.Web.UI.WebControls.Button nextQuestion;
         
         /// <summary>
-        /// pass control.
+        /// prevQuestion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword pass;
+        protected global::System.Web.UI.WebControls.Button prevQuestion;
         
         /// <summary>
-        /// pass1 control.
+        /// conectedUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword pass1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl conectedUser;
         
         /// <summary>
-        /// errMesege control.
+        /// UserNameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errMesege;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserNameLabel;
+        
+        /// <summary>
+        /// userImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image userImage;
+        
+        /// <summary>
+        /// logoutBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button logoutBtn;
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="כניסה" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/Site.Master" CodeBehind="Register.aspx.cs" Inherits="WebApplication1.Pages.WebForm1" %>
+﻿<%@ Page Title="כניסה" Language="C#" AutoEventWireup="true" MasterPageFile="~/Pages/Site.Master" CodeBehind="Register.aspx.cs" Inherits="Clicker.Pages.WebForm1" %>
 
 <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
 
