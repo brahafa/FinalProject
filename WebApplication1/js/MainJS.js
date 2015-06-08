@@ -226,7 +226,7 @@ $(document).ready(function () {
         document.getElementById('CheckYes').checked = false;
         document.getElementById('CheckNo').checked = false;
 
-        document.getElementById('answer1').value = '';
+        document.getElementById('MainContent_answer1').value = '';
         document.getElementById('answer2').value = '';
         document.getElementById('answer3').value = '';
         document.getElementById('answer4').value = '';
@@ -275,7 +275,7 @@ $(document).ready(function () {
         document.getElementById('OpenDiv').style.display = 'none';
         document.getElementById('yesNoDiv').style.display = 'inline';
        
-        document.getElementById('answer1').value = '';
+        document.getElementById('MainContent_answer1').value = '';
         document.getElementById('answer2').value = '';
         document.getElementById('answer3').value = '';
         document.getElementById('answer4').value = '';
@@ -458,7 +458,7 @@ function clean(){
     document.getElementById('CheckYes').checked = false;
     document.getElementById('CheckNo').checked = false;
 
-    document.getElementById('answer1').value = '';
+    document.getElementById('MainContent_answer1').value = '';
     document.getElementById('answer2').value = '';
     document.getElementById('answer3').value = '';
     document.getElementById('answer4').value = '';
@@ -609,7 +609,7 @@ function validAmericanQ() {
     }
     else {
         numAns=1;
-        StrAns = document.getElementById('answer1').value.toString();
+        StrAns = document.getElementById('MainContent_answer1').value.toString();
     }
     if (document.getElementById('answer2').value.toString() == '') {
       
