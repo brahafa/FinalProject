@@ -514,8 +514,8 @@ $(document).ready(function () {
 });
 
 function saveAndDisplayClick() {
-    var numberAns = validSelect();
-    var numCorectAns = findeCorectAns();
+    var numberAns = validSelect();//בודק אם המשתמש בחר לאיזה קורס ושאלון להוסיף את השאלה
+    var numCorectAns = findeCorectAns();//מי מהתשובות היא התשובה הנכונה בריבוי תשובות
     if (numberAns == -1) {//err 
         return;
     }

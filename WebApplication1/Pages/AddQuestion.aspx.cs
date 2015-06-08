@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Services;
@@ -151,7 +152,14 @@ namespace WebApplication1.Pages
             }
             for (int i = 1; i < numAns+1; i++)
             {
-                answerBL.AddAnswer(maxAnswer, ANS[i].ToString(), maxQuestion, correct);
+                //To encode a string to UTF8 encoding
+                string source = ANS[i].ToString();
+                byte[] UTF8encodes = UTF8Encoding.UTF8.GetBytes(source);
+
+                //get the string from UTF8 encoding
+                string plainText = UTF8Encoding.UTF8.GetString(UTF8encodes);
+
+                answerBL.AddAnswer(maxAnswer, plainText, maxQuestion, correct);
                 maxAnswer++;
             }
             questionBL.AddQuestion(maxQuestion, question, idQuestionnier, type, "sasa");
