@@ -601,7 +601,8 @@ function findeCorectAns() {
 function validAmericanQ() {
     var idCheckChecked=0;
     StrAns = '';
-    if (document.getElementById('answer1').value.toString().length==0) {
+  
+    if (document.getElementById('MainContent_answer1').value.toString().length == 0) {
         document.getElementById('err').style.display = 'inline';
         document.getElementById('err').value = "מלא לפחות תשובה אחת*";
         return -1;
