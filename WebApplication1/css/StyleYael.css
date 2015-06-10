@@ -1,4 +1,12 @@
 ﻿
+#questionText{
+
+    color:red;
+      text-decoration: underline;
+      font-size:21px;
+      border:medium
+}
+
 #MainContent_NameQuestion{
     background-color:white;
     border:none;

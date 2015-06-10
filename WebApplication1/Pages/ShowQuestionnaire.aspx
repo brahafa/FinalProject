@@ -11,58 +11,69 @@
                                 <li>
                                     <div class="indent">
                                         
-                                        <h2 class="p0">קורס <% =courseName %></h2>
+                                        <h2 class="p0"> קורס  <% =courseName %></h2>
                                         <br />
                                         <br />
                                         <br />
-                                        <h2 id="QuestionnaireTitle" >שאלון <% =courseName %></h2>
-
+                                        <h2 id="QuestionnaireTitle" >שאלון <% =questionName %></h2>
+                                        <br />
+                                <br />
+                                <br />
                                     </div>
                                 </li>
-<%--                                <br />
-                                <br />
-                                <br />--%>
+                                
 
                                 <li>
-                                    <input runat="server" type="text" id="questTitle" value=""/>
+             
+                                    <asp:Label runat="server" id="questionTitle" Font-Size="Medium"></asp:Label>
                                 </li>
 
                             </ul>
                             <div id="Americananswer" runat="server" class="answer" style="display: none">
                                 <ul>
-                                    <li>
-                                        <h5 class="ansTytle">:תשובות</h5>
-                                    </li>
-                                    <%for (int i = 0; i < listQuestion.Count; i++)
-                                      {
+                              <%for (int i = 0; i < listQuestion.Count; i++)
+                                {
+                                    listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[i].getId());
+                                                                   
 %>
-                                      
                                     <li>
-                                          <input type="text"  id='<% =listQuestion[i].getId() %>' class="Question"/>
-                                          <input id="check"+'<% =listQuestion[i].getId() %>' type="checkbox"  name="Gender" onclick="cleanCheck1()"  />
+                                        <div id="questionText"><% =listQuestion[i].getQuestion() %></div>
                                     </li>
-                                   <% } %>
+
+                                      <%
+                                    for (int j = 0; j < listAnswer.Count; j++)
+                                    {
+                                        answerText.Text = listAnswer[j].getAnswer(); 
+                                           %>
                                     <li>
-                                          <input type="text"   id="answer2" placeholder="הכנס תשובה" class="Question"/>
+                                        
+                                         <asp:Label runat="server" id="answerText" Text="" class="Question"></asp:Label>
+                                          
+                                          <input id="check"+'<% =listQuestion[i].getId() %>' type="checkbox"  name="Gender" onclick="cleanCheck()"  />
+                                    </li>
+                                   <% }
+                                } %>
+                                   <%-- <li>
+                                        <label  id="answer2" class="Question">2</label>
                                         <input id="check2" type="checkbox" onclick="cleanCheck2()"  />
                                     </li>
                                     <li>
-                                          <input type="text"  id="answer3" placeholder="הכנס תשובה" class="Question"/>
+                                          <label  id="answer3" class="Question">3</label>
                                         <input id="check3" type="checkbox" onclick="cleanCheck3()"  />
                                     </li>
                                     <li>
-                                          <input type="text"   id="answer4" placeholder="הכנס תשובה" class="Question"/>
+                                         <label  id="answer4" class="Question">4</label>
                                         <input id="check4" type="checkbox" onclick="cleanCheck4()"/>
                                     </li>
                                     <li>
-                                          <input type="text"  id="answer5" placeholder="הכנס תשובה" class="Question"/>
+                                         <label  id="answer5" class="Question">5</label>
                                         <input id="check5" type="checkbox" onclick="cleanCheck5()" />
 
                                     </li>
                                     <li>
-                                          <input type="text"  id="answer6" placeholder="הכנס תשובה" class="Question"/>
+                                          <label  id="answer6" class="Question">6</label>
                                         <input id="check6"  class="check1" type="checkbox" onclick="cleanCheck6()"/>
-                                    </li>
+                                    </li>--%>
                                 </ul>
                             </div>
 

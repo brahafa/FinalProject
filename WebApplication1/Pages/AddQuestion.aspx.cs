@@ -115,7 +115,7 @@ namespace Clicker.Pages
             int maxQuestionnaire = questionnaireBl.maxIdQuestionnaire() + 1;
 
 
-            int type=1;
+            int type=1;// american question
             String[] QuestionnaireDitails=new String[3];
           
             String[] tempQuestiommaier = AllAnsStr.Split('@');

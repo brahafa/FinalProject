@@ -15,11 +15,14 @@ namespace Clicker.Pages
         private CourseBL courseBL;
         private QuestionBL questionBL;
         private List<Questionnaire> listQuestionnaire;
-        private List<Answer> listAnswer;
-        private AnswerBL answerBL;
+        protected List<Answer> listAnswer;
+        protected AnswerBL answerBL;
         protected List<Question> listQuestion;
+
         protected int idCourse;
         protected String courseName;
+        protected String questionName;
+
         private  GlobalFunction global;
         private IList<Course> listCourse;
        // private int questionnaireId;
@@ -38,34 +41,48 @@ namespace Clicker.Pages
             answerBL = new AnswerBL();
             listCourse = new List<Course>();
 
-            try
-            {
-                idCourse = Convert.ToInt32(Session["IdCourse"]);
-                courseName = courseBL.getNameById(idCourse);
-            }
-            catch (FormatException)
+            int questionId = 0;
+
+            if (Request.QueryString["IdCourse"] != null)// came from click on course
             {
 
+                try
+                {
+                    idCourse = Convert.ToInt32(Request.QueryString["IdCourse"]);
+                    courseName = courseBL.getNameById(idCourse);
+                }
+                catch (FormatException)
+                {
+                    idCourse = 0;
+                }
             }
 
-            int questionId = 1;
+            
+            questionName = "שם שאלון";
+            questionName = questionnaireBL.getNameById(questionId);
+
+
+            //questionTitle.Text = "בדיקה לכותרת";
 
             listQuestion = questionBL.getAllQuestionByQuestionnaire(questionId);
+
+            
             if (listQuestion.Count != 0)
             {
-                if (listQuestion[0]._Type == 11)//yes no question
+                if (listQuestion[0]._Type == 2)//yes no question
                 {
-                    questTitle.Value = "שאלת כן או לא";
+                    //questionTitle.Text = "שאלת כן או לא";
+
                     yesNoDiv.Style.Add("display", "inline");
                 }
-                else if (listQuestion[0]._Type == 12)//open question
+                else if (listQuestion[0]._Type == 3)//open question
                 {
-                    questTitle.Value = "שאלה פתוחה";
+                    //questionTitle.Text = "שאלה פתוחה";
                     OpenDiv.Style.Add("display", "inline");
                 }
                 else// american question
                 {
-                    questTitle.Value = "שאלת ריבו תשובות";
+                    //questionTitle.Text = "שאלת ריבו תשובות";
                     Americananswer.Style.Add("display", "inline");
                 }
             

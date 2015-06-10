@@ -22,13 +22,13 @@ namespace Clicker.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// questTitle control.
+        /// questionTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText questTitle;
+        protected global::System.Web.UI.WebControls.Label questionTitle;
         
         /// <summary>
         /// Americananswer control.
@@ -38,6 +38,15 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Americananswer;
+        
+        /// <summary>
+        /// answerText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label answerText;
         
         /// <summary>
         /// yesNoDiv control.
