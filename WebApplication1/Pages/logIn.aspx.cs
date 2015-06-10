@@ -98,7 +98,7 @@ namespace Clicker.Pages
                     Session["id"] = listStudent[0]._Id.ToString();
                     name = listStudent[0]._Name.ToString();
                     Session["Name"] = name;
-                    Session["Image"] = listStudent[0]._image.ToString();
+                   Session["Image"] = listStudent[0]._image.ToString();
                     Session["email"] = Email.Value.ToString();
                     Response.Redirect("HomePageStudent.aspx");
 

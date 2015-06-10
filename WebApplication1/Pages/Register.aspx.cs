@@ -36,20 +36,21 @@ namespace Clicker.Pages
             int contentLength = avatarUpload.PostedFile.ContentLength;//You may need it for validation
             string contentType = avatarUpload.PostedFile.ContentType;//You may need it for validation
             string fileName = avatarUpload.PostedFile.FileName;
-            if (avatarUpload.PostedFile.ContentLength == 0)
-            {
-                fileName = "profil.jpg";
-            }
-            else
-            {
-                if (IsImage(contentLength, contentType, fileName) == false)
-                {
-                        sendErrorMesege("הקובץ אינו תואם*");
-                        return;
+           // if (avatarUpload.PostedFile.ContentLength == 0)
+           // {
+                fileName = "profile.gif";
+           // }
+            //IMAGE-----------------------
+            //else
+            //{
+            //    if (IsImage(contentLength, contentType, fileName) == false)
+            //    {
+            //            sendErrorMesege("הקובץ אינו תואם*");
+            //            return;
                     
-                }
-            }
-            avatarUpload.PostedFile.SaveAs(Server.MapPath("~/images/") + fileName);//save image in folder
+            //    }
+            //}
+            //avatarUpload.PostedFile.SaveAs(Server.MapPath("~/images/") + fileName);//save image in folder
             image = "~/images/" + fileName.ToString();
 
             name = contactName.Value.ToString();

@@ -73,7 +73,7 @@
                                 </li>
                                 <li>
                                     <div>
-                                        <asp:Chart ID="cTestChart" runat="server" BackColor="Tomato" BackGradientStyle="Center" Palette="Chocolate" RightToLeft="Yes" Width="600px">
+                   <%--                     <asp:Chart ID="cTestChart" runat="server" BackColor="Tomato" BackGradientStyle="Center" Palette="Chocolate" RightToLeft="Yes" Width="600px">
                                             <Series >
                                                 <asp:Series Name="Testing"  YValueType="Int32" >
                                                 </asp:Series>
@@ -84,7 +84,7 @@
                                                 </asp:ChartArea>
 
                                             </ChartAreas>
-                                        </asp:Chart>
+                                        </asp:Chart>--%>
                                     </div>
 
                                 </li>
@@ -105,7 +105,7 @@
                             <ul class="list-2">
                                 <li>
                                     <div id="profile">
-                                        <asp:Image runat="server" ID="userImage" CssClass="userImage" />
+                                        <asp:Image runat="server" ID="userImage" ImageUrl="~/images/profile.gif" CssClass="userImage" />
                                     </div>
                                 </li>
                                 <li>

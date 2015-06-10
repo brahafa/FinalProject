@@ -63,7 +63,7 @@ namespace Clicker.Pages
             listQuestionnaire = questionnaireBl.getAllQuestionnaireByIdCours(idCourse);
             for (int i = 0; i < listQuestionnaire.Count; i++)
             {
-                printChart(listQuestionnaire[i].getId(), idStudent);
+                //printChart(listQuestionnaire[i].getId(), idStudent);
             }
 
             colorCourses[0] = System.Drawing.Color.LightSalmon;
@@ -91,59 +91,59 @@ namespace Clicker.Pages
         }
 
 
-        public void printChart(int idQuestionnare, int idStudent)
-        {
-             String valX =questionnaireBL.getNameById(idQuestionnare);
-             int numOfYes = 0, numOfNo = 0;
-             s1 = cTestChart.Series["Testing"];
-         String    ImageLocation = "~/images/ChartPic_#SEQ(300,3)";
+        //public void printChart(int idQuestionnare, int idStudent)
+        //{
+        //     String valX =questionnaireBL.getNameById(idQuestionnare);
+        //     int numOfYes = 0, numOfNo = 0;
+        //     s1 = cTestChart.Series["Testing"];
+        // String    ImageLocation = "~/images/ChartPic_#SEQ(300,3)";
 
-            //מוצא שאלות שנשאלו משאלון idQuestionnare0
-            listQuestion = questionBL.getAllQuestionByQuestionnaire(idQuestionnare);
+        //    //מוצא שאלות שנשאלו משאלון idQuestionnare0
+        //    listQuestion = questionBL.getAllQuestionByQuestionnaire(idQuestionnare);
 
-            for (int i = listQuestion.Count - 1; i >= 0; i--)
-            {
-                if (!questionAskedBL.isQuestionAsk(listQuestion[i]._Id))
-                {
-                    listQuestion.RemoveAt(i);//remove unuse question 
-                }
-            }
-            //סופר את העונים נכון
-            for (int i = listQuestion.Count - 1; i >= 0; i--)
-            {
-                listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdQuestion(listQuestion[i]._Id);
-                for (int j = listQuestionAsked.Count - 1; j >= 0; j--)
-                {
-                    //if ((!TextBoxFromDate.Text.ToString().Equals("")) && (!TextBoxToDate.Text.ToString().Equals("")))
-                    //{
-                    //if ((DateTime.Parse(TextBoxFromDate.Text.ToString()) <= DateTime.Parse(listQuestionAsked[j]._Date.ToString().Trim()))&& (DateTime.Parse(TextBoxToDate.Text.ToString()) >= DateTime.Parse(listQuestionAsked[j]._Date.ToString().Trim())))
-                    if (listQuestionAsked[j]._IdStudent==idStudent)
-                    {
-                        if (listQuestionAsked[j]._YN == 1)
-                        {
-                            numOfYes++;
-                        }
-                        else
-                        {
-                            numOfNo++;
-                        }
-                   // }
-                    }
+        //    for (int i = listQuestion.Count - 1; i >= 0; i--)
+        //    {
+        //        if (!questionAskedBL.isQuestionAsk(listQuestion[i]._Id))
+        //        {
+        //            listQuestion.RemoveAt(i);//remove unuse question 
+        //        }
+        //    }
+        //    //סופר את העונים נכון
+        //    for (int i = listQuestion.Count - 1; i >= 0; i--)
+        //    {
+        //        listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdQuestion(listQuestion[i]._Id);
+        //        for (int j = listQuestionAsked.Count - 1; j >= 0; j--)
+        //        {
+        //            //if ((!TextBoxFromDate.Text.ToString().Equals("")) && (!TextBoxToDate.Text.ToString().Equals("")))
+        //            //{
+        //            //if ((DateTime.Parse(TextBoxFromDate.Text.ToString()) <= DateTime.Parse(listQuestionAsked[j]._Date.ToString().Trim()))&& (DateTime.Parse(TextBoxToDate.Text.ToString()) >= DateTime.Parse(listQuestionAsked[j]._Date.ToString().Trim())))
+        //            if (listQuestionAsked[j]._IdStudent==idStudent)
+        //            {
+        //                if (listQuestionAsked[j]._YN == 1)
+        //                {
+        //                    numOfYes++;
+        //                }
+        //                else
+        //                {
+        //                    numOfNo++;
+        //                }
+        //           // }
+        //            }
              
-                }
-            }
-            s1.Points.AddXY(valX.Trim() + " " + "נכון", numOfYes);
-            s1.Points[colorId].Color = colorCourses[colorId];
+        //        }
+        //    }
+        //    s1.Points.AddXY(valX.Trim() + " " + "נכון", numOfYes);
+        //    s1.Points[colorId].Color = colorCourses[colorId];
 
-            s1.Points.AddXY(valX.Trim()+" "+"שגוי", numOfNo);
-            s1.Points[colorId+1].Color = colorCourses[colorId++];
-            if (colorId > 8)
-            {
-                colorId = 0;
-            }
+        //    s1.Points.AddXY(valX.Trim()+" "+"שגוי", numOfNo);
+        //    s1.Points[colorId+1].Color = colorCourses[colorId++];
+        //    if (colorId > 8)
+        //    {
+        //        colorId = 0;
+        //    }
           
 
-        }
+        //}
         protected void logout_click(object sender, EventArgs e)
         {
             Session.Abandon();

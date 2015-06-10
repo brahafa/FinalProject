@@ -26,6 +26,7 @@ namespace Clicker.DAL
             sb.Password = "GxNAiPtZ2pFVYEetBzQEDi6m56QvhNKkr8qk4NKSLjJuNhViLfpaazsyAAEk87Sn";
             sb.Database = "db1dca19b55ffe4e06a129a4650083dc91";
             sb.CharacterSet = "utf8";
+            
             try
             {
                 con = new MySqlConnection(sb.ToString());

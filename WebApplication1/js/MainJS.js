@@ -226,7 +226,7 @@ $(document).ready(function () {
         document.getElementById('CheckYes').checked = false;
         document.getElementById('CheckNo').checked = false;
 
-        document.getElementById('answer1').value = '';
+        document.getElementById('MainContent_answer1').value = '';
         document.getElementById('answer2').value = '';
         document.getElementById('answer3').value = '';
         document.getElementById('answer4').value = '';
@@ -275,7 +275,7 @@ $(document).ready(function () {
         document.getElementById('OpenDiv').style.display = 'none';
         document.getElementById('yesNoDiv').style.display = 'inline';
        
-        document.getElementById('answer1').value = '';
+        document.getElementById('MainContent_answer1').value = '';
         document.getElementById('answer2').value = '';
         document.getElementById('answer3').value = '';
         document.getElementById('answer4').value = '';
@@ -458,7 +458,7 @@ function clean(){
     document.getElementById('CheckYes').checked = false;
     document.getElementById('CheckNo').checked = false;
 
-    document.getElementById('answer1').value = '';
+    document.getElementById('MainContent_answer1').value = '';
     document.getElementById('answer2').value = '';
     document.getElementById('answer3').value = '';
     document.getElementById('answer4').value = '';
@@ -514,8 +514,8 @@ $(document).ready(function () {
 });
 
 function saveAndDisplayClick() {
-    var numberAns = validSelect();
-    var numCorectAns = findeCorectAns();
+    var numberAns = validSelect();//בודק אם המשתמש בחר לאיזה קורס ושאלון להוסיף את השאלה
+    var numCorectAns = findeCorectAns();//מי מהתשובות היא התשובה הנכונה בריבוי תשובות
     if (numberAns == -1) {//err 
         return;
     }
@@ -601,14 +601,15 @@ function findeCorectAns() {
 function validAmericanQ() {
     var idCheckChecked=0;
     StrAns = '';
-    if (document.getElementById('answer1').value.toString() =='') {
+  
+    if (document.getElementById('MainContent_answer1').value.toString().length == 0) {
         document.getElementById('err').style.display = 'inline';
         document.getElementById('err').value = "מלא לפחות תשובה אחת*";
         return -1;
     }
     else {
         numAns=1;
-        StrAns = document.getElementById('answer1').value.toString();
+        StrAns = document.getElementById('MainContent_answer1').value.toString();
     }
     if (document.getElementById('answer2').value.toString() == '') {
       

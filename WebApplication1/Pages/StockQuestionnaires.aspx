@@ -127,7 +127,7 @@
                   <ul class="list-2">
                    <li>  
                      <div   id="profile">
-                     <asp:Image runat="server" ID="userImage" CssClass="userImage" />
+                     <asp:Image runat="server" ID="userImage" ImageUrl="~/images/profile.gif" CssClass="userImage" />
                    </div>
                 </li>   
                       <li>

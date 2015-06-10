@@ -17,9 +17,10 @@
                 <ul class="list-2">
                     <li>
                         <div id="profileRegister">
-                            <asp:Image id="Avatar" runat="server" ImageUrl="~/images/profil.jpg" Width="125px" Height="125px"  />
-                            <input id="avatarUpload" type="file" name="file" onchange="previewFile()" runat="server" />
-                        </div>
+                            <asp:Image id="Avatar" runat="server"  ImageUrl="~/images/profile.gif" Width="125px" Height="125px"  />
+                           <%-- <input id="avatarUpload" type="file" name="file" onchange="previewFile()" runat="server" />--%>
+                        <input id="avatarUpload" type="file" name="file" onclick="return false" runat="server" />
+                             </div>
                     </li>
                     <li>
                         <select class="DropeDownListServer" id="selected_Type" runat="server" onchange="Type()">
