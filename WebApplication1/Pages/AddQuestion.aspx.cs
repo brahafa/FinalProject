@@ -153,11 +153,19 @@ namespace Clicker.Pages
             {
                 correct = Convert.ToInt32(ANS[0]);
             }
+           // correct += maxAnswer;
             for (int i = 1; i < numAns+1; i++)
             {
-              
 
-                answerBL.AddAnswer(maxAnswer, ANS[i].ToString(), maxQuestion, correct);
+                if (correct == i)
+                {
+                    answerBL.AddAnswer(maxAnswer, ANS[i].ToString(), maxQuestion, maxAnswer);
+                }
+                else
+                {
+                    answerBL.AddAnswer(maxAnswer, ANS[i].ToString(), maxQuestion, 0);
+
+                }
                 maxAnswer++;
             }
             questionBL.AddQuestion(maxQuestion, question, idQuestionnier, type, "sasa");
