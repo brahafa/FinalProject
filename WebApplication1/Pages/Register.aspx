@@ -13,8 +13,10 @@
                 <ul class="list-2">
                     <li>
                         <div id="profileRegister">
-                            <asp:Image ID="Avatar" runat="server" ImageUrl="~/images/profil.jpg" Width="125px" Height="125px" />
-                            <input id="avatarUpload" type="file" name="file" onchange="previewFile()" runat="server" />
+                            <asp:Image ID="Avatar" runat="server" ImageUrl="~/images/profile.gif" Width="125px" Height="125px" />
+<%--                            <input id="avatarUpload"  type="file" name="file" onchange="previewFile()" runat="server" />--%>
+                                <input id="avatarUpload"  type="file" onclick="return false" name="file" runat="server" />
+
                         </div>
                     </li>
                     <li>

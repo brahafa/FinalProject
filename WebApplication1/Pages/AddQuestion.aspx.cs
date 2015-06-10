@@ -43,7 +43,8 @@ namespace Clicker.Pages
             if (Session["id"] != null)
             {
                // UserNameLabel.InnerText = Session["Name"].ToString();
-                userImage.ImageUrl = Session["Image"].ToString();
+                //IMAGE------------
+              //  userImage.ImageUrl = Session["Image"].ToString();
             }
 
             UserNameLabel.InnerText = "";
@@ -53,8 +54,8 @@ namespace Clicker.Pages
             //    UserNameLabel.InnerText +=  Session["degree"].ToString();
             //}
             
-
-            userImage.ImageUrl = Session["Image"].ToString();
+            //IMAGE------------
+            //userImage.ImageUrl = Session["Image"].ToString();
 
         }
         public void saveFile_Click(object sender, EventArgs e)
@@ -108,6 +109,7 @@ namespace Clicker.Pages
                 File.Delete(Server.MapPath("~/files/") + FileName);
             }
         }
+
         [WebMethod]
         public static void save_ClientClick(String AllAnsStr)
         {
@@ -128,6 +130,7 @@ namespace Clicker.Pages
                 // add new questionnaire to the DB
                 idQuestionnier = maxQuestionnaire;
                 QuestionnaireDitails = tempQuestiommaier[1].Split('#');
+                //add questionna to DB
                 questionnaireBl.AddQuestionnaire(maxQuestionnaire, QuestionnaireDitails[0], Convert.ToInt32(QuestionnaireDitails[1]), Convert.ToInt32(QuestionnaireDitails[2]));
             }
             int numAns = Convert.ToInt32(ANS[Convert.ToInt32(ANS.Length-1)]);
@@ -152,14 +155,9 @@ namespace Clicker.Pages
             }
             for (int i = 1; i < numAns+1; i++)
             {
-                //To encode a string to UTF8 encoding
-                string source = ANS[i].ToString();
-                byte[] UTF8encodes = UTF8Encoding.UTF8.GetBytes(source);
+              
 
-                //get the string from UTF8 encoding
-                string plainText = UTF8Encoding.UTF8.GetString(UTF8encodes);
-
-                answerBL.AddAnswer(maxAnswer, plainText, maxQuestion, correct);
+                answerBL.AddAnswer(maxAnswer, ANS[i].ToString(), maxQuestion, correct);
                 maxAnswer++;
             }
             questionBL.AddQuestion(maxQuestion, question, idQuestionnier, type, "sasa");

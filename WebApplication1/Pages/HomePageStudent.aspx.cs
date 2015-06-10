@@ -69,7 +69,8 @@ namespace Clicker.Pages
                 }
 
                 UserNameLabels.InnerText = Session["Name"].ToString();
-                userImages.ImageUrl = Session["Image"].ToString();
+                //IMAGE--------------
+                //userImages.ImageUrl = Session["Image"].ToString();
 
 
             }

@@ -86,7 +86,7 @@
                   <ul class="list-2">
                    <li>  
                      <div   id="profile">
-                     <asp:Image runat="server" ID="userImages" CssClass="userImage" />
+                     <asp:Image runat="server" ID="userImages"  ImageUrl="~/images/profile.gif"  CssClass="userImage" />
                    </div>
                 </li>   
                       <li>

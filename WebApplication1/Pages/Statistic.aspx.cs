@@ -56,12 +56,12 @@ namespace Clicker.Pages
             if (Session["id"] != null)
             {
                 // UserNameLabel.InnerText = Session["Name"].ToString();
-                userImage.ImageUrl = Session["Image"].ToString();
+               // userImage.ImageUrl = Session["Image"].ToString();
             }
 
             UserNameLabel.InnerText = "";
             UserNameLabel.InnerText += " " + Session["Name"].ToString();
-           userImage.ImageUrl = Session["Image"].ToString();
+          // userImage.ImageUrl = Session["Image"].ToString();
 
 
             colorCourses[0] = System.Drawing.Color.LightSalmon;
@@ -122,13 +122,13 @@ namespace Clicker.Pages
                 //String[] nameQuestion = new String[listQuestionnaire.Count];
                 for (int i = listQuestionnaire.Count - 1; i >= 0; i--)
                 {
-                    printChart(listQuestionnaire[i].getId(), "");
+                    //printChart(listQuestionnaire[i].getId(), "");
 
                 }
             }
             else
             {
-                printChart(idQuestionna, "");
+                //printChart(idQuestionna, "");
             }
 
             selectQuestion.Text = "";
@@ -138,68 +138,68 @@ namespace Clicker.Pages
         protected void test_Click(System.Object sender, System.EventArgs e)
         {
             int idQuestionnare = 0;//get fron session
-            printChart(idQuestionnare, "");
+            //printChart(idQuestionnare, "");
            
         }
-        public void printChart(int idQuestionnare, String valXd)
-        {
-            String valX =questionnaireBL.getNameById(idQuestionnare);
-            int numOfYes = 0, numOfNo = 0;
-             s1 = cTestChart.Series["Testing"];
+        //public void printChart(int idQuestionnare, String valXd)
+        //{
+        //    String valX =questionnaireBL.getNameById(idQuestionnare);
+        //    int numOfYes = 0, numOfNo = 0;
+        //     s1 = cTestChart.Series["Testing"];
 
-            //מוצא שאלות שנשאלו משאלון idQuestionnare0
+        //    //מוצא שאלות שנשאלו משאלון idQuestionnare0
          
-            listQuestion = questionBL.getAllQuestionByQuestionnaire(idQuestionnare);
+        //    listQuestion = questionBL.getAllQuestionByQuestionnaire(idQuestionnare);
 
-            for (int i = listQuestion.Count - 1; i >= 0; i--)
-            {
-                if (!questionAskedBL.isQuestionAsk(listQuestion[i]._Id))
-                {
-                    listQuestion.RemoveAt(i);
-                }
-            }
-            //סופר את העונים נכון
-            for (int i = listQuestion.Count - 1; i >= 0; i--)
-            {
-                listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdQuestion(listQuestion[i]._Id);
-                for (int j = listQuestionAsked.Count - 1; j >= 0; j--)
-                {
-                    //if ((!TextBoxFromDate.Text.ToString().Equals("")) && (!TextBoxToDate.Text.ToString().Equals("")))
-                    //{
-                    //if ((DateTime.Parse(TextBoxFromDate.Text.ToString()) <= DateTime.Parse(listQuestionAsked[j]._Date.ToString().Trim()))&& (DateTime.Parse(TextBoxToDate.Text.ToString()) >= DateTime.Parse(listQuestionAsked[j]._Date.ToString().Trim())))
-                    {
-                        if (listQuestionAsked[j]._YN == 1)
-                        {
-                            numOfYes++;
-                        }
-                        else
-                        {
-                            numOfNo++;
-                        }
-                   // }
-                    }
+        //    for (int i = listQuestion.Count - 1; i >= 0; i--)
+        //    {
+        //        if (!questionAskedBL.isQuestionAsk(listQuestion[i]._Id))
+        //        {
+        //            listQuestion.RemoveAt(i);
+        //        }
+        //    }
+        //    //סופר את העונים נכון
+        //    for (int i = listQuestion.Count - 1; i >= 0; i--)
+        //    {
+        //        listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdQuestion(listQuestion[i]._Id);
+        //        for (int j = listQuestionAsked.Count - 1; j >= 0; j--)
+        //        {
+        //            //if ((!TextBoxFromDate.Text.ToString().Equals("")) && (!TextBoxToDate.Text.ToString().Equals("")))
+        //            //{
+        //            //if ((DateTime.Parse(TextBoxFromDate.Text.ToString()) <= DateTime.Parse(listQuestionAsked[j]._Date.ToString().Trim()))&& (DateTime.Parse(TextBoxToDate.Text.ToString()) >= DateTime.Parse(listQuestionAsked[j]._Date.ToString().Trim())))
+        //            {
+        //                if (listQuestionAsked[j]._YN == 1)
+        //                {
+        //                    numOfYes++;
+        //                }
+        //                else
+        //                {
+        //                    numOfNo++;
+        //                }
+        //           // }
+        //            }
              
-                }
-            }
-            s1.Points.AddXY(valX.Trim() + " " + "נכון", numOfYes);
-            s1.Points[colorId].Color = colorCourses[colorId];
+        //        }
+        //    }
+        //    s1.Points.AddXY(valX.Trim() + " " + "נכון", numOfYes);
+        //    s1.Points[colorId].Color = colorCourses[colorId];
 
-            s1.Points.AddXY(valX.Trim()+" "+"שגוי", numOfNo);
-           // s1.Points.AddXY("", 0);
+        //    s1.Points.AddXY(valX.Trim()+" "+"שגוי", numOfNo);
+        //   // s1.Points.AddXY("", 0);
 
 
-            s1.Points[colorId+1].Color = colorCourses[colorId++];
+        //    s1.Points[colorId+1].Color = colorCourses[colorId++];
            
-             //s1.BackSecondaryColor = colorCourses[colorId];
-            //colorId++;
-            if (colorId > 8)
-            {
-                colorId = 0;
-            }
-            //s1.Color = colorCourses[colorId];
+        //     //s1.BackSecondaryColor = colorCourses[colorId];
+        //    //colorId++;
+        //    if (colorId > 8)
+        //    {
+        //        colorId = 0;
+        //    }
+        //    //s1.Color = colorCourses[colorId];
           
 
-        }
+        //}
         protected void logout_click(object sender, EventArgs e)
         {
             Session.Abandon();

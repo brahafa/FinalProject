@@ -61,8 +61,9 @@
                                 <li id="NewQuestionnLi">
                                     
                                      <asp:Button runat="server"  ID="delFile"  onclick="deletFile_Click"  class="myButton" Width="89px" Height="35px" Text="הסר קובץ" Visible="false" />
-                                     <asp:Button runat="server" ID="upFile"  onclick="saveFile_Click"  class="myButton" Width="89" Height="35px" Text="שמור קובץ" />
-                                     
+                                     <%-- //IMAGE--------------%>
+                                     <%--<asp:Button runat="server" ID="upFile"  onclick="saveFile_Click"  class="myButton" Width="89" Height="35px" Text="שמור קובץ" />--%>
+                                     <asp:Button runat="server" ID="upFile"  class="myButton" Width="89" Height="35px" Text="שמור קובץ" />
                                     </li> 
 
                             </ul>
@@ -156,7 +157,7 @@
                             <ul class="list-2">
                                 <li>
                                     <div id="profile">
-                                        <asp:Image runat="server" ID="userImage" CssClass="userImage" />
+                                        <asp:Image runat="server" ID="userImage"  ImageUrl="~/images/profile.gif" CssClass="userImage" />
                                     </div>
                                 </li>
                                 <li>

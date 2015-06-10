@@ -27,13 +27,15 @@ namespace Clicker.Pages
             studentBL = new StudentBL();
             selected_Type.Disabled = true;
             Email.Disabled = true;
-            Avatar.ImageUrl = Session["Image"].ToString();
+            //IMAGE------------------------
+            //Avatar.ImageUrl = Session["Image"].ToString();
 
             if (Session["id"] != null)
             {
                 //UserName.Value = Session["Name"].ToString();
                 Email.Value = Session["email"].ToString();
-                Avatar.ImageUrl = Session["Image"].ToString();
+                //IMAGE----------------
+                //Avatar.ImageUrl = Session["Image"].ToString();
                
                 if (Session["userType"].ToString().Equals("0"))
                 {
@@ -86,7 +88,9 @@ namespace Clicker.Pages
                     sendErrorMesege("הקובץ אינו תואם*");
                     return;
                 }
-                avatarUpload.PostedFile.SaveAs(Server.MapPath("../images/") + fileName);//save image in folder
+
+                //IMAGE-----------------------
+                //avatarUpload.PostedFile.SaveAs(Server.MapPath("../images/") + fileName);//save image in folder
                 image = "../images/" + fileName.ToString();
                 Session["Image"] = image;
 
