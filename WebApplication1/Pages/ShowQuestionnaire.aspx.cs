@@ -43,6 +43,10 @@ namespace Clicker.Pages
 
             int questionId = 0;
 
+            //1-one question. 0-questionnaire
+            Session["displayType"] = 0;
+            int displayType = (int)Session["displayType"];
+
             if (Request.QueryString["IdCourse"] != null)// came from click on course
             {
 

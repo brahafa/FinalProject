@@ -9,12 +9,14 @@ namespace Clicker.Classes
     {
         private int _Id;
         private int _IdQuestion;
+        private int _IdQuestionnnaire;
 
 
-        public Display(int Id, int IdQuestion)
+        public Display(int Id, int IdQuestion, int IdQuestionnnaire)
         {
             _Id = Id;
             _IdQuestion = IdQuestion;
+            _IdQuestionnnaire = IdQuestionnnaire;
 
         }
 
@@ -26,6 +28,11 @@ namespace Clicker.Classes
         public int getIdQuestion()
         {
             return _IdQuestion;
+        }
+
+        public int getIdQuestionnnaire()
+        {
+            return _IdQuestionnnaire;
         }
 
       

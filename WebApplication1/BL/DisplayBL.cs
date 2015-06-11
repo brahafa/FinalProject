@@ -18,13 +18,18 @@ namespace Clicker.BL
             displatDAL = new DisplayDAL();
         }
 
-        public void AddNewDisplay(int Id, int IdQuestion)
+        public void AddNewDisplay(int Id, int IdQuestion, int IdQuestionnnaire)
         {
-            displatDAL.AddNewDisplay(Id, IdQuestion);
+            displatDAL.AddNewDisplay(Id, IdQuestion, IdQuestionnnaire);
         }
         public void deleteDisplayByIdQuestion(int IdQuestion)
         {
             displatDAL.deleteDisplayByIdQuestion(IdQuestion);
+        }
+
+        public void deleteDisplayByIdQuestionnnaire(int IdQuestionnnaire)
+        {
+            displatDAL.deleteDisplayByIdQuestionnnaire(IdQuestionnnaire);
         }
 
         public int maxIdDisplay()
@@ -35,6 +40,11 @@ namespace Clicker.BL
         public List<Display> getDisplayByIdQuestion(int IdQuestion)
         {
             return displatDAL.getDisplayByIdQuestion(IdQuestion);
+        }
+
+        public List<Display> getDisplayByIdQuestionnnaire(int IdQuestionnnaire)
+        {
+            return displatDAL.getDisplayByIdQuestionnnaire(IdQuestionnnaire);
         }
 
     }
