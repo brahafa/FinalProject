@@ -38,7 +38,7 @@ namespace Clicker.DAL
 
         public void AddNewDisplay(int Id, int IdQuestion)
         {
-            String sqlString = "INSERT INTO Question (Id, IdQuestion" +
+            String sqlString = "INSERT INTO Display (Id, IdQuestion" +
             ") VALUES (@val1, @val2);";
             using (MySqlCommand comm = new MySqlCommand())
             {
