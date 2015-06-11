@@ -156,6 +156,7 @@
     <Compile Include="BL\AnswerBL.cs" />
     <Compile Include="BL\CourseBL.cs" />
     <Compile Include="BL\CourseRegisterBL.cs" />
+    <Compile Include="BL\DisplayBL.cs" />
     <Compile Include="BL\LecturerBL.cs" />
     <Compile Include="BL\QuestionAskedBL.cs" />
     <Compile Include="BL\QuestionBL.cs" />
@@ -164,6 +165,7 @@
     <Compile Include="Classes\Answer.cs" />
     <Compile Include="Classes\Course.cs" />
     <Compile Include="Classes\CourseRegister.cs" />
+    <Compile Include="Classes\Display.cs" />
     <Compile Include="Classes\GlobalFunction.cs" />
     <Compile Include="Classes\Lecturer.cs" />
     <Compile Include="Classes\Question.cs" />
@@ -173,6 +175,7 @@
     <Compile Include="Classes\Validations.cs" />
     <Compile Include="DAL\AnswerDAL.cs" />
     <Compile Include="DAL\CourseRegisterDAL.cs" />
+    <Compile Include="DAL\DisplayDAL.cs" />
     <Compile Include="DAL\LecturerDAL.cs" />
     <Compile Include="DAL\CourseDAL.cs" />
     <Compile Include="DAL\QuestionAskedDAL.cs" />
