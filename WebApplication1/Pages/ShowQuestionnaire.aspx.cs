@@ -18,8 +18,8 @@ namespace Clicker.Pages
         private CourseBL courseBL;
         private QuestionBL questionBL;
         private List<Questionnaire> listQuestionnaire;
-        protected List<Answer> listAnswer;
-        protected AnswerBL answerBL;
+        public static List<Answer> listAnswer;
+        public static AnswerBL answerBL;
         public static List<Question> listQuestion;
 
         protected int idCourse;
@@ -151,12 +151,16 @@ namespace Clicker.Pages
      [WebMethod]
         public static String displayNextQuestion_click()
         {
+
+            String strReturn = "";
+
             if (listQuestion.Count-1 > indexQuestion)
             {
                 indexQuestion++;
             }
             else// finish to pass list
             {
+                
                 return null;
             }
 
@@ -167,7 +171,48 @@ namespace Clicker.Pages
             }
             else// 1/2
             {
-                return "2#" + listQuestion[indexQuestion]._Question.ToString();
+                listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[indexQuestion].getId());
+
+                if (listAnswer == null)
+                {
+                    return null;
+                }
+                // strReturn = index1,#,index2,#, index3
+                //index1=3 for openQuestion else =2
+                //index2= question string
+                //index3= all answers
+                switch (listAnswer.Count)
+                {
+                    case 1:
+                        strReturn = "2#" + listQuestion[indexQuestion]._Question.ToString() + "#1#"
+                            + listAnswer[0].getAnswer().ToString() +"";
+                        break;
+                    case 2:
+                        strReturn = "2#" + listQuestion[indexQuestion]._Question.ToString() + "#2#" + listAnswer[0].getAnswer().ToString() + "#"
+                            + listAnswer[1].getAnswer().ToString();
+                        break;
+                    case 3:
+                        strReturn = "2#" + listQuestion[indexQuestion]._Question.ToString() + "#3#" + listAnswer[0].getAnswer().ToString() + "#"
+                            + listAnswer[1].getAnswer().ToString() + "#" + listAnswer[2].getAnswer().ToString();
+                        break;
+                    case 4:
+                        strReturn = "2#" + listQuestion[indexQuestion]._Question.ToString() + "#4#" + listAnswer[0].getAnswer().ToString() + "#"
+                            + listAnswer[1].getAnswer().ToString() + "#" + listAnswer[2].getAnswer().ToString() + "#" + listAnswer[3].getAnswer().ToString();
+                        break;
+                    case 5:
+                        strReturn = "2#" + listQuestion[indexQuestion]._Question.ToString() + "#5#" + listAnswer[0].getAnswer().ToString() + "#"
+                            + listAnswer[1].getAnswer().ToString() + "#" + listAnswer[2].getAnswer().ToString() + "#" + listAnswer[3].getAnswer().ToString() +"#"
+                            + listAnswer[4].getAnswer().ToString();
+                        break;
+                    case 6:
+                        strReturn = "2#" + listQuestion[indexQuestion]._Question.ToString() + "#6#" + listAnswer[0].getAnswer().ToString() + "#"
+                             + listAnswer[1].getAnswer().ToString() + "#" + listAnswer[2].getAnswer().ToString() + "#" + listAnswer[3].getAnswer().ToString() + "#"
+                             + listAnswer[4].getAnswer().ToString() + "#" + listAnswer[5].getAnswer().ToString();
+                        break;
+                }
+
+                return strReturn;
+                
             }
 
 

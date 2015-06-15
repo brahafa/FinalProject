@@ -28,7 +28,16 @@
                                     <asp:Label runat="server" id="questionTitle" Font-Size="Medium"></asp:Label>
                                 </li>
 
+                                                                                         <li>
+                                        <div>
+
+                                        <label id="questionText"><% =listQuestion[indexQuestion].getQuestion() %></label>
+                                            </div>
+                                        <%--<asp:Label  ></asp:Label>--%>
+                                    </li>
                             </ul>
+
+       
                             <div id="Americananswer" runat="server" class="answer" style="display: none">
                                 <ul>
                               <%  
@@ -52,24 +61,69 @@
                                     }
 
                                   listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[indexQuestion].getId());
-                                                                   
-%>
-                                    <li>
-                                        <div id="questionText"><% =listQuestion[indexQuestion].getQuestion() %></div>
-                                    </li>
 
-                                      <%
-                                    for (int j = 0; j < listAnswer.Count; j++)
-                                    {
-                                        answerText.Text = listAnswer[j].getAnswer(); 
-                                           %>
+                                 
+%>
+                                    
+                                    
+
+
+                                    <%
+                                        if (listAnswer.Count > 0)
+                    { %>
                                     <li>
                                         
-                                         <asp:Label runat="server" id="answerText" Text="" class="Question"></asp:Label>
-                                          
-                                          <input id="check"+'<% =listQuestion[indexQuestion].getId() %>' type="checkbox"  name="Gender" onclick="cleanCheck()"  />
+                                       
+                                          <label id="answerText1" class="Question" ><%= listAnswer[0].getAnswer().ToString() %></label>
+                                          <input id="check1" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
                                     </li>
-                                   <% }
+                                    <%} 
+                                      if (listAnswer.Count > 1)
+                    {%>
+                                     <li>
+                                        
+                                       
+                                          <label id="answerText2" class="Question" ><%= listAnswer[1].getAnswer().ToString() %></label>
+                                          <input id="check2" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
+                                    </li>
+                                    <%} 
+                                      if (listAnswer.Count > 2)
+                    {%>
+                                     <li>
+                                        
+                                       
+                                          <label id="answerText3" class="Question" ><%= listAnswer[2].getAnswer().ToString() %></label>
+                                          <input id="check3" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
+                                    </li>
+                                    <%} 
+                                      if (listAnswer.Count > 3)
+                    {%>
+                                     <li>
+                                        
+                                       
+                                          <label id="answerText4" class="Question" ><%= listAnswer[3].getAnswer().ToString() %></label>
+                                          <input id="check4" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
+                                    </li>
+                                    <%} 
+                                      if (listAnswer.Count > 4)
+                    {%>
+                                     <li>
+                                        
+                                       
+                                          <label id="answerText5" class="Question" ><%= listAnswer[4].getAnswer().ToString() %></label>
+                                          <input id="check5" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
+                                    </li>
+                                    <%}
+                    if (listAnswer.Count > 5)
+                    {%>
+                                     <li>
+                                        
+                                       
+                                          <label id="answerText6" class="Question" ><%= listAnswer[5].getAnswer().ToString() %></label>
+                                          <input id="check6" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
+                                    </li>
+                                    <%} %>
+                                   <% 
                                       }
                                  %>
                                  

@@ -54,22 +54,88 @@ $(document).ready(function () {
             dataType: "json",
             success: function (result) {
 
-            
-                var results = result.d.split("#");
+                if (result.d == null) {
 
-                if (results[0] == 2)
-                {
-                    document.getElementById('MainContent_Americananswer').style.display = 'inline';
-                    
+                    $("#questionName").text("המתן עד להצגת השאלה :)");
+                    alert("return null");
+                   
                 }
-                else if (results[0] == 3)
-                {
-                    document.getElementById('MainContent_OpenDiv').style.display = 'inline';
+                else {
+
+                    var results = result.d.split("#");
+
+                    if (results[0] == '2') {
+
+                        document.getElementById('MainContent_Americananswer').style.display = 'inline';
+
+                        $("#questionText").text(results[1]);
+                        //alert(results[1]);
+                        
+                        var numAnswer = parseInt(results[2]);
+
+                        if (numAnswer > 5) {
+                            $("#answerText6").text(results[8]);
+                        }
+                        else {
+                            $("#answerText6").empty();
+                            $("#check6").css("display", "none");
+                        }
+
+                        if (numAnswer > 4) {
+                            $("#answerText5").text(results[7]);
+                        }
+                        else {
+                            $("#answerText5").empty();
+                            $("#check5").css("display", "none");
+                        }
+
+                        if (numAnswer > 3) {
+                            $("#answerText4").text(results[6]);
+                        }
+                        else {
+                            $("#answerText4").empty();
+                            $("#check4").css("display", "none");
+                        }
+
+                        if (numAnswer > 2) {
+                            $("#answerText3").text(results[5]);
+                        }
+                        else {
+                            $("#answerText3").empty();
+                            $("#check3").css("display", "none");
+                        }
+
+                        if (numAnswer > 1) {
+                            $("#answerText2").text(results[4]);
+                        }
+                        else {
+                            $("#answerText2").empty();
+                            $("#check2").css("display", "none");
+                        }
+
+                        if (numAnswer > 0) {
+                            $("#answerText1").text(results[3]);
+                        }
+                        else {
+                            $("#answerText1").empty();
+                            $("#check1").css("display", "none");
+                        }
+
+                        
+
+                    }
+                    else if (results[0] == 3) {
+                       
+                        document.getElementById('MainContent_OpenDiv').style.display = 'inline';
+                        $("#questionText").text(results[1]);
+
+                    }
+
+                   
+                    //location.reload();
 
                 }
-
-                $("#questionText").val(results[1]);
-                //location.reload();
+                
 
             },
             failure: function (response) {
