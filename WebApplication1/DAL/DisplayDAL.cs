@@ -36,9 +36,9 @@ namespace Clicker.DAL
 
         }
 
-        public void AddNewDisplay(int Id, int IdQuestion, int IdQuestionnnaire)
+        public void AddNewDisplay(int Id, int IdQuestion, int IdQuestionnaire)
         {
-            String sqlString = "INSERT INTO Display (Id, IdQuestion, IdQuestionnnaire" +
+            String sqlString = "INSERT INTO Display (Id, IdQuestion, IdQuestionnaire" +
             ") VALUES (@val1, @val2, @val3);";
             using (MySqlCommand comm = new MySqlCommand())
             {
@@ -46,7 +46,7 @@ namespace Clicker.DAL
                 comm.CommandText = sqlString;
                 comm.Parameters.AddWithValue("@val1", Id);
                 comm.Parameters.AddWithValue("@val2", IdQuestion);
-                comm.Parameters.AddWithValue("@val3", IdQuestionnnaire);
+                comm.Parameters.AddWithValue("@val3", IdQuestionnaire);
 
 
                 try
@@ -72,11 +72,11 @@ namespace Clicker.DAL
 
         }
 
-        public void deleteDisplayByIdQuestionnnaire(int IdQuestionnnaire)
+        public void deleteDisplayByIdQuestionnaire(int IdQuestionnaire)
         {
 
             con.Open();
-            string sqlString = @"DELETE FROM Display WHERE IdQuestionnnaire = " + IdQuestionnnaire + ";";
+            string sqlString = @"DELETE FROM Display WHERE IdQuestionnaire = " + IdQuestionnaire + ";";
             MySqlCommand com = new MySqlCommand(sqlString, con);
             com.ExecuteNonQuery();
             con.Close();
@@ -103,11 +103,31 @@ namespace Clicker.DAL
 
         }
 
-        public List<Display> getDisplayByIdQuestion(int IdQuestion)
+        //public List<Display> getDisplayByIdQuestion(int IdQuestion)
+        //{
+
+        //    con.Open();
+        //    string sqlString = "select * from Display where IdQuestion = " + IdQuestion + ";";
+        //    MySqlCommand com = new MySqlCommand(sqlString, con);
+        //    List<Display> listDisplayQuestion = new List<Display>();
+        //    using (MySqlDataReader rdr = com.ExecuteReader())
+        //    {
+        //        while (rdr.Read())
+        //        {
+        //            listDisplayQuestion.Add(new Display(Convert.ToInt32(rdr["Id"]), Convert.ToInt32(rdr["IdQuestion"])
+        //                , Convert.ToInt32(rdr["IdQuestionnnaire"])));
+        //        }
+        //    }
+        //    con.Close();
+        //    return listDisplayQuestion;
+
+        //}
+
+        public List<Display> getDisplayByQuestion()
         {
 
             con.Open();
-            string sqlString = "select * from Display where IdQuestion = " + IdQuestion + ";";
+            string sqlString = "select * from Display where IdQuestionnaire = 0;";
             MySqlCommand com = new MySqlCommand(sqlString, con);
             List<Display> listDisplayQuestion = new List<Display>();
             using (MySqlDataReader rdr = com.ExecuteReader())
@@ -115,7 +135,7 @@ namespace Clicker.DAL
                 while (rdr.Read())
                 {
                     listDisplayQuestion.Add(new Display(Convert.ToInt32(rdr["Id"]), Convert.ToInt32(rdr["IdQuestion"])
-                        , Convert.ToInt32(rdr["IdQuestionnnaire"])));
+                        , Convert.ToInt32(rdr["IdQuestionnaire"])));
                 }
             }
             con.Close();
@@ -123,11 +143,31 @@ namespace Clicker.DAL
 
         }
 
-        public List<Display> getDisplayByIdQuestionnnaire(int IdQuestionnnaire)
+        //public List<Display> getDisplayByIdQuestionnnaire(int IdQuestionnnaire)
+        //{
+
+        //    con.Open();
+        //    string sqlString = "select * from Display where IdQuestionnnaire = " + IdQuestionnnaire + ";";
+        //    MySqlCommand com = new MySqlCommand(sqlString, con);
+        //    List<Display> listDisplayQuestion = new List<Display>();
+        //    using (MySqlDataReader rdr = com.ExecuteReader())
+        //    {
+        //        while (rdr.Read())
+        //        {
+        //            listDisplayQuestion.Add(new Display(Convert.ToInt32(rdr["Id"]), Convert.ToInt32(rdr["IdQuestion"])
+        //                , Convert.ToInt32(rdr["IdQuestionnnaire"])));
+        //        }
+        //    }
+        //    con.Close();
+        //    return listDisplayQuestion;
+
+        //}
+
+        public List<Display> getDisplayByQuestionnaire()
         {
 
             con.Open();
-            string sqlString = "select * from Display where IdQuestionnnaire = " + IdQuestionnnaire + ";";
+            string sqlString = "select * from Display where IdQuestion = 0;";
             MySqlCommand com = new MySqlCommand(sqlString, con);
             List<Display> listDisplayQuestion = new List<Display>();
             using (MySqlDataReader rdr = com.ExecuteReader())
@@ -135,7 +175,7 @@ namespace Clicker.DAL
                 while (rdr.Read())
                 {
                     listDisplayQuestion.Add(new Display(Convert.ToInt32(rdr["Id"]), Convert.ToInt32(rdr["IdQuestion"])
-                        , Convert.ToInt32(rdr["IdQuestionnnaire"])));
+                        , Convert.ToInt32(rdr["IdQuestionnaire"])));
                 }
             }
             con.Close();

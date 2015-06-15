@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
+using System.Web.Services;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Clicker.BL;
 using Clicker.Classes;
@@ -17,9 +20,10 @@ namespace Clicker.Pages
         private List<Questionnaire> listQuestionnaire;
         protected List<Answer> listAnswer;
         protected AnswerBL answerBL;
-        protected List<Question> listQuestion;
+        public static List<Question> listQuestion;
 
         protected int idCourse;
+        public static int indexQuestion;
         protected String courseName;
         protected String questionName;
 
@@ -27,6 +31,11 @@ namespace Clicker.Pages
         private IList<Course> listCourse;
        // private int questionnaireId;
         private String questionnaireName;
+
+        private DisplayBL displayBL;
+        protected List<Display> listDisplay;
+        private Questionnaire questionnaire;
+        //private List<Display> listDisplayQuestionnaire;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,7 +50,13 @@ namespace Clicker.Pages
             answerBL = new AnswerBL();
             listCourse = new List<Course>();
 
-            int questionId = 0;
+            displayBL = new DisplayBL();
+            listDisplay = new List<Display>();
+            
+            //listDisplayQuestionnaire = new List<Display>();
+
+            int questionnaireId = 0;
+            
 
             //1-one question. 0-questionnaire
             Session["displayType"] = 0;
@@ -61,38 +76,102 @@ namespace Clicker.Pages
                 }
             }
 
-            
-            questionName = "שם שאלון";
-            questionName = questionnaireBL.getNameById(questionId);
-
-
-            //questionTitle.Text = "בדיקה לכותרת";
-
-            listQuestion = questionBL.getAllQuestionByQuestionnaire(questionId);
-
-            
-            if (listQuestion.Count != 0)
+            if (displayType == 1)// display on question
             {
-                if (listQuestion[0]._Type == 2)//yes no question
-                {
-                    //questionTitle.Text = "שאלת כן או לא";
+                //
 
-                    yesNoDiv.Style.Add("display", "inline");
-                }
-                else if (listQuestion[0]._Type == 3)//open question
+                //get all display question
+                listDisplay = displayBL.getDisplayByQuestion();
+
+            }
+            else// display questionnaire
+            {
+                //get all display questionnnaire
+                listDisplay = displayBL.getDisplayByQuestionnaire();
+
+                if(listDisplay.Count != 0)
                 {
-                    //questionTitle.Text = "שאלה פתוחה";
-                    OpenDiv.Style.Add("display", "inline");
+                    //find right questionnnaire by idCourse
+                    for (int i = 0; i < listDisplay.Count; i++)
+                    {
+
+                        questionnaire = questionnaireBL.getQuestionnaireById(listDisplay[i].getIdQuestionnnaire());
+                        if (questionnaire.getIdCours() == idCourse)
+                        {
+                            break;
+                        }
+                    }
+
+                    questionnaireId = questionnaire.getId();
+                    questionName = "שם שאלון";
+                    questionName = questionnaireBL.getNameById(questionnaireId);
+
+                    //get question by questionnaire
+                    listQuestion = questionBL.getAllQuestionByQuestionnaire(questionnaireId);
+
+                    indexQuestion = 0;
+
+                    //for (int i = 0; i < listDisplay.Count; i++)
+                    //{
+                    //if (listQuestion.Count != 0)
+                    //{
+                    //    if (listQuestion[0]._Type == 2)//yes no question
+                    //    {
+                    //        //questionTitle.Text = "שאלת כן או לא";
+
+                    //        yesNoDiv.Style.Add("display", "inline");
+                    //    }
+                    //    else if (listQuestion[0]._Type == 3)//open question
+                    //    {
+                    //        //questionTitle.Text = "שאלה פתוחה";
+                    //        OpenDiv.Style.Add("display", "inline");
+                    //    }
+                    //    else// american question
+                    //    {
+                    //        //questionTitle.Text = "שאלת ריבו תשובות";
+                    //        Americananswer.Style.Add("display", "inline");
+                    //    }
+
+                    //}
+                    //}
+             
                 }
-                else// american question
+                else
                 {
-                    //questionTitle.Text = "שאלת ריבו תשובות";
-                    Americananswer.Style.Add("display", "inline");
+                    questionName = "המתן עד להצגת השאלה :)";
                 }
+                   
+                    
+            }
+
+
             
             }
-            
+
+     [WebMethod]
+        public static String displayNextQuestion_click()
+        {
+            if (listQuestion.Count-1 > indexQuestion)
+            {
+                indexQuestion++;
             }
+            else// finish to pass list
+            {
+                return null;
+            }
+
+            if (listQuestion[indexQuestion] != null && listQuestion[indexQuestion]._Type == 3)// open question
+            {
+
+                return "3#" + listQuestion[indexQuestion]._Question.ToString();
+            }
+            else// 1/2
+            {
+                return "2#" + listQuestion[indexQuestion]._Question.ToString();
+            }
+
+
+        }
 
         protected void logout_click(object sender, EventArgs e)
         {

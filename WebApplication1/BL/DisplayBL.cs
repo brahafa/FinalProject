@@ -27,9 +27,9 @@ namespace Clicker.BL
             displatDAL.deleteDisplayByIdQuestion(IdQuestion);
         }
 
-        public void deleteDisplayByIdQuestionnnaire(int IdQuestionnnaire)
+        public void deleteDisplayByIdQuestionnaire(int IdQuestionnaire)
         {
-            displatDAL.deleteDisplayByIdQuestionnnaire(IdQuestionnnaire);
+            displatDAL.deleteDisplayByIdQuestionnaire(IdQuestionnaire);
         }
 
         public int maxIdDisplay()
@@ -37,14 +37,24 @@ namespace Clicker.BL
             return displatDAL.maxIdDisplay();
         }
 
-        public List<Display> getDisplayByIdQuestion(int IdQuestion)
+        //public List<Display> getDisplayByIdQuestion(int IdQuestion)
+        //{
+        //    return displatDAL.getDisplayByIdQuestion(IdQuestion);
+        //}
+
+        //public List<Display> getDisplayByIdQuestionnnaire(int IdQuestionnnaire)
+        //{
+        //    return displatDAL.getDisplayByIdQuestionnnaire(IdQuestionnnaire);
+        //}
+
+        public List<Display> getDisplayByQuestion()
         {
-            return displatDAL.getDisplayByIdQuestion(IdQuestion);
+            return displatDAL.getDisplayByQuestion();
         }
 
-        public List<Display> getDisplayByIdQuestionnnaire(int IdQuestionnnaire)
+        public List<Display> getDisplayByQuestionnaire()
         {
-            return displatDAL.getDisplayByIdQuestionnnaire(IdQuestionnnaire);
+            return displatDAL.getDisplayByQuestionnaire();
         }
 
     }

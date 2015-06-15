@@ -15,7 +15,7 @@
                                         <br />
                                         <br />
                                         <br />
-                                        <h2 id="QuestionnaireTitle" >שאלון <% =questionName %></h2>
+                                        <h2 id="QuestionnaireTitle" > <% =questionName %> שאלון</h2>
                                         <br />
                                 <br />
                                 <br />
@@ -31,13 +31,31 @@
                             </ul>
                             <div id="Americananswer" runat="server" class="answer" style="display: none">
                                 <ul>
-                              <%for (int i = 0; i < listQuestion.Count; i++)
-                                {
-                                    listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[i].getId());
+                              <%  
+                                  if (listDisplay != null && listDisplay.Count != 0)
+                {
+                                if (listQuestion[indexQuestion]._Type == 2)//yes no question like american question
+                                    {
+                                        
+                                        Response.Write("<script>document.getElementById('MainContent_Americananswer').style.display = 'inline';</script>");
+                                        //yesNoDiv.Style.Add("display", "inline");
+                                    }
+                                  else if (listQuestion[indexQuestion]._Type == 3)//open question
+                                    {
+                                       Response.Write("<script>document.getElementById('MainContent_OpenDiv').style.display = 'inline';</script>");
+                                       //OpenDiv.Style.Add("display", "inline");
+                                    }
+                                    else// american question
+                                    {
+                                        Response.Write("<script>document.getElementById('MainContent_Americananswer').style.display = 'inline';</script>");
+                                       //Americananswer.Style.Add("display", "inline");
+                                    }
+
+                                  listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[indexQuestion].getId());
                                                                    
 %>
                                     <li>
-                                        <div id="questionText"><% =listQuestion[i].getQuestion() %></div>
+                                        <div id="questionText"><% =listQuestion[indexQuestion].getQuestion() %></div>
                                     </li>
 
                                       <%
@@ -49,31 +67,12 @@
                                         
                                          <asp:Label runat="server" id="answerText" Text="" class="Question"></asp:Label>
                                           
-                                          <input id="check"+'<% =listQuestion[i].getId() %>' type="checkbox"  name="Gender" onclick="cleanCheck()"  />
+                                          <input id="check"+'<% =listQuestion[indexQuestion].getId() %>' type="checkbox"  name="Gender" onclick="cleanCheck()"  />
                                     </li>
                                    <% }
-                                } %>
-                                   <%-- <li>
-                                        <label  id="answer2" class="Question">2</label>
-                                        <input id="check2" type="checkbox" onclick="cleanCheck2()"  />
-                                    </li>
-                                    <li>
-                                          <label  id="answer3" class="Question">3</label>
-                                        <input id="check3" type="checkbox" onclick="cleanCheck3()"  />
-                                    </li>
-                                    <li>
-                                         <label  id="answer4" class="Question">4</label>
-                                        <input id="check4" type="checkbox" onclick="cleanCheck4()"/>
-                                    </li>
-                                    <li>
-                                         <label  id="answer5" class="Question">5</label>
-                                        <input id="check5" type="checkbox" onclick="cleanCheck5()" />
-
-                                    </li>
-                                    <li>
-                                          <label  id="answer6" class="Question">6</label>
-                                        <input id="check6"  class="check1" type="checkbox" onclick="cleanCheck6()"/>
-                                    </li>--%>
+                                      }
+                                 %>
+                                 
                                 </ul>
                             </div>
 
@@ -114,8 +113,9 @@
                             <div id="sendDiv">
                                  <input id="err"  type="text" class="errMesegeAddQuest" style="display: none"  />
                                 <br />
-                                <asp:Button ID="nextQuestion" runat="server" OnClientClick="return false;" Width="120px" CssClass="myButton" Text="הבא" />
-                                <asp:Button ID="prevQuestion" runat="server"  OnClientClick="return false;"  Width="120px" CssClass="myButton" Text="הקודם" />
+                                <%--<asp:Button ID="nextQuestionBtn" runat="server" OnClick="displayNextQuestion" Width="120px" CssClass="myButton" Text="הבא" />--%>
+                                <input type="button" id="nextQuestionBtn" runat="server" class="myButton" value="שאלה הבאה" />
+                               
                             </div>
                         </div>
                     </div>

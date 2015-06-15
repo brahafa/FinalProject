@@ -33,6 +33,54 @@ function setQuestionId(id) {
 }
 
 
+//display next question on click 
+$(document).ready(function () {
+    $("#MainContent_nextQuestionBtn").click(function () {
+
+        if (document.getElementById('MainContent_Americananswer').style.display == 'inline') {
+
+            document.getElementById('MainContent_Americananswer').style.display = 'none';
+        }
+        if (document.getElementById('MainContent_OpenDiv').style.display == 'inline') {
+
+            document.getElementById('MainContent_OpenDiv').style.display = 'none';
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "ShowQuestionnaire.aspx/displayNextQuestion_click",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+            
+                var results = result.d.split("#");
+
+                if (results[0] == 2)
+                {
+                    document.getElementById('MainContent_Americananswer').style.display = 'inline';
+                    
+                }
+                else if (results[0] == 3)
+                {
+                    document.getElementById('MainContent_OpenDiv').style.display = 'inline';
+
+                }
+
+                $("#questionText").val(results[1]);
+                //location.reload();
+
+            },
+            failure: function (response) {
+                alert("ajax failure");
+
+            }
+        });
+
+    });
+});
+
 //addRemove course click in home page 
 $(document).ready(function () {
     $("#MainContent_addRemoveBtn").click(function () {

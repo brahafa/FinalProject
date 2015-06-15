@@ -34,6 +34,14 @@ namespace Clicker.BL
         {
             questionnaireDAL.deleteQuestionnaireByIdCours(IdCours);
         }
+
+        // get Questionnaire by id
+        public Questionnaire getQuestionnaireById(int IdQuestionnaire)
+        {
+            return questionnaireDAL.getQuestionnaireById(IdQuestionnaire);
+            
+        }
+
         // get Questionnaire by Name(if permit=1)
         public List<Questionnaire> getAllQuestionnaireByName(String Name)
         {
