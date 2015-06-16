@@ -10,147 +10,125 @@
                             <ul>
                                 <li>
                                     <div class="indent">
-                                        
-                                        <h2 class="p0"> קורס  <% =courseName %></h2>
+
+                                        <h2 class="p0">קורס  <% =courseName %></h2>
                                         <br />
                                         <br />
                                         <br />
-                                        <h2 id="QuestionnaireTitle" > <% =questionName %> שאלון</h2>
+                                        <h2 id="QuestionnaireTitle"><% =questionName %> שאלון</h2>
                                         <br />
-                                <br />
-                                <br />
+                                        <br />
+                                        <br />
                                     </div>
                                 </li>
-                                
+
 
                                 <li>
-             
-                                    <asp:Label runat="server" id="questionTitle" Font-Size="Medium"></asp:Label>
+
+                                    <asp:Label runat="server" ID="questionTitle" Font-Size="Medium"></asp:Label>
                                 </li>
 
-                                                                                         <li>
-                                        <div>
+                                <li>
+                                    <div>
 
                                         <label id="questionText"><% =listQuestion[indexQuestion].getQuestion() %></label>
-                                            </div>
-                                        <%--<asp:Label  ></asp:Label>--%>
+                                    </div>
+                                    <%--<asp:Label  ></asp:Label>--%>
                                     </li>
                             </ul>
 
-       
+
                             <div id="Americananswer" runat="server" class="answer" style="display: none">
                                 <ul>
-                              <%  
-                                  if (listDisplay != null && listDisplay.Count != 0)
-                {
-                                if (listQuestion[indexQuestion]._Type == 2)//yes no question like american question
-                                    {
-                                        
-                                        Response.Write("<script>document.getElementById('MainContent_Americananswer').style.display = 'inline';</script>");
-                                        //yesNoDiv.Style.Add("display", "inline");
-                                    }
-                                  else if (listQuestion[indexQuestion]._Type == 3)//open question
-                                    {
-                                       Response.Write("<script>document.getElementById('MainContent_OpenDiv').style.display = 'inline';</script>");
-                                       //OpenDiv.Style.Add("display", "inline");
-                                    }
-                                    else// american question
-                                    {
-                                        Response.Write("<script>document.getElementById('MainContent_Americananswer').style.display = 'inline';</script>");
-                                       //Americananswer.Style.Add("display", "inline");
-                                    }
+                                    <%  
+                                        if (listDisplay != null && listDisplay.Count != 0)
+                                        {
+                                            if (listQuestion[indexQuestion]._Type == 2)//yes no question like american question
+                                            {
 
-                                  listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[indexQuestion].getId());
+                                                Response.Write("<script>document.getElementById('MainContent_Americananswer').style.display = 'inline';</script>");
+                                                //yesNoDiv.Style.Add("display", "inline");
+                                            }
+                                            else if (listQuestion[indexQuestion]._Type == 3)//open question
+                                            {
+                                                Response.Write("<script>document.getElementById('MainContent_OpenDiv').style.display = 'inline';</script>");
+                                                //OpenDiv.Style.Add("display", "inline");
+                                            }
+                                            else// american question
+                                            {
+                                                Response.Write("<script>document.getElementById('MainContent_Americananswer').style.display = 'inline';</script>");
+                                                //Americananswer.Style.Add("display", "inline");
+                                            }
 
-                                 
-%>
-                                    
-                                    
+                                            listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[indexQuestion].getId());
+                                            numAns.Value = listAnswer.Count.ToString();
+                                    %>
+                                    <li>
+                                    <input type="text" id="numAns" style="display: none" runat="server" value="0" />
+                                        </li>
 
 
                                     <%
-                                        if (listAnswer.Count > 0)
+                    if (listAnswer.Count > 0)
                     { %>
                                     <li>
-                                        
-                                       
-                                          <label id="answerText1" class="Question" ><%= listAnswer[0].getAnswer().ToString() %></label>
-                                          <input id="check1" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
-                                    </li>
-                                    <%} 
-                                      if (listAnswer.Count > 1)
-                    {%>
-                                     <li>
-                                        
-                                       
-                                          <label id="answerText2" class="Question" ><%= listAnswer[1].getAnswer().ToString() %></label>
-                                          <input id="check2" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
-                                    </li>
-                                    <%} 
-                                      if (listAnswer.Count > 2)
-                    {%>
-                                     <li>
-                                        
-                                       
-                                          <label id="answerText3" class="Question" ><%= listAnswer[2].getAnswer().ToString() %></label>
-                                          <input id="check3" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
-                                    </li>
-                                    <%} 
-                                      if (listAnswer.Count > 3)
-                    {%>
-                                     <li>
-                                        
-                                       
-                                          <label id="answerText4" class="Question" ><%= listAnswer[3].getAnswer().ToString() %></label>
-                                          <input id="check4" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
-                                    </li>
-                                    <%} 
-                                      if (listAnswer.Count > 4)
-                    {%>
-                                     <li>
-                                        
-                                       
-                                          <label id="answerText5" class="Question" ><%= listAnswer[4].getAnswer().ToString() %></label>
-                                          <input id="check5" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
+
+
+                                        <label id="answerText1" class="Question"><%= listAnswer[0].getAnswer().ToString() %></label>
+                                        <input id="checkbox1" type="checkbox" name="Gender" onclick="cleanCheckBox1()" style="display: inline" />
                                     </li>
                                     <%}
-                    if (listAnswer.Count > 5)
-                    {%>
-                                     <li>
-                                        
-                                       
-                                          <label id="answerText6" class="Question" ><%= listAnswer[5].getAnswer().ToString() %></label>
-                                          <input id="check6" type="checkbox"  name="Gender" onclick="cleanCheck()" style="display: inline" />
+                                        if (listAnswer.Count > 1)
+                                        {%>
+                                    <li>
+
+
+                                        <label id="answerText2" class="Question"><%= listAnswer[1].getAnswer().ToString() %></label>
+                                        <input id="checkbox2" type="checkbox" name="Gender" onclick="cleanCheckBox2()" style="display: inline" />
+                                    </li>
+                                    <%}
+                                      if (listAnswer.Count > 2)
+                                      {%>
+                                    <li>
+
+
+                                        <label id="answerText3" class="Question"><%= listAnswer[2].getAnswer().ToString() %></label>
+                                        <input id="checkbox3" type="checkbox" name="Gender" onclick="cleanCheckBox3()" style="display: inline" />
+                                    </li>
+                                    <%}
+                                      if (listAnswer.Count > 3)
+                                      {%>
+                                    <li>
+
+
+                                        <label id="answerText4" class="Question"><%= listAnswer[3].getAnswer().ToString() %></label>
+                                        <input id="checkbox4" type="checkbox" name="Gender" onclick="cleanCheckBox4()" style="display: inline" />
+                                    </li>
+                                    <%}
+                                      if (listAnswer.Count > 4)
+                                      {%>
+                                    <li>
+
+
+                                        <label id="answerText5" class="Question"><%= listAnswer[4].getAnswer().ToString() %></label>
+                                        <input id="checkbox5" type="checkbox" name="Gender" onclick="cleanCheckBox5()" style="display: inline" />
+                                    </li>
+                                    <%}
+                                      if (listAnswer.Count > 5)
+                                      {%>
+                                    <li>
+
+
+                                        <label id="answerText6" class="Question"><%= listAnswer[5].getAnswer().ToString() %></label>
+                                        <input id="checkbox6" type="checkbox" name="Gender" onclick="cleanCheckBox6()" style="display: inline" />
                                     </li>
                                     <%} %>
-                                   <% 
-                                      }
+                                    <% 
+                }
                                  %>
-                                 
                                 </ul>
                             </div>
 
-
-                            <div id="yesNoDiv" runat="server" class="answer" style="display: none">
-                                <ul>
-                                    <li>
-                                        <h5 class="ansTytle">:תשובות</h5>
-                                    </li>
-                                    <li>
-
-                                        <%--<asp:TextBox ID="NoTxtBoxId" CssClass="Question" Columns="2" Text="YES" Width="500px" runat="server" />
-                                        <input id="checkNo" class="check1" type="checkbox" name="check" value="check1"/>--%>
-                                        <label for="c1">לא</label>
-                                        <input id="CheckNo" class="check1"  type="checkbox" onclick="cleanCheckNo()"  />
-
-
-                                    </li>
-                                    <li>
-                                        <label for="c1">כן</label>
-                                        <input id="CheckYes" class="check1"  type="checkbox" onclick="cleanCheckYes()"  />
-                                    </li>
-                                </ul>
-                            </div>
 
                             <div id="OpenDiv" runat="server" class="answer" style="display: none">
                                 <ul>
@@ -159,17 +137,17 @@
                                     </li>
                                     <li>
 
-                                        <asp:TextBox ID="openAnswerID" CssClass="Question" Columns="2" placeholder="הכנס תשובה" Width="500px" runat="server" />
+                                        <asp:TextBox ID="openAnswer" CssClass="Question" Columns="2" placeholder="הכנס תשובה" Width="500px" runat="server" />
 
                                     </li>
                                 </ul>
                             </div>
                             <div id="sendDiv">
-                                 <input id="err"  type="text" class="errMesegeAddQuest" style="display: none"  />
+                                <input id="err" type="text" class="errMesegeAddQuest" style="display: none" />
                                 <br />
                                 <%--<asp:Button ID="nextQuestionBtn" runat="server" OnClick="displayNextQuestion" Width="120px" CssClass="myButton" Text="הבא" />--%>
-                                <input type="button" id="nextQuestionBtn" runat="server" class="myButton" value="שאלה הבאה" />
-                               
+                                <input type="button" id="nextQuestionBtn" runat="server" class="myButton" value="שאלה הבאה" style="display: none" />
+
                             </div>
                         </div>
                     </div>

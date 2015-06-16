@@ -40,13 +40,13 @@ namespace Clicker.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Americananswer;
         
         /// <summary>
-        /// yesNoDiv control.
+        /// numAns control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl yesNoDiv;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText numAns;
         
         /// <summary>
         /// OpenDiv control.
@@ -58,13 +58,13 @@ namespace Clicker.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl OpenDiv;
         
         /// <summary>
-        /// openAnswerID control.
+        /// openAnswer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox openAnswerID;
+        protected global::System.Web.UI.WebControls.TextBox openAnswer;
         
         /// <summary>
         /// nextQuestionBtn control.
