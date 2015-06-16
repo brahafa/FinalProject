@@ -138,7 +138,7 @@
                                     <li>
 
                                         <asp:TextBox ID="openAnswer" CssClass="Question" Columns="2" placeholder="הכנס תשובה" Width="500px" runat="server" />
-
+                                        <%--<input type="text" name="checking" id="checking" onclick="checkTextField(this);" />--%>
                                     </li>
                                 </ul>
                             </div>

@@ -20,6 +20,7 @@ namespace Clicker.Pages
         private List<Questionnaire> listQuestionnaire;
         public static List<Answer> listAnswer;
         public static AnswerBL answerBL;
+        public static QuestionAskedBL questionAskedBL;
         public static List<Question> listQuestion;
 
         protected int idCourse;
@@ -147,6 +148,44 @@ namespace Clicker.Pages
 
             
             }
+
+
+         [System.Web.Services.WebMethod(EnableSession = true)]
+        public static void updateDbQuesionAsked_click(String checkAns)
+        {
+
+            questionAskedBL = new QuestionAskedBL();
+
+            int numAns;
+            try
+            {
+                //index array start with index=0
+                numAns = Convert.ToInt32(checkAns)-1;
+                
+            }
+            catch (FormatException)
+            {
+                numAns = -1;              
+            }
+
+            int maxIdQuestionAsked, idQuestion, idStudent, idAns;
+             String dateNow;
+
+            maxIdQuestionAsked = questionAskedBL.maxIdquestionAsk();
+            idQuestion = listQuestion[indexQuestion].getId();
+             idStudent = Convert.ToInt32(HttpContext.Current.Session["id"]);
+             dateNow = DateTime.Now.ToString("dd/MM/yyyy"); 
+             //american and yesqno question
+             idAns = listAnswer[numAns].getId();
+             
+             //open question
+
+             //insert new row to questionAsked table in DB
+             questionAskedBL.AddNewQuestionAsked(maxIdQuestionAsked + 1, idQuestion, idStudent, dateNow, idAns);
+
+
+        }
+        
 
      [WebMethod]
         public static String displayNextQuestion_click()

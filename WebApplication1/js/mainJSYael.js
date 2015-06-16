@@ -1,7 +1,8 @@
 ﻿
 //global 
 var numAnswer;
-var isGetAnswer=0;// = false;
+var isGetAnswer = 0;// = false;
+var checkAns = 0;
 
 
 function onClickQuestionnaire() {
@@ -35,29 +36,55 @@ function setQuestionId(id) {
     alert(id);
 }
 
+//function checkTextField(field) {
+//    if (field.value == '') {
+//        document.getElementById('MainContent_nextQuestionBtn').style.display = 'none';
+//    }
+//    else {
+//        document.getElementById('MainContent_nextQuestionBtn').style.display = 'inline';
+//    }
+//}
+
 
 //display next question on click 
 $(document).ready(function () {
     $("#MainContent_nextQuestionBtn").click(function () {
        
+        if (checkAns != 0) {
 
-        //if(isGetAnswer == 1) {
+            $.ajax({
+                type: "POST",
+                url: "ShowQuestionnaire.aspx/updateDbQuesionAsked_click",
+                data: '{checkAns: "' + checkAns + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+
+                },
+                failure: function (response) {
+                    alert("ajax failure");
+
+                }
+            });
+        }
+        //hidden nextBtn
         $("#MainContent_nextQuestionBtn").css("display", "none");
 
+        //clear screen from prev question
             if (document.getElementById('MainContent_Americananswer').style.display == 'inline') {
 
                 document.getElementById('MainContent_Americananswer').style.display = 'none';
             }
             if (document.getElementById('MainContent_OpenDiv').style.display == 'inline') {
 
-                if ($("#MainContent_OpenDiv").val().empty) {
-
-                    document.getElementById('MainContent_nextQuestionBtn').style.display = 'none';
-                }
-
                 document.getElementById('MainContent_OpenDiv').style.display = 'none';
             }
 
+        // result = index1,#,index2,#, index3
+        //index1=3 for openQuestion else =2
+        //index2= question string
+        //index3= all answers
             $.ajax({
                 type: "POST",
                 url: "ShowQuestionnaire.aspx/displayNextQuestion_click",
@@ -152,7 +179,7 @@ $(document).ready(function () {
                             document.getElementById('MainContent_OpenDiv').style.display = 'inline';
                             $("#questionText").text(results[1]);
                             $("#MainContent_nextQuestionBtn").css("display", "inline");
-
+                            //document.getElementById('MainContent_nextQuestionBtn').style.display = 'none';
                         }
 
 
@@ -183,9 +210,11 @@ function cleanCheckBox1() {
 
     if (document.getElementById('checkbox1').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
+        checkAns = 1;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
+        checkAns = 0;
     }
 
     numAnswer = $('#MainContent_numAns').val();
@@ -212,9 +241,11 @@ function cleanCheckBox2() {
     //check = 2;
     if (document.getElementById('checkbox2').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
+        checkAns = 2;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
+        checkAns = 0;
     }
 
     numAnswer = $('#MainContent_numAns').val();
@@ -239,9 +270,11 @@ function cleanCheckBox3() {
     //check = 3;
     if (document.getElementById('checkbox3').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
+        checkAns = 3;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
+        checkAns = 0;
     }
 
     numAnswer = $('#MainContent_numAns').val();
@@ -266,9 +299,11 @@ function cleanCheckBox4() {
     //check = 4;
     if (document.getElementById('checkbox4').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
+        checkAns = 4;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
+        checkAns = 0;
     }
 
     numAnswer = $('#MainContent_numAns').val();
@@ -293,9 +328,11 @@ function cleanCheckBox5() {
     //check = 5;
     if (document.getElementById('checkbox5').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
+        checkAns = 5;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
+        checkAns = 0;
     }
 
     numAnswer = $('#MainContent_numAns').val();
@@ -320,9 +357,11 @@ function cleanCheckBox6() {
     //check = 6;
     if (document.getElementById('checkbox6').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
+        checkAns = 6;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
+        checkAns = 0;
     }
 
     numAnswer = $('#MainContent_numAns').val();
