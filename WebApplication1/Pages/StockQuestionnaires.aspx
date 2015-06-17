@@ -25,9 +25,7 @@
                                         %>
                             <li >
                                 <div id="QuestionnaireLiDiv" class="liDive">
-                                    <input id="classDisplayBtn" runat="server" type="button" class="buttonStock" value="הצג לכיתה" />
-                                    <input id="staticBtn" runat="server" name="staticBtn" type="button" class="buttonStock" value="סטטיסטיקה" />
-                                    <div id='<% =listQuestionnaire[i].getName()+","+ listQuestionnaire[i].getId()%>'>
+                                 <div id='<% =listQuestionnaire[i].getName()+","+ listQuestionnaire[i].getId()%>'>
                                     <asp:Button runat="server" id="NameQuestionnaire" OnClientClick="setQuestionnaireName($(this).last().parent().prop('id'));" OnClick ="onClick_Questionnaire" Text=""></asp:Button>
                                         </div>
                                 </div>
@@ -87,7 +85,7 @@
 
                               <input id="copyQuestionnaireBtn" class="myButton" runat="server" name="copyQuestionnaireBtn" type="button" value="העתקת שאלון" style="display:none"/>
                         <input id="removeQuestionnaireBtn" class="myButton" runat="server" name="removeQuestionnaireBtn" type="button" value="הסרת שאלון" style="display:none"/>  
-                        <asp:Button ID="addQuestionnaireBtn" runat="server" CssClass="myButton" OnClick="add_Question_Click" Text="הוספת שאלון"></asp:Button>
+
 </li>                      
                      <li class="styled-select" id="inputSelectCourse" >
                           <select class="styled-select" id="selectCourse" onchange="selectCourseForCopy()" runat="server" style="display:none">

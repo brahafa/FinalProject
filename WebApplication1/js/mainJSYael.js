@@ -45,6 +45,30 @@ function setQuestionId(id) {
 //    }
 //}
 
+$(document).ready(function () {
+    $("#MainContent_classDisplayBtnCourse").click(function () {
+
+
+        var idQuestionnaire = $("#MainContent_idQuestnaire").val();
+
+        $.ajax({
+            type: "POST",
+            url: "StockQuestionnaires.aspx/displayBtnCourse_click",
+            data: '{idQuestionnaire: "' + idQuestionnaire + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+
+            },
+            failure: function (response) {
+                alert("ajax failure");
+
+            }
+        });
+    });
+});
+
 
 //display next question on click 
 $(document).ready(function () {

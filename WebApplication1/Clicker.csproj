@@ -128,7 +128,6 @@
     <Content Include="Pages\ProfileStudent.aspx" />
     <Content Include="Pages\ShowQuestionnaire.aspx" />
     <Content Include="Pages\StatisticStudent.aspx" />
-    <Content Include="Pages\StockQuestionnaires.aspx" />
     <Content Include="Pages\Register.aspx" />
     <Content Include="Pages\HomePage.aspx" />
     <Content Include="Pages\AddQuestion.aspx" />
@@ -148,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Statistic.aspx" />
+    <Content Include="Pages\StockQuestionnaires.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -219,13 +219,6 @@
     <Compile Include="Pages\StatisticStudent.aspx.designer.cs">
       <DependentUpon>StatisticStudent.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StockQuestionnaires.aspx.cs">
-      <DependentUpon>StockQuestionnaires.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\StockQuestionnaires.aspx.designer.cs">
-      <DependentUpon>StockQuestionnaires.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -274,6 +267,13 @@
     </Compile>
     <Compile Include="Pages\Statistic.aspx.designer.cs">
       <DependentUpon>Statistic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StockQuestionnaires.aspx.cs">
+      <DependentUpon>StockQuestionnaires.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\StockQuestionnaires.aspx.designer.cs">
+      <DependentUpon>StockQuestionnaires.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

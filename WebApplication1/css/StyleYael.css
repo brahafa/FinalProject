@@ -72,15 +72,15 @@ border: none;
     color: black;
 }
 
-#MainContent_classDisplayBtn{
+/*#MainContent_classDisplayBtnCourse{
 
     float:left;
     margin-left: 40px;
     height: 30px;
     
-}
+}*/
 
-#staticBtn{
+/*#staticBtn{
 
     float:left;
     margin-left: 40px;
@@ -94,7 +94,7 @@ border: none;
     margin-left: 40px;
     height: 30px;
     
-}
+}*/
 
 #QuestionnaireLiDiv{
      background-color: #FF0000 ;
