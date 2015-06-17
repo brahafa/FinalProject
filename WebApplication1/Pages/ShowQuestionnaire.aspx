@@ -5,17 +5,19 @@
         <section id="content">
             <div class="padding">
                 <div class="wrapper margin-bot">
+                    
                     <div class="col-3">
                         <div id="buttonAddRemove">
                             <ul>
                                 <li>
                                     <div class="indent">
 
-                                        <h2 class="p0">קורס  <% =courseName %></h2>
+                                        <h2>קורס  <% =courseName %></h2>
                                         <br />
                                         <br />
                                         <br />
-                                        <h2 id="QuestionnaireTitle"><% =questionName %> שאלון</h2>
+                                        <h2 id="QuestionnaireTitle" ><% =questionName %></h2>
+                                        
                                         <br />
                                         <br />
                                         <br />
@@ -27,11 +29,14 @@
 
                                     <asp:Label runat="server" ID="questionTitle" Font-Size="Medium"></asp:Label>
                                 </li>
-
+                                <% if(listQuestion.Count != 0)
+                                           { %>
                                 <li>
                                     <div>
+                                        
 
                                         <label id="questionText"><% =listQuestion[indexQuestion].getQuestion() %></label>
+                                        
                                     </div>
                                     <%--<asp:Label  ></asp:Label>--%>
                                     </li>
@@ -129,7 +134,7 @@
                                 </ul>
                             </div>
 
-
+                           
                             <div id="OpenDiv" runat="server" class="answer" style="display: none">
                                 <ul>
                                     <li>
@@ -142,6 +147,9 @@
                                     </li>
                                 </ul>
                             </div>
+                             <%} //listQuestin.count != 0 %>
+                         
+                             
                             <div id="sendDiv">
                                 <input id="err" type="text" class="errMesegeAddQuest" style="display: none" />
                                 <br />
@@ -151,6 +159,7 @@
                             </div>
                         </div>
                     </div>
+                   
                     <div class="col-4">
                         <div class="block-news" id="conectedUser" runat="server">
                             <h3 class="color-4 p2">:אתה מחובר כ</h3>
