@@ -1064,3 +1064,38 @@ footer {
 .phone strong {
 	color:#fff
 }
+.lineClass{
+  height: 30px;
+  font-size: 22px;
+  color: black;
+  margin-top: 7px;
+	line-height:2.2em;
+	text-transform:uppercase;
+	font-weight:400;
+	margin-bottom:5px
+}
+.cellClass{
+      height: 30px;
+  font-size: 22px;
+  color:#BA55D3;
+  text-decoration-color:white;
+  margin-top: 7px;
+	line-height:2.2em;
+	text-transform:uppercase;
+	font-weight:400;
+	margin-bottom:5px;
+    background-color:white;
+}
+
+#divCalendar1{
+     float:right;
+      width: 390px;
+}
+#divCalendar2{
+     float:right;
+      width: 390px;
+}
+#DivDate{
+       width: 529px;
+
+}

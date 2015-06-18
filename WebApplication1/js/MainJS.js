@@ -3,6 +3,7 @@ var check = 0;
 var checkYesNo = 0;
 var StrAns='';
 var numAns = 0;
+var calender = 0;
 var select_Course = ''; //the value(id) of course selected
 var QuestionnaireSelect = ''; //the value(id) of  Questionnair selected
 // display input to inser name new course
@@ -141,7 +142,7 @@ function selectQuestion() {
 }
 function SelectCurseStatistic() {
     var select_CourseS = $("#MainContent_select_Course").val();//selectQuestion
-    MainContent_selectTest.value = select_CourseS.toString();
+    MainContent_selectTest.value = select_CourseS.toString();//insert id course to textBox
     if (select_CourseS != "-1") {
         $.ajax({
             type: "POST",
@@ -659,24 +660,29 @@ function IsAnsChoose(idCheckChecked, numAns) {
         return -1;
     }
 }
-//$(document).ready(function () {
-//    $("#MainContent_TextBox1").on("click", function () { $("#MainContent_TextBox1").css("visibility", "hidden"); })
-//});
 
 $(document).ready(function () {
     $("#MainContent_TextBoxFromDate").click(function () {
-
-        document.getElementById('divCalendar').style.display = 'inline';
-        document.getElementById('divCalendar2').style.display = 'none';
+        if (document.getElementById('divCalendar2').style.display == 'none') {
+            document.getElementById('divCalendar2').style.display = 'inline';
+        }
+        else if (document.getElementById('divCalendar2').style.display == 'inline') {
+            document.getElementById('divCalendar2').style.display = 'none';
+        }
+        document.getElementById('divCalendar1').style.display = 'none'
 
     });
 });
 
 $(document).ready(function () {
     $("#MainContent_TextBoxToDate").click(function () {
-
-        document.getElementById('divCalendar2').style.display = 'inline';
-        document.getElementById('divCalendar').style.display = 'none';
+        if (document.getElementById('divCalendar1').style.display == 'none') {
+            document.getElementById('divCalendar1').style.display = 'inline';
+        }
+        else if (document.getElementById('divCalendar1').style.display == 'inline') {
+                document.getElementById('divCalendar1').style.display = 'none';
+            }
+        document.getElementById('divCalendar2').style.display = 'none';
 
     });
 });
