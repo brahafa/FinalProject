@@ -26,6 +26,9 @@ namespace Clicker.Pages
         private static int questionnaireId;
         private static String questionnaireName;
 
+        public static DisplayBL displayBL;
+        const int idQuestZero = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -39,6 +42,7 @@ namespace Clicker.Pages
             courseBL = new CourseBL();
             answerBL = new AnswerBL();
             listCourse = new List<Course>();
+            displayBL = new DisplayBL();
 
 
             if (Request.QueryString["IdCourse"] != null)// came from click on course
@@ -67,8 +71,9 @@ namespace Clicker.Pages
 
                 CourseName = "חיפוש";
                 idCourse = 0;
-                staticBtn.Style.Add("display", "none");
+                //staticBtn.Style.Add("display", "none");
                 removeCourseBtnFromQ.Style.Add("display", "none");
+
                 //removeQuestionnaireBtn.Style.Add("display", "none");
                 //copyQuestionnaireBtn.Style.Add("display", "none");
                 listQuestionnaire = questionnaireBL.getAllQuestionnaireByPermit();
@@ -101,7 +106,15 @@ namespace Clicker.Pages
 
             //Response.Write("<script language=javascript>alert('השדה שאתה רוצה למחוק בשימוש');</script>");
             questionnaireName = QuestionnaireName.Value.Trim();
-            //questionnaireId = idQuestnaire.Value.Trim();
+            try
+            {
+                questionnaireId = Convert.ToInt32(idQuestnaire.Value.Trim());
+            }
+            catch(FormatException){
+
+                questionnaireId = 0;
+            }
+            
 
 
 
@@ -109,7 +122,10 @@ namespace Clicker.Pages
             {
                 removeQuestionnaireBtn.Style.Add("display", "inline");
 
-                questionnaireId = questionnaireBL.getIdQuestionnaireByIdCourseAndName(idCourse, questionnaireName);
+                //Response.Write("<script>document.getElementById('MainContent_displayQuestFromCourseBtn').style.display = 'inline';</script>");
+
+                
+                //questionnaireId = questionnaireBL.getIdQuestionnaireByIdCourseAndName(idCourse, questionnaireName);
                 listQuestion = questionBL.getAllQuestionByQuestionnaire(questionnaireId);
             }
             else
@@ -250,6 +266,29 @@ namespace Clicker.Pages
             listAnswers = null;
 
             return courseId;
+
+        }
+
+        [System.Web.Services.WebMethod(EnableSession = true)]
+        public static void displayBtnCourse_click(String idQuestionnaire)
+        {
+
+            HttpContext.Current.Session["displayType"] = 0;
+
+            int maxIdDisplay, idQ;
+
+            maxIdDisplay = displayBL.maxIdDisplay();
+            try
+            {
+                idQ = Convert.ToInt32(idQuestionnaire);
+            }
+            catch (FormatException)
+            {
+                idQ = 0;
+            }
+            
+
+            displayBL.AddNewDisplay(maxIdDisplay+1, idQuestZero, idQ);
 
         }
 

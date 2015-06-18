@@ -5,89 +5,136 @@
         <section id="content">
             <div class="padding">
                 <div class="wrapper margin-bot">
+                    
                     <div class="col-3">
                         <div id="buttonAddRemove">
                             <ul>
                                 <li>
                                     <div class="indent">
-                                        
-                                        <h2 class="p0">קורס <% =courseName %></h2>
-                                        <br />
-                                        <br />
-                                        <br />
-                                        <h2 id="QuestionnaireTitle" >שאלון <% =courseName %></h2>
 
+                                        <h2>קורס  <% =courseName %></h2>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <h2 id="QuestionnaireTitle" ><% =questionName %></h2>
+                                        
+                                        <br />
+                                        <br />
+                                        <br />
                                     </div>
                                 </li>
-<%--                                <br />
-                                <br />
-                                <br />--%>
+
 
                                 <li>
-                                    <input runat="server" type="text" id="questTitle" value=""/>
-                                </li>
 
+                                    <asp:Label runat="server" ID="questionTitle" Font-Size="Medium"></asp:Label>
+                                </li>
+                                <% if(listQuestion.Count != 0)
+                                           { %>
+                                <li>
+                                    <div>
+                                        
+
+                                        <label id="questionText"><% =listQuestion[indexQuestion].getQuestion() %></label>
+                                        
+                                    </div>
+                                    <%--<asp:Label  ></asp:Label>--%>
+                                    </li>
                             </ul>
+
+
                             <div id="Americananswer" runat="server" class="answer" style="display: none">
                                 <ul>
-                                    <li>
-                                        <h5 class="ansTytle">:תשובות</h5>
-                                    </li>
-                                    <%for (int i = 0; i < listQuestion.Count; i++)
-                                      {
-%>
-                                      
-                                    <li>
-                                          <input type="text"  id='<% =listQuestion[i].getId() %>' class="Question"/>
-                                          <input id="check"+'<% =listQuestion[i].getId() %>' type="checkbox"  name="Gender" onclick="cleanCheck1()"  />
-                                    </li>
-                                   <% } %>
-                                    <li>
-                                          <input type="text"   id="answer2" placeholder="הכנס תשובה" class="Question"/>
-                                        <input id="check2" type="checkbox" onclick="cleanCheck2()"  />
-                                    </li>
-                                    <li>
-                                          <input type="text"  id="answer3" placeholder="הכנס תשובה" class="Question"/>
-                                        <input id="check3" type="checkbox" onclick="cleanCheck3()"  />
-                                    </li>
-                                    <li>
-                                          <input type="text"   id="answer4" placeholder="הכנס תשובה" class="Question"/>
-                                        <input id="check4" type="checkbox" onclick="cleanCheck4()"/>
-                                    </li>
-                                    <li>
-                                          <input type="text"  id="answer5" placeholder="הכנס תשובה" class="Question"/>
-                                        <input id="check5" type="checkbox" onclick="cleanCheck5()" />
+                                    <%  
+                                        if (listDisplay != null && listDisplay.Count != 0)
+                                        {
+                                            if (listQuestion[indexQuestion]._Type == 2)//yes no question like american question
+                                            {
 
-                                    </li>
+                                                Response.Write("<script>document.getElementById('MainContent_Americananswer').style.display = 'inline';</script>");
+                                                //yesNoDiv.Style.Add("display", "inline");
+                                            }
+                                            else if (listQuestion[indexQuestion]._Type == 3)//open question
+                                            {
+                                                Response.Write("<script>document.getElementById('MainContent_OpenDiv').style.display = 'inline';</script>");
+                                                //OpenDiv.Style.Add("display", "inline");
+                                            }
+                                            else// american question
+                                            {
+                                                Response.Write("<script>document.getElementById('MainContent_Americananswer').style.display = 'inline';</script>");
+                                                //Americananswer.Style.Add("display", "inline");
+                                            }
+
+                                            listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[indexQuestion].getId());
+                                            numAns.Value = listAnswer.Count.ToString();
+                                    %>
                                     <li>
-                                          <input type="text"  id="answer6" placeholder="הכנס תשובה" class="Question"/>
-                                        <input id="check6"  class="check1" type="checkbox" onclick="cleanCheck6()"/>
+                                    <input type="text" id="numAns" style="display: none" runat="server" value="0" />
+                                        </li>
+
+
+                                    <%
+                    if (listAnswer.Count > 0)
+                    { %>
+                                    <li>
+
+
+                                        <label id="answerText1" class="Question"><%= listAnswer[0].getAnswer().ToString() %></label>
+                                        <input id="checkbox1" type="checkbox" name="Gender" onclick="cleanCheckBox1()" style="display: inline" />
                                     </li>
+                                    <%}
+                                        if (listAnswer.Count > 1)
+                                        {%>
+                                    <li>
+
+
+                                        <label id="answerText2" class="Question"><%= listAnswer[1].getAnswer().ToString() %></label>
+                                        <input id="checkbox2" type="checkbox" name="Gender" onclick="cleanCheckBox2()" style="display: inline" />
+                                    </li>
+                                    <%}
+                                      if (listAnswer.Count > 2)
+                                      {%>
+                                    <li>
+
+
+                                        <label id="answerText3" class="Question"><%= listAnswer[2].getAnswer().ToString() %></label>
+                                        <input id="checkbox3" type="checkbox" name="Gender" onclick="cleanCheckBox3()" style="display: inline" />
+                                    </li>
+                                    <%}
+                                      if (listAnswer.Count > 3)
+                                      {%>
+                                    <li>
+
+
+                                        <label id="answerText4" class="Question"><%= listAnswer[3].getAnswer().ToString() %></label>
+                                        <input id="checkbox4" type="checkbox" name="Gender" onclick="cleanCheckBox4()" style="display: inline" />
+                                    </li>
+                                    <%}
+                                      if (listAnswer.Count > 4)
+                                      {%>
+                                    <li>
+
+
+                                        <label id="answerText5" class="Question"><%= listAnswer[4].getAnswer().ToString() %></label>
+                                        <input id="checkbox5" type="checkbox" name="Gender" onclick="cleanCheckBox5()" style="display: inline" />
+                                    </li>
+                                    <%}
+                                      if (listAnswer.Count > 5)
+                                      {%>
+                                    <li>
+
+
+                                        <label id="answerText6" class="Question"><%= listAnswer[5].getAnswer().ToString() %></label>
+                                        <input id="checkbox6" type="checkbox" name="Gender" onclick="cleanCheckBox6()" style="display: inline" />
+                                    </li>
+                                    <%} %>
+                                    <% 
+                }
+                                 %>
                                 </ul>
                             </div>
 
-
-                            <div id="yesNoDiv" runat="server" class="answer" style="display: none">
-                                <ul>
-                                    <li>
-                                        <h5 class="ansTytle">:תשובות</h5>
-                                    </li>
-                                    <li>
-
-                                        <%--<asp:TextBox ID="NoTxtBoxId" CssClass="Question" Columns="2" Text="YES" Width="500px" runat="server" />
-                                        <input id="checkNo" class="check1" type="checkbox" name="check" value="check1"/>--%>
-                                        <label for="c1">לא</label>
-                                        <input id="CheckNo" class="check1"  type="checkbox" onclick="cleanCheckNo()"  />
-
-
-                                    </li>
-                                    <li>
-                                        <label for="c1">כן</label>
-                                        <input id="CheckYes" class="check1"  type="checkbox" onclick="cleanCheckYes()"  />
-                                    </li>
-                                </ul>
-                            </div>
-
+                           
                             <div id="OpenDiv" runat="server" class="answer" style="display: none">
                                 <ul>
                                     <li>
@@ -95,19 +142,24 @@
                                     </li>
                                     <li>
 
-                                        <asp:TextBox ID="openAnswerID" CssClass="Question" Columns="2" placeholder="הכנס תשובה" Width="500px" runat="server" />
-
+                                        <asp:TextBox ID="openAnswer" CssClass="Question" Columns="2" placeholder="הכנס תשובה" Width="500px" runat="server" />
+                                        <%--<input type="text" name="checking" id="checking" onclick="checkTextField(this);" />--%>
                                     </li>
                                 </ul>
                             </div>
+                             <%} //listQuestin.count != 0 %>
+                         
+                             
                             <div id="sendDiv">
-                                 <input id="err"  type="text" class="errMesegeAddQuest" style="display: none"  />
+                                <input id="err" type="text" class="errMesegeAddQuest" style="display: none" />
                                 <br />
-                                <asp:Button ID="nextQuestion" runat="server" OnClientClick="return false;" Width="120px" CssClass="myButton" Text="הבא" />
-                                <asp:Button ID="prevQuestion" runat="server"  OnClientClick="return false;"  Width="120px" CssClass="myButton" Text="הקודם" />
+                                <%--<asp:Button ID="nextQuestionBtn" runat="server" OnClick="displayNextQuestion" Width="120px" CssClass="myButton" Text="הבא" />--%>
+                                <input type="button" id="nextQuestionBtn" runat="server" class="myButton" value="שאלה הבאה" style="display: none" />
+
                             </div>
                         </div>
                     </div>
+                   
                     <div class="col-4">
                         <div class="block-news" id="conectedUser" runat="server">
                             <h3 class="color-4 p2">:אתה מחובר כ</h3>
@@ -121,7 +173,7 @@
                             <ul class="list-2">
                                 <li>
                                     <div id="profile">
-                                        <asp:Image runat="server" ID="userImage" ImageUrl="~/images/profile.gif" CssClass="userImage" />
+                                        <asp:Image runat="server" ID="userImage" CssClass="userImage" />
                                     </div>
                                 </li>
                                 <li>

@@ -76,6 +76,26 @@ namespace Clicker.DAL
 
         }
 
+        // get Questionnaire by id
+        public Questionnaire getQuestionnaireById(int IdQuestionnaire)
+        {
+
+            con.Open();
+            string sqlString = "select * from Questionnaire q where q.Id = " + IdQuestionnaire + ";";
+            MySqlCommand com = new MySqlCommand(sqlString, con);
+            Questionnaire questionnaire = null;
+            using (MySqlDataReader rdr = com.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    questionnaire = new Questionnaire(Convert.ToInt32(rdr["Id"]), rdr["Name"].ToString(),
+                        Convert.ToInt32(rdr["IdCours"]), Convert.ToInt32(rdr["Permit"]));
+                }
+            }
+            con.Close();
+            return questionnaire;
+        }
+
         // delete all Questionnaire by IdCours
         public void deleteQuestionnaireByIdCours(int IdCours)
         {

@@ -128,7 +128,6 @@
     <Content Include="Pages\ProfileStudent.aspx" />
     <Content Include="Pages\ShowQuestionnaire.aspx" />
     <Content Include="Pages\StatisticStudent.aspx" />
-    <Content Include="Pages\StockQuestionnaires.aspx" />
     <Content Include="Pages\Register.aspx" />
     <Content Include="Pages\HomePage.aspx" />
     <Content Include="Pages\AddQuestion.aspx" />
@@ -148,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Statistic.aspx" />
+    <Content Include="Pages\StockQuestionnaires.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -156,6 +156,7 @@
     <Compile Include="BL\AnswerBL.cs" />
     <Compile Include="BL\CourseBL.cs" />
     <Compile Include="BL\CourseRegisterBL.cs" />
+    <Compile Include="BL\DisplayBL.cs" />
     <Compile Include="BL\LecturerBL.cs" />
     <Compile Include="BL\QuestionAskedBL.cs" />
     <Compile Include="BL\QuestionBL.cs" />
@@ -164,6 +165,7 @@
     <Compile Include="Classes\Answer.cs" />
     <Compile Include="Classes\Course.cs" />
     <Compile Include="Classes\CourseRegister.cs" />
+    <Compile Include="Classes\Display.cs" />
     <Compile Include="Classes\GlobalFunction.cs" />
     <Compile Include="Classes\Lecturer.cs" />
     <Compile Include="Classes\Question.cs" />
@@ -173,6 +175,7 @@
     <Compile Include="Classes\Validations.cs" />
     <Compile Include="DAL\AnswerDAL.cs" />
     <Compile Include="DAL\CourseRegisterDAL.cs" />
+    <Compile Include="DAL\DisplayDAL.cs" />
     <Compile Include="DAL\LecturerDAL.cs" />
     <Compile Include="DAL\CourseDAL.cs" />
     <Compile Include="DAL\QuestionAskedDAL.cs" />
@@ -215,13 +218,6 @@
     </Compile>
     <Compile Include="Pages\StatisticStudent.aspx.designer.cs">
       <DependentUpon>StatisticStudent.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\StockQuestionnaires.aspx.cs">
-      <DependentUpon>StockQuestionnaires.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\StockQuestionnaires.aspx.designer.cs">
-      <DependentUpon>StockQuestionnaires.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -271,6 +267,13 @@
     </Compile>
     <Compile Include="Pages\Statistic.aspx.designer.cs">
       <DependentUpon>Statistic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StockQuestionnaires.aspx.cs">
+      <DependentUpon>StockQuestionnaires.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\StockQuestionnaires.aspx.designer.cs">
+      <DependentUpon>StockQuestionnaires.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

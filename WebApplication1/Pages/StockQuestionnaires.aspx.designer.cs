@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Clicker.Pages {
-    
-    
-    public partial class c {
-        
+namespace Clicker.Pages
+{
+
+
+    public partial class c
+    {
+
         /// <summary>
         /// Form1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
-        
+
         /// <summary>
         /// stockQuestionnaire control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl stockQuestionnaire;
-        
+
         /// <summary>
         /// idQuestnaire control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText idQuestnaire;
-        
+
         /// <summary>
         /// QuestionnaireName control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText QuestionnaireName;
-        
+
         /// <summary>
         /// classDisplayBtn control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton classDisplayBtn;
-        
+
         /// <summary>
         /// staticBtn control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton staticBtn;
-        
+
         /// <summary>
         /// NameQuestionnaire control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button NameQuestionnaire;
-        
+
         /// <summary>
         /// StockQuestion control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl StockQuestion;
-        
+
         /// <summary>
         /// closeButtonQuestions control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button closeButtonQuestions;
-        
+
         /// <summary>
         /// QuestionId control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText QuestionId;
-        
+
         /// <summary>
         /// NameQuestion control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button NameQuestion;
-        
+
         /// <summary>
         /// answer control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText answer;
-        
+
         /// <summary>
         /// removeCourseBtnFromQ control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton removeCourseBtnFromQ;
-        
+
         /// <summary>
         /// copyQuestionnaireBtn control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton copyQuestionnaireBtn;
-        
+
         /// <summary>
         /// removeQuestionnaireBtn control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton removeQuestionnaireBtn;
-        
+
         /// <summary>
         /// addQuestionnaireBtn control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button addQuestionnaireBtn;
-        
+
         /// <summary>
         /// selectCourse control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect selectCourse;
-        
+
         /// <summary>
         /// conectedUser control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl conectedUser;
-        
+
         /// <summary>
         /// UserNameLabel control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserNameLabel;
-        
+
         /// <summary>
         /// userImage control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image userImage;
-        
+
         /// <summary>
         /// logoutBtn control.
         /// </summary>

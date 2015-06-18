@@ -42,9 +42,9 @@ namespace Clicker.Pages
             }
             if (Session["id"] != null)
             {
-               // UserNameLabel.InnerText = Session["Name"].ToString();
+                // UserNameLabel.InnerText = Session["Name"].ToString();
                 //IMAGE------------
-              //  userImage.ImageUrl = Session["Image"].ToString();
+                //  userImage.ImageUrl = Session["Image"].ToString();
             }
 
             UserNameLabel.InnerText = "";
@@ -53,7 +53,7 @@ namespace Clicker.Pages
             //{
             //    UserNameLabel.InnerText +=  Session["degree"].ToString();
             //}
-            
+
             //IMAGE------------
             //userImage.ImageUrl = Session["Image"].ToString();
 
@@ -89,7 +89,7 @@ namespace Clicker.Pages
                 inputFileName.Value = fileName;
                 QuestFileUpload.PostedFile.SaveAs(Server.MapPath("~/files/") + fileName);//save image in 
             }
-        
+
         }
 
         public void deletFile_Click(object sender, EventArgs e)
@@ -103,8 +103,8 @@ namespace Clicker.Pages
 
 
             String FileName = inputFileName.Value.ToString();
-           // if (File.Exists(@"C:\Users\David\Desktop\FinalProjectNew\WebApplication1\files\2014-02-25 17.44.39.jpg"))
-           if (File.Exists(Server.MapPath("~/files/") + FileName))
+            // if (File.Exists(@"C:\Users\David\Desktop\FinalProjectNew\WebApplication1\files\2014-02-25 17.44.39.jpg"))
+            if (File.Exists(Server.MapPath("~/files/") + FileName))
             {
                 File.Delete(Server.MapPath("~/files/") + FileName);
             }
@@ -113,14 +113,14 @@ namespace Clicker.Pages
         [WebMethod]
         public static void save_ClientClick(String AllAnsStr)
         {
-             maxQuestion = questionBL.maxIdQuestion() + 1;
+            maxQuestion = questionBL.maxIdQuestion() + 1;
             maxAnswer = answerBL.maxIdAnswer() + 1;
             int maxQuestionnaire = questionnaireBl.maxIdQuestionnaire() + 1;
 
 
-            int type=1;
-            String[] QuestionnaireDitails=new String[3];
-          
+            int type = 1;
+            String[] QuestionnaireDitails = new String[3];
+
             String[] tempQuestiommaier = AllAnsStr.Split('@');
             String[] ANS = tempQuestiommaier[0].Split('#');
             String question = ANS[Convert.ToInt32(ANS.Length - 2)];
@@ -133,7 +133,7 @@ namespace Clicker.Pages
                 //add questionna to DB
                 questionnaireBl.AddQuestionnaire(maxQuestionnaire, QuestionnaireDitails[0], Convert.ToInt32(QuestionnaireDitails[1]), Convert.ToInt32(QuestionnaireDitails[2]));
             }
-            int numAns = Convert.ToInt32(ANS[Convert.ToInt32(ANS.Length-1)]);
+            int numAns = Convert.ToInt32(ANS[Convert.ToInt32(ANS.Length - 1)]);
             if (numAns == 11)//type is yes no quest
             {
                 numAns = 1;
@@ -153,8 +153,8 @@ namespace Clicker.Pages
             {
                 correct = Convert.ToInt32(ANS[0]);
             }
-           // correct += maxAnswer;
-            for (int i = 1; i < numAns+1; i++)
+            // correct += maxAnswer;
+            for (int i = 1; i < numAns + 1; i++)
             {
 
                 if (correct == i)
@@ -174,7 +174,7 @@ namespace Clicker.Pages
         [WebMethod]
         public static void saveAndDisplay_ClientClick(String AllAnsStr)
         {
-            int maxIdQuestionAsk = questionAskedBL.maxIdquestionAsk()+1;
+            int maxIdQuestionAsk = questionAskedBL.maxIdquestionAsk() + 1;
             maxQuestion = questionBL.maxIdQuestion();
             DateTime thisDay = DateTime.Today;
 
@@ -192,7 +192,7 @@ namespace Clicker.Pages
         public static int addNewQuestionnaire(String newQuest)
         {
             string[] QuestionnaireDitails = newQuest.Split('#');//0=name questionnaire. 1=id course. 2=permit
-            int maxID=questionnaireBl.maxIdQuestionnaire() + 1;
+            int maxID = questionnaireBl.maxIdQuestionnaire() + 1;
             questionnaireBl.AddQuestionnaire(maxID, QuestionnaireDitails[0], Convert.ToInt32(QuestionnaireDitails[1]), Convert.ToInt32(QuestionnaireDitails[2]));
             return maxID;
         }
@@ -201,15 +201,15 @@ namespace Clicker.Pages
         [WebMethod]
         public static String updateSelectQuestionnaires(String SelectValue)
         {
-            String QuestionnarieSTR="";
+            String QuestionnarieSTR = "";
             listQuestionnarie = questionnaireBl.getAllQuestionnaireByIdCourse(Convert.ToInt32(SelectValue.ToString()));
-          
+
             foreach (Questionnaire q in listQuestionnarie)
             {
                 QuestionnarieSTR += q.getId().ToString().Trim() + "," + q.getName().Trim() + ",";
             }
             return QuestionnarieSTR;
-            
+
         }
     }
 }

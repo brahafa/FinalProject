@@ -709,6 +709,7 @@ h1 {
 	width:100%;
 	padding:10px 0 40px;
 	background: #FFFFFF;
+    min-height: 414px;
 	border-radius:18px 18px 0 0;
 	-moz-border-radius:18px 18px 0 0;
 	-webkit-border-radius:18px 18px 18px 18px;

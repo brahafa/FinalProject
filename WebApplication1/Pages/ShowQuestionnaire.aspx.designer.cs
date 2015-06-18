@@ -22,13 +22,13 @@ namespace Clicker.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// questTitle control.
+        /// questionTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText questTitle;
+        protected global::System.Web.UI.WebControls.Label questionTitle;
         
         /// <summary>
         /// Americananswer control.
@@ -40,13 +40,13 @@ namespace Clicker.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Americananswer;
         
         /// <summary>
-        /// yesNoDiv control.
+        /// numAns control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl yesNoDiv;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText numAns;
         
         /// <summary>
         /// OpenDiv control.
@@ -58,31 +58,22 @@ namespace Clicker.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl OpenDiv;
         
         /// <summary>
-        /// openAnswerID control.
+        /// openAnswer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox openAnswerID;
+        protected global::System.Web.UI.WebControls.TextBox openAnswer;
         
         /// <summary>
-        /// nextQuestion control.
+        /// nextQuestionBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button nextQuestion;
-        
-        /// <summary>
-        /// prevQuestion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button prevQuestion;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton nextQuestionBtn;
         
         /// <summary>
         /// conectedUser control.

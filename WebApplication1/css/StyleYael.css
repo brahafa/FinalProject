@@ -1,4 +1,12 @@
 ﻿
+#questionText{
+
+    color:red;
+      text-decoration: underline;
+      font-size:21px;
+      border:medium
+}
+
 #MainContent_NameQuestion{
     background-color:white;
     border:none;
@@ -64,15 +72,15 @@ border: none;
     color: black;
 }
 
-#MainContent_classDisplayBtn{
+/*#MainContent_classDisplayBtnCourse{
 
     float:left;
     margin-left: 40px;
     height: 30px;
     
-}
+}*/
 
-#staticBtn{
+/*#staticBtn{
 
     float:left;
     margin-left: 40px;
@@ -86,7 +94,7 @@ border: none;
     margin-left: 40px;
     height: 30px;
     
-}
+}*/
 
 #QuestionnaireLiDiv{
      background-color: #FF0000 ;
@@ -238,6 +246,6 @@ float:right;
 #QuestionnaireTitle{
 
     font-size: 30px;
-      margin-right: -246px;
+margin-right: -187px;
   color: gray;
 }
