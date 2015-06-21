@@ -29,11 +29,11 @@
                                     <select class="styled-select" id="select_Course" onchange="SelectCurseStudentStatistic()" runat="server">
                                         <option value="-1">:בחר קורס</option>
                                     </select>
-                                    <asp:TextBox ID="selectTest" Style="display: inline" runat="server" ></asp:TextBox>
-                                     <asp:TextBox ID="selectQuestion" Style="display: inline" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="selectTest" Style="display: none" runat="server" ></asp:TextBox>
+                                     <asp:TextBox ID="selectQuestion" Style="display: none" runat="server"></asp:TextBox>
                                      </li>
-                                <li style: height="70px" ;>
-                                    <div id="DivDate"> 
+                               <%-- <li style: height="70px" ;>--%>
+                                <%--    <div id="DivDate"> 
                                        <p  class="color-4 p2" id="labelDate" >
                                       
                                        <asp:Label ID="TextBoxToDate" BorderColor="Red" runat="server" Width="85px" BorderWidth="2px">00/00/00</asp:Label>
@@ -42,10 +42,10 @@
                                         <asp:Label ID="TextBoxFromDate"   BorderColor="Red"  runat="server" Width="85px" BorderWidth="2px">00/00/00</asp:Label>
                                        עד תאריך
                                       </p>
-                                 </div>
+                                 </div>--%>
 
 
-                                    <br /> <br /> <br />
+<%--                                    <br /> <br /> <br />
 
 
 
@@ -57,7 +57,7 @@
                                        <asp:Calendar ID="Calendar2" runat="server"  OnSelectionChanged="Calendar2_SelectionChanged"  SelectionMode="DayWeekMonth" >
                                        </asp:Calendar>
                                        </div>
-                                </li>
+                                </li>--%>
                                 <li>
                                  <div>
                                          <asp:Table ID="statistictTable" BorderColor="Black" BorderWidth="3px" runat="server" Width="100%">

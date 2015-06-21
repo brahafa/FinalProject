@@ -256,7 +256,7 @@ $(document).ready(function () {
         document.getElementById('CheckYes').checked = false;
         document.getElementById('CheckNo').checked = false;
 
-        document.getElementById('MainContent_answer1').value = '';
+        document.getElementById('answer1').value = '';
         document.getElementById('answer2').value = '';
         document.getElementById('answer3').value = '';
         document.getElementById('answer4').value = '';
@@ -305,7 +305,7 @@ $(document).ready(function () {
         document.getElementById('OpenDiv').style.display = 'none';
         document.getElementById('yesNoDiv').style.display = 'inline';
        
-        document.getElementById('MainContent_answer1').value = '';
+        document.getElementById('answer1').value = '';
         document.getElementById('answer2').value = '';
         document.getElementById('answer3').value = '';
         document.getElementById('answer4').value = '';
@@ -488,7 +488,7 @@ function clean(){
     document.getElementById('CheckYes').checked = false;
     document.getElementById('CheckNo').checked = false;
 
-    document.getElementById('MainContent_answer1').value = '';
+    document.getElementById('answer1').value = '';
     document.getElementById('answer2').value = '';
     document.getElementById('answer3').value = '';
     document.getElementById('answer4').value = '';
@@ -524,8 +524,8 @@ $(document).ready(function () {
     $("#MainContent_displayClass").click(function () {
         saveAndDisplayClick();
 
+        var AllAnsStr = "";
 
-        var AllAnsStr = "";//numCorectAns + "#" + buildAnsQuestStr(numAns);
         $.ajax({
             type: "POST",
             url: "AddQuestion.aspx/saveAndDisplay_ClientClick",
@@ -632,14 +632,14 @@ function validAmericanQ() {
     var idCheckChecked=0;
     StrAns = '';
   
-    if (document.getElementById('MainContent_answer1').value.toString().length == 0) {
+    if (document.getElementById('answer1').value.toString().length == 0) {
         document.getElementById('err').style.display = 'inline';
         document.getElementById('err').value = "מלא לפחות תשובה אחת*";
         return -1;
     }
     else {
         numAns=1;
-        StrAns = document.getElementById('MainContent_answer1').value.toString();
+        StrAns = document.getElementById('answer1').value.toString();
     }
     if (document.getElementById('answer2').value.toString() == '') {
       

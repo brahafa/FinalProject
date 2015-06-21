@@ -76,14 +76,14 @@ namespace Clicker.Pages
             // userImage.ImageUrl = Session["Image"].ToString();
 
         }
-        protected void Calendar2_SelectionChanged(object sender, EventArgs e)
-        {
-            TextBoxFromDate.Text = Convert.ToDateTime(Calendar2.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("dd/MM/yyyy");
-        }
-        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-        {
-            TextBoxToDate.Text = Convert.ToDateTime(Calendar1.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("dd/MM/yyyy");
-        }
+        //protected void Calendar2_SelectionChanged(object sender, EventArgs e)
+        //{
+        //    TextBoxFromDate.Text = Convert.ToDateTime(Calendar2.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("dd/MM/yyyy");
+        //}
+        //protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        //{
+        //    TextBoxToDate.Text = Convert.ToDateTime(Calendar1.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("dd/MM/yyyy");
+        //}
 
         //init the select list -questionnaires
         [WebMethod]
@@ -216,136 +216,136 @@ namespace Clicker.Pages
             }
         }
 
-        public void printChart(int idQuestionnare, String valXd)
-        {
-            string date1, date2;
-            int countAnswer = 0;
-            bool validTime = false;
+        //public void printChart(int idQuestionnare, String valXd)
+        //{
+        //    string date1, date2;
+        //    int countAnswer = 0;
+        //    bool validTime = false;
 
 
-            //מוצא שאלות שנשאלו משאלון idQuestionnare0
-            listQuestion = questionBL.getAllQuestionByQuestionnaire(idQuestionnare);
+        //    //מוצא שאלות שנשאלו משאלון idQuestionnare0
+        //    listQuestion = questionBL.getAllQuestionByQuestionnaire(idQuestionnare);
 
-            for (int i = listQuestion.Count - 1; i >= 0; i--)
-            {
-
-
-                //if the question never ascked
-                if (!questionAskedBL.isQuestionAsk(listQuestion[i]._Id))
-                {
-                    listQuestion.RemoveAt(i);
-                }
-            }
-            //על כל שאלה להדפיס את התשובות ששיכות לה
-
-            for (int i = listQuestion.Count - 1; i >= 0; i--)
-            {
-                dr = new TableRow();
-                cell = new TableCell();
-                cell.Text = "";
-                dr.Cells.Add(cell);
-
-                //עבור כל שאלה---הדפס את השאלה עצמה
-                dr.CssClass = "lineClass";
-                cell = new TableCell();
-                cell.Text = listQuestion[i].getQuestion().ToString();
-                cell.BackColor = Color.Red;
-                dr.Cells.Add(cell);
-
-                cell = new TableCell();
-                dr.BackColor = Color.Red;
-                cell.Text = ":שאלה      " + "";
-                dr.Cells.Add(cell);
-                table1.Rows.Add(dr);
-
-                countAnswer = 0;
-                if (TextBoxFromDate.Text.ToString().Trim().Equals("00/00/00") || TextBoxToDate.Text.ToString().Trim().Equals("00/00/00"))
-                {
-                    validTime = true;
-                }
-                if (!TextBoxToDate.Text.ToString().Trim().Equals("00/00/00"))
-                {
-                    date1 = TextBoxToDate.Text.ToString().Trim();
-                    dateToDate = Convert.ToDateTime(date1);
-                }
-
-                if (!TextBoxFromDate.Text.ToString().Trim().Equals("00/00/00"))
-                {
-                    date2 = TextBoxFromDate.Text.ToString().Trim();
-                    dateFromDate = Convert.ToDateTime(date2);
-                }
-                //finde the true ans id
+        //    for (int i = listQuestion.Count - 1; i >= 0; i--)
+        //    {
 
 
-                listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdStudent(Convert.ToInt32(Session["id"]));
-                for (int j = listQuestionAsked.Count - 1; j >= 0; j--)
-                {
-                    DateTime between = new DateTime(Convert.ToDateTime(listQuestionAsked[j]._Date.ToString()).Ticks);
+        //        //if the question never ascked
+        //        if (!questionAskedBL.isQuestionAsk(listQuestion[i]._Id))
+        //        {
+        //            listQuestion.RemoveAt(i);
+        //        }
+        //    }
+        //    //על כל שאלה להדפיס את התשובות ששיכות לה
 
-                    if (validTime == false)
-                    {
-                        validTime = TimeBetween(between, dateFromDate, dateToDate);
-                    }
-                    if (validTime == true)
-                    {
-                        countAnswer++;
-                    }
+        //    for (int i = listQuestion.Count - 1; i >= 0; i--)
+        //    {
+        //        dr = new TableRow();
+        //        cell = new TableCell();
+        //        cell.Text = "";
+        //        dr.Cells.Add(cell);
+
+        //        //עבור כל שאלה---הדפס את השאלה עצמה
+        //        dr.CssClass = "lineClass";
+        //        cell = new TableCell();
+        //        cell.Text = listQuestion[i].getQuestion().ToString();
+        //        cell.BackColor = Color.Red;
+        //        dr.Cells.Add(cell);
+
+        //        cell = new TableCell();
+        //        dr.BackColor = Color.Red;
+        //        cell.Text = ":שאלה      " + "";
+        //        dr.Cells.Add(cell);
+        //        table1.Rows.Add(dr);
+
+        //        countAnswer = 0;
+        //        if (TextBoxFromDate.Text.ToString().Trim().Equals("00/00/00") || TextBoxToDate.Text.ToString().Trim().Equals("00/00/00"))
+        //        {
+        //            validTime = true;
+        //        }
+        //        if (!TextBoxToDate.Text.ToString().Trim().Equals("00/00/00"))
+        //        {
+        //            date1 = TextBoxToDate.Text.ToString().Trim();
+        //            dateToDate = Convert.ToDateTime(date1);
+        //        }
+
+        //        if (!TextBoxFromDate.Text.ToString().Trim().Equals("00/00/00"))
+        //        {
+        //            date2 = TextBoxFromDate.Text.ToString().Trim();
+        //            dateFromDate = Convert.ToDateTime(date2);
+        //        }
+        //        //finde the true ans id
+
+
+        //        listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdStudent(Convert.ToInt32(Session["id"]));
+        //        for (int j = listQuestionAsked.Count - 1; j >= 0; j--)
+        //        {
+        //            DateTime between = new DateTime(Convert.ToDateTime(listQuestionAsked[j]._Date.ToString()).Ticks);
+
+        //            if (validTime == false)
+        //            {
+        //                validTime = TimeBetween(between, dateFromDate, dateToDate);
+        //            }
+        //            if (validTime == true)
+        //            {
+        //                countAnswer++;
+        //            }
 
 
 
-                }
-                int numAns;
-                listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[i].getId());
-                //הדפס את כל התשובות של אותה שאלה
+        //        }
+        //        int numAns;
+        //        listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[i].getId());
+        //        //הדפס את כל התשובות של אותה שאלה
 
-                for (int j = 0; j < listAnswer.Count; j++)
-                {
-                    numAns = 0;
-                    for (int x = listQuestionAsked.Count - 1; x >= 0; x--)
-                    {
-                        //סופר את מספר העונים עבור כל תשובה
-                        if (listQuestionAsked[x]._YN == listAnswer[j].getId() && validTime == true)
-                        {
-                            numAns++;
-                        }
-                    }
+        //        for (int j = 0; j < listAnswer.Count; j++)
+        //        {
+        //            numAns = 0;
+        //            for (int x = listQuestionAsked.Count - 1; x >= 0; x--)
+        //            {
+        //                //סופר את מספר העונים עבור כל תשובה
+        //                if (listQuestionAsked[x]._YN == listAnswer[j].getId() && validTime == true)
+        //                {
+        //                    numAns++;
+        //                }
+        //            }
 
-                    if (countAnswer != 0)
-                    {
-                        numAns = (numAns * 100) / countAnswer;
+        //            if (countAnswer != 0)
+        //            {
+        //                numAns = (numAns * 100) / countAnswer;
 
-                    }
-                    else
-                    {
-                        numAns = 0;
-                    }
-                    dr = new TableRow();
-                    cell = new TableCell();
-                    cell.Text = Convert.ToString(numAns) + "%";
-                    dr.Cells.Add(cell);
+        //            }
+        //            else
+        //            {
+        //                numAns = 0;
+        //            }
+        //            dr = new TableRow();
+        //            cell = new TableCell();
+        //            cell.Text = Convert.ToString(numAns) + "%";
+        //            dr.Cells.Add(cell);
 
-                    int idAns;
-                    idAns = j + 1;
+        //            int idAns;
+        //            idAns = j + 1;
 
-                    cell = new TableCell();
-                    cell.Text = listAnswer[j].getAnswer().ToString();
-                    dr.CssClass = "lineClass";
-                    dr.BackColor = Color.White;
-                    dr.Cells.Add(cell);
-                    cell = new TableCell();
-                    if (listAnswer[j].getCorrectAnswer() != 0)
-                    {
-                        dr.CssClass = "cellClass";
-                    }
-                    cell.Text = "תשובה " + idAns;
-                    dr.Cells.Add(cell);
+        //            cell = new TableCell();
+        //            cell.Text = listAnswer[j].getAnswer().ToString();
+        //            dr.CssClass = "lineClass";
+        //            dr.BackColor = Color.White;
+        //            dr.Cells.Add(cell);
+        //            cell = new TableCell();
+        //            if (listAnswer[j].getCorrectAnswer() != 0)
+        //            {
+        //                dr.CssClass = "cellClass";
+        //            }
+        //            cell.Text = "תשובה " + idAns;
+        //            dr.Cells.Add(cell);
 
-                    table1.Rows.Add(dr);
+        //            table1.Rows.Add(dr);
 
-                }
+        //        }
 
-            }
-        }
+        //    }
+        //}
         bool TimeBetween(DateTime datetime, DateTime start, DateTime end)
         {
             if (start < end)
