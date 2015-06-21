@@ -77,22 +77,11 @@ namespace Clicker.Pages
         }
         protected void Calendar2_SelectionChanged(object sender, EventArgs e)
         {
-            //TextBoxFromDate.Text = Calendar2.SelectedDate.ToShortDateString();
-            TextBoxFromDate.Text = Convert.ToDateTime(Calendar2.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("dd/MM/yyyy");
-    
-            //dateFromDate = DateTime.Parse(TextBoxFromDate.Text.ToString().Trim(), new CultureInfo("ru-RU"));
-           
+            TextBoxFromDate.Text = Convert.ToDateTime(Calendar2.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("dd/MM/yyyy");           
         }
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
-            //TextBoxToDate.Text = Calendar1.SelectedDate.ToShortDateString();
             TextBoxToDate.Text = Convert.ToDateTime(Calendar1.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("dd/MM/yyyy");
-            //dateToDate=new DateTime (Calendar1.SelectedDate.Ticks);
-           // dateToDate = DateTime.Parse(TextBoxToDate.Text.ToString());
-            //dateToDate = DateTime.ParseExact(TextBoxToDate.Text.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //dateToDate = new DateTime();
-           // dateToDate = DateTime.Parse(TextBoxToDate.Text.ToString().Trim(), new CultureInfo("ru-RU"));
-          
         }
 
         //init the select list -questionnaires
@@ -110,22 +99,8 @@ namespace Clicker.Pages
 
         }
 
-        //protected void CalendarFrom_SelectionChanged(System.Object sender, System.EventArgs e)
-        //{
-        //    TextBoxFromDate.Text = Convert.ToDateTime(Calendar2.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("MM/dd/yyyy");
-        //}
-
-        //protected void CalendarTo_SelectionChanged(System.Object sender, System.EventArgs e)
-        //{
-        //    if (!TextBoxFromDate.Equals(""))
-        //    {
-        //       TextBoxToDate.Text = Convert.ToDateTime(CalendarTo.SelectedDate, CultureInfo.GetCultureInfo("en-US")).ToString("MM/dd/yyyy");
-        //    }
-        //}
         protected void BtnselectStatistic_Click(System.Object sender, System.EventArgs e)
         {
-            //table1 = new Table();
-           // List<Questionnaire> list = new List<Questionnaire>();
             listQuestionnarie = new List<Questionnaire>();
             int idCurse;//get from textBox =none
             int idQuestionna=0;
@@ -158,16 +133,14 @@ namespace Clicker.Pages
                     dr.CssClass = "lineClass";
                     cell = new TableCell();
                     cell.Text = listQuestionnarie[i].getName().ToString();
-                    //cell.BackColor = Color.Tan;
 
                     dr.Cells.Add(cell);
 
                     cell = new TableCell();
                     cell.Text = "-שם שאלון      " + "";
-                    //cell.CssClass = "cellClass";
 
                     dr.Cells.Add(cell);
-                    dr.BackColor = Color.Tan;
+                    dr.BackColor = Color.LightSalmon;
                     table1.Rows.Add(dr);
 
 
@@ -186,11 +159,10 @@ namespace Clicker.Pages
 
         public void printChart(int idQuestionnare, String valXd)
         {
-            
+           string date1,date2;   
             int countAnswer=0;
             bool validTime=false;
-           // DateTime start = Convert.ToDateTime(TextBoxFromDate.Text.ToString());
-            //DateTime end = Convert.ToDateTime(TextBoxToDate.Text.ToString());
+
 
             //מוצא שאלות שנשאלו משאלון idQuestionnare0
             listQuestion = questionBL.getAllQuestionByQuestionnaire(idQuestionnare);
@@ -218,11 +190,11 @@ namespace Clicker.Pages
                 dr.CssClass = "lineClass";
                 cell = new TableCell();
                 cell.Text =  listQuestion[i].getQuestion().ToString();
-                cell.BackColor = Color.RosyBrown;
+                cell.BackColor = Color.Red;
                 dr.Cells.Add(cell);
 
                 cell = new TableCell();
-                dr.BackColor = Color.RosyBrown;
+                dr.BackColor = Color.Red;
                 cell.Text = ":שאלה      " + "";
                 dr.Cells.Add(cell);
                 table1.Rows.Add(dr);
@@ -232,12 +204,18 @@ namespace Clicker.Pages
                 {
                     validTime = true;
                 }
+                if (!TextBoxToDate.Text.ToString().Trim().Equals("00/00/00"))
+                {
+                    date1 = TextBoxToDate.Text.ToString().Trim();
+                    dateToDate = Convert.ToDateTime(date1);
+                }
+                    
+                if (!TextBoxFromDate.Text.ToString().Trim().Equals("00/00/00")) {
+                     date2 = TextBoxFromDate.Text.ToString().Trim();
+                     dateFromDate = Convert.ToDateTime(date2);  
+                }
                 //finde the true ans id
-                string date1 = TextBoxToDate.Text.ToString().Trim();
-                DateTime dateToDate = Convert.ToDateTime(date1);
-
-                string date = TextBoxFromDate.Text.ToString().Trim();
-                DateTime dateFromDate = Convert.ToDateTime(date);  
+               
 
                 listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdQuestion(listQuestion[i]._Id);
                 for (int j = listQuestionAsked.Count - 1; j >= 0; j--)
@@ -308,11 +286,6 @@ namespace Clicker.Pages
         }
         bool TimeBetween(DateTime datetime, DateTime start, DateTime end)
         {
-            // user dont filter by time
-            //if(start.ToString().Equals("00/00/00") || end.ToString().Equals("00/00/00")) {
-            //    return true;
-            //}
-            // see if start comes before end
             if (start < end)
                 return start <= datetime && datetime <= end;
             // start is after end, so do the inverse comparison

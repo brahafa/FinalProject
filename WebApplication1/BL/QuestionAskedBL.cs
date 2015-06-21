@@ -30,6 +30,11 @@ namespace Clicker.BL
         {
             questionAskedDAL.deleteQuestionAskedByIdQuestion(IdQuestion);
         }
+        public List<QuestionAsked> getAllQuestionAskedByIdStudent(int IdStudent)
+        {
+            return questionAskedDAL.getAllQuestionAskedByIdStudent(IdStudent);
+        }
+
         public Boolean isQuestionAsk(int idQuestion){
             List<QuestionAsked> listQuestionAsk = new List<QuestionAsked>();
             listQuestionAsk=questionAskedDAL.getAllQuestionAskedByIdQuestion(idQuestion);

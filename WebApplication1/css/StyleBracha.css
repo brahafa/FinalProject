@@ -1074,18 +1074,19 @@ footer {
 	text-transform:uppercase;
 	font-weight:400;
 	margin-bottom:5px
+
 }
 .cellClass{
       height: 30px;
   font-size: 22px;
-  color:#BA55D3;
+  color:white;
   text-decoration-color:white;
   margin-top: 7px;
 	line-height:2.2em;
 	text-transform:uppercase;
 	font-weight:400;
 	margin-bottom:5px;
-    background-color:white;
+    background-color:#1fd30b;
 }
 
 #divCalendar1{

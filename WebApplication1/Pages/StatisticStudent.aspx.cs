@@ -15,135 +15,344 @@ namespace Clicker.Pages
 {
     public partial class StatisticStudent : System.Web.UI.Page
     {
-         
 
-
+        AnswerBL answerBL;
         QuestionBL questionBL;
         QuestionAskedBL questionAskedBL;
-        QuestionnaireBL questionnaireBL;
-        List<Question> listQuestion;
-        List<Questionnaire> listQuestionnaire;
-        List<QuestionAsked> listQuestionAsked;
-        Series s1;
-        public Color[] colorCourses;
-        int colorId = 0;
+        private static QuestionnaireBL questionnaireBL;
+        CourseRegisterBL courseRegisterBL;
+        CourseBL courseBL;
 
-        private static CourseBL courseBL;
-        private static QuestionnaireBL questionnaireBl;
-        public static List<Course> listCourse;
-        //public static List<Questionnaire> listQuestionnarie;
+        List<Question> listQuestion;
+        List<QuestionAsked> listQuestionAsked;
+        List<Answer> listAnswer;
+        List<Course> listCourse;
+        private static List<Questionnaire> listQuestionnarie;
+
+
+        Table table1;
+        TableRow dr;
+        TableCell cell;
+
+        DateTime dateFromDate, dateToDate;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<Questionnaire> list = new List<Questionnaire>();
+
+
 
             courseBL = new CourseBL();
-            questionnaireBl = new QuestionnaireBL();
-            listCourse = new List<Course>();
             questionnaireBL = new QuestionnaireBL();
             questionBL = new QuestionBL();
-            listQuestion = new List<Question>();
+            answerBL = new AnswerBL();
             questionAskedBL = new QuestionAskedBL();
+            courseRegisterBL = new CourseRegisterBL();
+
+            listQuestionnarie = new List<Questionnaire>();
+            listQuestion = new List<Question>();
             listQuestionAsked = new List<QuestionAsked>();
-            listQuestionnaire=new List<Questionnaire>();
-            colorCourses = new Color[9];
+            listAnswer = new List<Answer>();
+            listCourse = new List<Course>();
 
-            listCourse = courseBL.getCoursesByIdLecturer(Convert.ToInt32(Session["id"]));
-           
-            if (Session["id"] != null)
+            table1 = new Table();
+            table1 = statistictTable;
+
+            //insert course to the select
+            select_Course.Items.Clear();
+            listCourse = courseRegisterBL.getCoursesByIdStudent(Convert.ToInt32(Session["id"]));
+            select_Course.Items.Add(new ListItem("בחר קורס", "-1"));
+            foreach (Course c in listCourse)
             {
-                // UserNameLabel.InnerText = Session["Name"].ToString();
-               // userImage.ImageUrl = Session["Image"].ToString();
+                select_Course.Items.Add(new ListItem(c.getName(), c.getId().ToString()));
             }
-
+            //if (Session["id"] != null)
+            //{
+            //    // UserNameLabel.InnerText = Session["Name"].ToString();
+            //   // userImage.ImageUrl = Session["Image"].ToString();
+            //}
             UserNameLabel.InnerText = "";
-           // UserNameLabel.InnerText += " " + Session["Name"].ToString();
-           //userImage.ImageUrl = Session["Image"].ToString();
+            UserNameLabel.InnerText += " " + Session["Name"].ToString();
+            // userImage.ImageUrl = Session["Image"].ToString();
 
-            int idCourse = 4;//get from session
-            int idStudent = 4;//get from session
-            listQuestionnaire = questionnaireBl.getAllQuestionnaireByIdCours(idCourse);
-            for (int i = 0; i < listQuestionnaire.Count; i++)
+        }
+        protected void Calendar2_SelectionChanged(object sender, EventArgs e)
+        {
+            TextBoxFromDate.Text = Convert.ToDateTime(Calendar2.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("dd/MM/yyyy");
+        }
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            TextBoxToDate.Text = Convert.ToDateTime(Calendar1.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("dd/MM/yyyy");
+        }
+
+        //init the select list -questionnaires
+        [WebMethod]
+        public static String updateSelectQuestionnaires(String SelectValue)
+        {
+            String QuestionnarieSTR = "";
+            listQuestionnarie = questionnaireBL.getAllQuestionnaireByIdCourse(Convert.ToInt32(SelectValue.ToString()));
+
+            foreach (Questionnaire q in listQuestionnarie)
             {
-                //printChart(listQuestionnaire[i].getId(), idStudent);
+                QuestionnarieSTR += q.getId().ToString().Trim() + "," + q.getName().Trim() + ",";
+            }
+            return QuestionnarieSTR;
+
+        }
+
+        protected void BtnselectStatistic_Click(System.Object sender, System.EventArgs e)
+        {
+            listQuestionnarie = new List<Questionnaire>();
+            int idCurse;//get from textBox =none
+            int idQuestionna = 0;
+            if (!selectQuestion.Text.Equals(""))
+            {
+                idQuestionna = Convert.ToInt32(selectQuestion.Text.ToString());
+            }
+            //no selected course 
+            if (!(selectTest.Text.ToString().Equals("")))
+            {
+                idCurse = Convert.ToInt32(selectTest.Text.ToString());
+            }
+            else
+            {
+                idCurse = -1;
+            }
+            if (idCurse == -1 || selectTest.Text.ToString().Equals(""))
+            {
+                return;//send user  messege- check course 
+            }
+            else if (idQuestionna == -1 || selectQuestion.Text.ToString().Equals(""))
+            {
+                return;// send user messege for check questioniare
+                ////כל השאלונים מקורס מסוים
+                //listQuestionnarie = questionnaireBL.getAllQuestionnaireByIdCourse(idCurse);
+                //for (int i = listQuestionnarie.Count - 1; i >= 0; i--)
+                //{
+                //    dr = new TableRow();
+                //    cell = new TableCell();
+                //    cell.Text = "";
+                //    dr.Cells.Add(cell);
+                //    dr.CssClass = "lineClass";
+                //    cell = new TableCell();
+                //    cell.Text = listQuestionnarie[i].getName().ToString();
+
+                //    dr.Cells.Add(cell);
+
+                //    cell = new TableCell();
+                //    cell.Text = "-שם שאלון      " + "";
+
+                //    dr.Cells.Add(cell);
+                //    dr.BackColor = Color.LightSalmon;
+                //    table1.Rows.Add(dr);
+
+
+                //    printChart(listQuestionnarie[i].getId(), "");
+
+                //}
+            }
+            else
+            {
+                listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdStudent(Convert.ToInt32(Session["id"]));
+                for (int i = 0; i < listQuestionAsked.Count(); i++)
+                {
+                    // get for any questionAsck the qustion string and the answer
+                    listQuestion = questionBL.getAllQuestionByIDAndQuestionnaire(idQuestionna, listQuestionAsked[i]._IdQuestion);
+                    if (listQuestion.Count() > 0)
+                    {
+                        dr = new TableRow();
+                       
+                        dr.CssClass = "lineClass";
+                        cell = new TableCell();
+                        cell.Text = listQuestion[0].getQuestion().ToString();
+
+                        dr.Cells.Add(cell);
+
+                        cell = new TableCell();
+                        cell.Text = "-שאלה      " + "";
+
+                        dr.Cells.Add(cell);
+                        dr.BackColor = Color.LightSalmon;
+                        table1.Rows.Add(dr);
+
+                        printAnswer(listQuestion[0].getId(), listQuestionAsked[i]._YN);
+                    }
+                }
+                  //  printChart(idQuestionna, "");
             }
 
-            colorCourses[0] = System.Drawing.Color.LightSalmon;
-            colorCourses[1] = System.Drawing.Color.Brown;
-            colorCourses[2] = System.Drawing.Color.Coral;
-            colorCourses[3] = System.Drawing.Color.Crimson;
-            colorCourses[4] = System.Drawing.Color.DarkRed;
-            colorCourses[5] = System.Drawing.Color.Red;
-            colorCourses[6] = System.Drawing.Color.OrangeRed;
-            colorCourses[7] = System.Drawing.Color.Tomato;
-            colorCourses[8] = System.Drawing.Color.IndianRed;          
+            selectQuestion.Text = "";
+            selectTest.Text = "";
         }
-
-        protected void CalendarFrom_SelectionChanged(System.Object sender, System.EventArgs e)
+        public void printAnswer(int idQuest, int idCheckAns)
         {
-            TextBoxFromDate.Text = Convert.ToDateTime(Calendar2.SelectedDate, CultureInfo.GetCultureInfo("en-US")).ToString("MM/dd/yyyy");
-        }
-
-        protected void CalendarTo_SelectionChanged(System.Object sender, System.EventArgs e)
-        {
-            if (!TextBoxFromDate.Equals(""))
+            listAnswer = answerBL.getAllAnswerByIdQuestion(idQuest);
+            for (int j = 0; j < listAnswer.Count; j++)
             {
-                TextBoxToDate.Text = Convert.ToDateTime(CalendarTo.SelectedDate, CultureInfo.GetCultureInfo("en-US")).ToString("MM/dd/yyyy");
+                int idAns;
+                idAns = j + 1;
+                dr = new TableRow();
+                cell = new TableCell();
+                cell.Text = listAnswer[j].getAnswer().ToString();
+                dr.CssClass = "lineClass";
+                dr.BackColor = Color.White;
+                dr.Cells.Add(cell);
+                cell = new TableCell();
+                if (listAnswer[j].getCorrectAnswer() != 0)
+                {
+                    dr.CssClass = "cellClass";
+                    dr.BackColor = Color.Green;
+                }
+                //if the ans is wrong and the student check this ans
+                if (listAnswer[j].getCorrectAnswer() == 0 && listAnswer[j].getId() == idCheckAns)
+                {
+                    dr.ForeColor = Color.Red;
+                    dr.Font.Bold = true;
+                }
+                cell.Text = "תשובה " + idAns;
+                dr.Cells.Add(cell);
+
+                table1.Rows.Add(dr);
             }
         }
 
+        public void printChart(int idQuestionnare, String valXd)
+        {
+            string date1, date2;
+            int countAnswer = 0;
+            bool validTime = false;
 
-        //public void printChart(int idQuestionnare, int idStudent)
-        //{
-        //     String valX =questionnaireBL.getNameById(idQuestionnare);
-        //     int numOfYes = 0, numOfNo = 0;
-        //     s1 = cTestChart.Series["Testing"];
-        // String    ImageLocation = "~/images/ChartPic_#SEQ(300,3)";
 
-        //    //מוצא שאלות שנשאלו משאלון idQuestionnare0
-        //    listQuestion = questionBL.getAllQuestionByQuestionnaire(idQuestionnare);
+            //מוצא שאלות שנשאלו משאלון idQuestionnare0
+            listQuestion = questionBL.getAllQuestionByQuestionnaire(idQuestionnare);
 
-        //    for (int i = listQuestion.Count - 1; i >= 0; i--)
-        //    {
-        //        if (!questionAskedBL.isQuestionAsk(listQuestion[i]._Id))
-        //        {
-        //            listQuestion.RemoveAt(i);//remove unuse question 
-        //        }
-        //    }
-        //    //סופר את העונים נכון
-        //    for (int i = listQuestion.Count - 1; i >= 0; i--)
-        //    {
-        //        listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdQuestion(listQuestion[i]._Id);
-        //        for (int j = listQuestionAsked.Count - 1; j >= 0; j--)
-        //        {
-        //            //if ((!TextBoxFromDate.Text.ToString().Equals("")) && (!TextBoxToDate.Text.ToString().Equals("")))
-        //            //{
-        //            //if ((DateTime.Parse(TextBoxFromDate.Text.ToString()) <= DateTime.Parse(listQuestionAsked[j]._Date.ToString().Trim()))&& (DateTime.Parse(TextBoxToDate.Text.ToString()) >= DateTime.Parse(listQuestionAsked[j]._Date.ToString().Trim())))
-        //            if (listQuestionAsked[j]._IdStudent==idStudent)
-        //            {
-        //                if (listQuestionAsked[j]._YN == 1)
-        //                {
-        //                    numOfYes++;
-        //                }
-        //                else
-        //                {
-        //                    numOfNo++;
-        //                }
-        //           // }
-        //            }
-             
-        //        }
-        //    }
-        //    s1.Points.AddXY(valX.Trim() + " " + "נכון", numOfYes);
-        //    s1.Points[colorId].Color = colorCourses[colorId];
+            for (int i = listQuestion.Count - 1; i >= 0; i--)
+            {
 
-        //    s1.Points.AddXY(valX.Trim()+" "+"שגוי", numOfNo);
-        //    s1.Points[colorId+1].Color = colorCourses[colorId++];
-        //    if (colorId > 8)
-        //    {
-        //        colorId = 0;
-        //    }
-          
 
-        //}
+                //if the question never ascked
+                if (!questionAskedBL.isQuestionAsk(listQuestion[i]._Id))
+                {
+                    listQuestion.RemoveAt(i);
+                }
+            }
+            //על כל שאלה להדפיס את התשובות ששיכות לה
+
+            for (int i = listQuestion.Count - 1; i >= 0; i--)
+            {
+                dr = new TableRow();
+                cell = new TableCell();
+                cell.Text = "";
+                dr.Cells.Add(cell);
+
+                //עבור כל שאלה---הדפס את השאלה עצמה
+                dr.CssClass = "lineClass";
+                cell = new TableCell();
+                cell.Text = listQuestion[i].getQuestion().ToString();
+                cell.BackColor = Color.Red;
+                dr.Cells.Add(cell);
+
+                cell = new TableCell();
+                dr.BackColor = Color.Red;
+                cell.Text = ":שאלה      " + "";
+                dr.Cells.Add(cell);
+                table1.Rows.Add(dr);
+
+                countAnswer = 0;
+                if (TextBoxFromDate.Text.ToString().Trim().Equals("00/00/00") || TextBoxToDate.Text.ToString().Trim().Equals("00/00/00"))
+                {
+                    validTime = true;
+                }
+                if (!TextBoxToDate.Text.ToString().Trim().Equals("00/00/00"))
+                {
+                    date1 = TextBoxToDate.Text.ToString().Trim();
+                    dateToDate = Convert.ToDateTime(date1);
+                }
+
+                if (!TextBoxFromDate.Text.ToString().Trim().Equals("00/00/00"))
+                {
+                    date2 = TextBoxFromDate.Text.ToString().Trim();
+                    dateFromDate = Convert.ToDateTime(date2);
+                }
+                //finde the true ans id
+
+
+                listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdStudent(Convert.ToInt32(Session["id"]));
+                for (int j = listQuestionAsked.Count - 1; j >= 0; j--)
+                {
+                    DateTime between = new DateTime(Convert.ToDateTime(listQuestionAsked[j]._Date.ToString()).Ticks);
+
+                    if (validTime == false)
+                    {
+                        validTime = TimeBetween(between, dateFromDate, dateToDate);
+                    }
+                    if (validTime == true)
+                    {
+                        countAnswer++;
+                    }
+
+
+
+                }
+                int numAns;
+                listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[i].getId());
+                //הדפס את כל התשובות של אותה שאלה
+
+                for (int j = 0; j < listAnswer.Count; j++)
+                {
+                    numAns = 0;
+                    for (int x = listQuestionAsked.Count - 1; x >= 0; x--)
+                    {
+                        //סופר את מספר העונים עבור כל תשובה
+                        if (listQuestionAsked[x]._YN == listAnswer[j].getId() && validTime == true)
+                        {
+                            numAns++;
+                        }
+                    }
+
+                    if (countAnswer != 0)
+                    {
+                        numAns = (numAns * 100) / countAnswer;
+
+                    }
+                    else
+                    {
+                        numAns = 0;
+                    }
+                    dr = new TableRow();
+                    cell = new TableCell();
+                    cell.Text = Convert.ToString(numAns) + "%";
+                    dr.Cells.Add(cell);
+
+                    int idAns;
+                    idAns = j + 1;
+
+                    cell = new TableCell();
+                    cell.Text = listAnswer[j].getAnswer().ToString();
+                    dr.CssClass = "lineClass";
+                    dr.BackColor = Color.White;
+                    dr.Cells.Add(cell);
+                    cell = new TableCell();
+                    if (listAnswer[j].getCorrectAnswer() != 0)
+                    {
+                        dr.CssClass = "cellClass";
+                    }
+                    cell.Text = "תשובה " + idAns;
+                    dr.Cells.Add(cell);
+
+                    table1.Rows.Add(dr);
+
+                }
+
+            }
+        }
+        bool TimeBetween(DateTime datetime, DateTime start, DateTime end)
+        {
+            if (start < end)
+                return start <= datetime && datetime <= end;
+            // start is after end, so do the inverse comparison
+            return false;// !(end < datetime && datetime < start);
+        }
         protected void logout_click(object sender, EventArgs e)
         {
             Session.Abandon();

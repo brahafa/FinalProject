@@ -168,6 +168,35 @@ function SelectCurseStatistic() {
         }
     }
 }
+
+function SelectCurseStudentStatistic() {
+    var select_CourseS = $("#MainContent_select_Course").val();//selectQuestion
+    MainContent_selectTest.value = select_CourseS.toString();//insert id course to textBox
+    if (select_CourseS != "-1") {
+        $.ajax({
+            type: "POST",
+            url: "StatisticStudent.aspx/updateSelectQuestionnaires",
+            data: '{SelectValue: "' + select_CourseS + '" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var tmp = data.d;
+                //create option of  questionnaires select
+                initQuestionnairesS(tmp);
+            },
+            failure: function (response) {
+            }
+        });
+    }
+    else {
+        var select = document.getElementById('MainContent_selected_Questionnaires');
+        var length1 = select.options.length;
+        //clear the questionnaires select 
+        for (var i = length1; i > 0; i--) {
+            select.remove(i);
+        }
+    }
+}
 //init the Questionnaires select by cours id
 //איתחול הסלקט של השאלונים ומחיקתם לפני תחילת המילוי כדי שלא יהיה כפל שאלונים
 function initQuestionnaires(tmp){

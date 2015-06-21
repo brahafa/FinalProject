@@ -86,7 +86,23 @@ namespace Clicker.DAL
             con.Close();
             return listQuestionAsked;
         }
-
+        public List<QuestionAsked> getAllQuestionAskedByIdStudent(int IdStudent)
+        {
+            con.Open();
+            string sqlString = "select * from QuestionAsked q where q.IdStudent = " + IdStudent + ";";
+            MySqlCommand com = new MySqlCommand(sqlString, con);
+            List<QuestionAsked> listQuestionAsked = new List<QuestionAsked>();
+            using (MySqlDataReader rdr = com.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    listQuestionAsked.Add(new QuestionAsked(Convert.ToInt32(rdr["Id"]), Convert.ToInt32(rdr["IdQuestion"]),
+                        Convert.ToInt32(rdr["IdStudent"]), (rdr["Date"]).ToString(), Convert.ToInt32(rdr["YN"])));
+                }
+            }
+            con.Close();
+            return listQuestionAsked;
+        }
         //delet all QuestionAsked By Id Question
         public void deleteQuestionAskedByIdQuestion(int IdQuestion)
         {
