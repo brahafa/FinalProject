@@ -22,40 +22,58 @@ namespace Clicker.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// Calendar2 control.
+        /// selected_Questionnaires control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar2;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect selected_Questionnaires;
         
         /// <summary>
-        /// CalendarTo control.
+        /// select_Course control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar CalendarTo;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect select_Course;
         
         /// <summary>
-        /// TextBoxFromDate control.
+        /// selectTest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxFromDate;
+        protected global::System.Web.UI.WebControls.TextBox selectTest;
         
         /// <summary>
-        /// TextBoxToDate control.
+        /// selectQuestion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxToDate;
+        protected global::System.Web.UI.WebControls.TextBox selectQuestion;
+        
+        /// <summary>
+        /// statistictTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table statistictTable;
+        
+        /// <summary>
+        /// BtnTest2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnTest2;
         
         /// <summary>
         /// conectedUser control.

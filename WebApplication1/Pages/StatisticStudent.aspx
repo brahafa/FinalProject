@@ -4,7 +4,7 @@
 <asp:Content ID="body" runat="server" ContentPlaceHolderID="MainContent">
 
 
-    <form id="Form1" runat="server">
+   <form id="Form1" runat="server">
         <section id="content">
             <div class="padding">
                 <div class="wrapper margin-bot">
@@ -16,57 +16,63 @@
                                         <h2 class="p0">סטטיסטיקה</h2>
                                     </div>
                                 </li>
-                               
-                                <li style: height="70px" ;>
+                                  <li class="styled-select">
                                     <br />
                                     <br />
                                     <br />
                                     <br />
-                                    <div id="cointainDateDiv">
-                                        <div id="divCalendar" z-index:"99999"; class="divCalendar">
-                                        <asp:Calendar ID="Calendar2" CssClass="calendar" runat="server" DayNameFormat="FirstLetter" CellPadding="4"  OnSelectionChanged="CalendarFrom_SelectionChanged">
-                                            <TodayDayStyle ForeColor="Black" BackColor="#E9E19A"></TodayDayStyle>
-                                            <DayHeaderStyle Font-Size="7pt" Font-Bold="True" BackColor="#E9E19A"></DayHeaderStyle>
-                                            <SelectedDayStyle Font-Bold="True" ForeColor="White" BackColor="#D5D900"></SelectedDayStyle>
-                                        </asp:Calendar>
+
+                                    <select class="styled-select" id="selected_Questionnaires" onchange="selectQuestion()" runat="server">
+                                        <option value="-1">:בחר שאלון</option>
+                                    </select>
+
+                                    <select class="styled-select" id="select_Course" onchange="SelectCurseStudentStatistic()" runat="server">
+                                        <option value="-1">:בחר קורס</option>
+                                    </select>
+                                    <asp:TextBox ID="selectTest" Style="display: none" runat="server" ></asp:TextBox>
+                                     <asp:TextBox ID="selectQuestion" Style="display: none" runat="server"></asp:TextBox>
+                                     </li>
+                               <%-- <li style: height="70px" ;>--%>
+                                <%--    <div id="DivDate"> 
+                                       <p  class="color-4 p2" id="labelDate" >
+                                      
+                                       <asp:Label ID="TextBoxToDate" BorderColor="Red" runat="server" Width="85px" BorderWidth="2px">00/00/00</asp:Label>
+                                      :מתאריך
+         
+                                        <asp:Label ID="TextBoxFromDate"   BorderColor="Red"  runat="server" Width="85px" BorderWidth="2px">00/00/00</asp:Label>
+                                       עד תאריך
+                                      </p>
+                                 </div>--%>
+
+
+<%--                                    <br /> <br /> <br />
+
+
+
+                                        <div id="divCalendar1" class="divCalendar" style="display: none">
+                                       <asp:Calendar ID="Calendar1" runat="server"  OnSelectionChanged="Calendar1_SelectionChanged"  SelectionMode="DayWeekMonth" >
+                                       </asp:Calendar>
+                                       </div>
+                                     <div id="divCalendar2" class="divCalendar" style="display: none">
+                                       <asp:Calendar ID="Calendar2" runat="server"  OnSelectionChanged="Calendar2_SelectionChanged"  SelectionMode="DayWeekMonth" >
+                                       </asp:Calendar>
+                                       </div>
+                                </li>--%>
+                                <li>
+                                 <div>
+                                         <asp:Table ID="statistictTable" BorderColor="Black" BorderWidth="3px" runat="server" Width="100%">
+                                             </asp:Table>
+         
                                     </div>
 
-                                    <div id="divCalendar2" class="divCalendar"  z-index:"99999";>
-                                        <asp:Calendar ID="CalendarTo" CssClass="calendar" runat="server" DayNameFormat="FirstLetter" CellPadding="4" OnSelectionChanged="CalendarTo_SelectionChanged">
-                                            <TodayDayStyle ForeColor="Black" BackColor="#E9E19A"></TodayDayStyle>
-                                            <DayHeaderStyle Font-Size="7pt" Font-Bold="True" BackColor="#E9E19A"></DayHeaderStyle>
-                                            <SelectedDayStyle Font-Bold="True" ForeColor="White" BackColor="#D5D900"></SelectedDayStyle>
-                                        </asp:Calendar>
-                                    </div>
-
-                                    <div id="dateDiv" style="width=100px"">
-                                          <h6 style="color: red">מתאריך</h6>
-                                    <asp:TextBox ID="TextBoxFromDate" Style="display: inline" runat="server"></asp:TextBox>
-                                    <h6 style="color: red">עד תאריך</h6>
-                                    <asp:TextBox ID="TextBoxToDate" Style="display: inline" runat="server"></asp:TextBox>
-
-                                    </div>
-                                  </div>
                                 </li>
                                 <li>
-                                
-                                </li>
-                
+                                    <asp:Button ID="BtnTest2" runat="server" OnClick="BtnselectStatistic_Click" CssClass="myButton" Text="הצג סטטיסטיקה"></asp:Button>
+                                                                   <br /> <br /> <br />
+
+                                     </li>
                                 <li>
-                                   <%-- <div>
-                                        <asp:Chart ID="cTestChart" runat="server" BackColor="Tomato" BackGradientStyle="Center" Palette="Chocolate" RightToLeft="Yes" Width="600px">
-                                            <Series >
-                                                <asp:Series Name="Testing"  YValueType="Int32" >
-                                                </asp:Series>
-                                            </Series>
-
-                                            <ChartAreas>
-                                                <asp:ChartArea Name="ChartArea1">
-                                                </asp:ChartArea>
-
-                                            </ChartAreas>
-                                        </asp:Chart>
-                                    </div>--%>
+                                   
 
                                 </li>
                             </ul>

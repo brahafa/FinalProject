@@ -21,7 +21,7 @@ namespace Clicker.Pages
         private static QuestionnaireBL questionnaireBl;
         private static QuestionBL questionBL;
         private static QuestionAskedBL questionAskedBL;
-
+        private static DisplayBL displayBL;
         private static AnswerBL answerBL;
         public static List<Course> listCourse;
         public static List<Questionnaire> listQuestionnarie;
@@ -30,6 +30,7 @@ namespace Clicker.Pages
             questionAskedBL = new QuestionAskedBL();
             courseBL = new CourseBL();
             answerBL = new AnswerBL();
+            displayBL = new DisplayBL();
             questionBL = new QuestionBL();
             questionnaireBl = new QuestionnaireBL();
             listCourse = new List<Course>();
@@ -168,18 +169,17 @@ namespace Clicker.Pages
                 }
                 maxAnswer++;
             }
-            questionBL.AddQuestion(maxQuestion, question, idQuestionnier, type, "sasa");
+            questionBL.AddQuestion(maxQuestion, question, idQuestionnier, type, "profile.jpg");
         }
 
         [WebMethod]
         public static void saveAndDisplay_ClientClick(String AllAnsStr)
         {
-            int maxIdQuestionAsk = questionAskedBL.maxIdquestionAsk() + 1;
-            maxQuestion = questionBL.maxIdQuestion();
-            DateTime thisDay = DateTime.Today;
+            
 
-            questionAskedBL.AddNewQuestionAsked(maxIdQuestionAsk, maxQuestion, -1, thisDay.ToString(), 2);
-
+           // maxQuestion = questionBL.maxIdQuestion();
+            int maxIdDidplay = displayBL.maxIdDisplay()+1;
+            displayBL.AddNewDisplay(maxIdDidplay, maxQuestion, 0);
         }
         protected void logout_click(object sender, EventArgs e)
         {

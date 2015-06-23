@@ -107,6 +107,24 @@ namespace Clicker.DAL
             return listQuestion;
         }
 
+        public List<Question> getAllQuestionByIDAndQuestionnaire(int IdQuestionnaire, int Id)
+        {
+            con.Open();
+            string sqlString = "select * from Question q where q.IdQuestionnaire = " + IdQuestionnaire + " AND q.Id=" + Id + ";";
+            MySqlCommand com = new MySqlCommand(sqlString, con);
+            List<Question> listQuestion = new List<Question>();
+            using (MySqlDataReader rdr = com.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    listQuestion.Add(new Question(Convert.ToInt32(rdr["Id"]), rdr["Question"].ToString(), Convert.ToInt32(rdr["IdQuestionnaire"]),
+                        Convert.ToInt32(rdr["Type"]), rdr["File1"].ToString()));
+                }
+            }
+            con.Close();
+            return listQuestion;
+        }
+
         //get All Question By Type
         public List<Question> getAllQuestionByType(int Type)
         {

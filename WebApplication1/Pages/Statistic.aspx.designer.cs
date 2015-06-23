@@ -58,6 +58,33 @@ namespace Clicker.Pages {
         protected global::System.Web.UI.WebControls.TextBox selectQuestion;
         
         /// <summary>
+        /// TextBoxToDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TextBoxToDate;
+        
+        /// <summary>
+        /// TextBoxFromDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TextBoxFromDate;
+        
+        /// <summary>
+        /// Calendar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        
+        /// <summary>
         /// Calendar2 control.
         /// </summary>
         /// <remarks>
@@ -67,31 +94,13 @@ namespace Clicker.Pages {
         protected global::System.Web.UI.WebControls.Calendar Calendar2;
         
         /// <summary>
-        /// CalendarTo control.
+        /// statistictTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar CalendarTo;
-        
-        /// <summary>
-        /// TextBoxFromDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxFromDate;
-        
-        /// <summary>
-        /// TextBoxToDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxToDate;
+        protected global::System.Web.UI.WebControls.Table statistictTable;
         
         /// <summary>
         /// BtnTest2 control.
@@ -101,15 +110,6 @@ namespace Clicker.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnTest2;
-        
-        /// <summary>
-        /// BtnTest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnTest;
         
         /// <summary>
         /// conectedUser control.

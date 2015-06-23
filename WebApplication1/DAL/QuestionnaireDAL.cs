@@ -149,9 +149,8 @@ namespace Clicker.DAL
         // get Questionnaire by IdCourse
         public List<Questionnaire> getAllQuestionnaireByIdCourse(int IdCourse)
         {
-            con.Open();
-            string sqlString = "select q.Id, q.Name, q.IdCours, q.Permit from Questionnaire q, Course c " +
-                "where q.IdCours = c.Id AND c.Id = " + IdCourse + ";";
+            con.Open();        
+            string sqlString = "select * from Questionnaire q where q.IdCours = " + IdCourse + ";";
             MySqlCommand com = new MySqlCommand(sqlString, con);
             List<Questionnaire> listQuestionnaire = new List<Questionnaire>();
             using (MySqlDataReader rdr = com.ExecuteReader())

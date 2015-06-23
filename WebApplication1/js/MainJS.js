@@ -3,6 +3,7 @@ var check = 0;
 var checkYesNo = 0;
 var StrAns='';
 var numAns = 0;
+var calender = 0;
 var select_Course = ''; //the value(id) of course selected
 var QuestionnaireSelect = ''; //the value(id) of  Questionnair selected
 // display input to inser name new course
@@ -141,11 +142,40 @@ function selectQuestion() {
 }
 function SelectCurseStatistic() {
     var select_CourseS = $("#MainContent_select_Course").val();//selectQuestion
-    MainContent_selectTest.value = select_CourseS.toString();
+    MainContent_selectTest.value = select_CourseS.toString();//insert id course to textBox
     if (select_CourseS != "-1") {
         $.ajax({
             type: "POST",
             url: "Statistic.aspx/updateSelectQuestionnaires",
+            data: '{SelectValue: "' + select_CourseS + '" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var tmp = data.d;
+                //create option of  questionnaires select
+                initQuestionnairesS(tmp);
+            },
+            failure: function (response) {
+            }
+        });
+    }
+    else {
+        var select = document.getElementById('MainContent_selected_Questionnaires');
+        var length1 = select.options.length;
+        //clear the questionnaires select 
+        for (var i = length1; i > 0; i--) {
+            select.remove(i);
+        }
+    }
+}
+
+function SelectCurseStudentStatistic() {
+    var select_CourseS = $("#MainContent_select_Course").val();//selectQuestion
+    MainContent_selectTest.value = select_CourseS.toString();//insert id course to textBox
+    if (select_CourseS != "-1") {
+        $.ajax({
+            type: "POST",
+            url: "StatisticStudent.aspx/updateSelectQuestionnaires",
             data: '{SelectValue: "' + select_CourseS + '" }',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -226,7 +256,7 @@ $(document).ready(function () {
         document.getElementById('CheckYes').checked = false;
         document.getElementById('CheckNo').checked = false;
 
-        document.getElementById('MainContent_answer1').value = '';
+        document.getElementById('answer1').value = '';
         document.getElementById('answer2').value = '';
         document.getElementById('answer3').value = '';
         document.getElementById('answer4').value = '';
@@ -275,7 +305,7 @@ $(document).ready(function () {
         document.getElementById('OpenDiv').style.display = 'none';
         document.getElementById('yesNoDiv').style.display = 'inline';
        
-        document.getElementById('MainContent_answer1').value = '';
+        document.getElementById('answer1').value = '';
         document.getElementById('answer2').value = '';
         document.getElementById('answer3').value = '';
         document.getElementById('answer4').value = '';
@@ -458,7 +488,7 @@ function clean(){
     document.getElementById('CheckYes').checked = false;
     document.getElementById('CheckNo').checked = false;
 
-    document.getElementById('MainContent_answer1').value = '';
+    document.getElementById('answer1').value = '';
     document.getElementById('answer2').value = '';
     document.getElementById('answer3').value = '';
     document.getElementById('answer4').value = '';
@@ -494,8 +524,8 @@ $(document).ready(function () {
     $("#MainContent_displayClass").click(function () {
         saveAndDisplayClick();
 
+        var AllAnsStr = "";
 
-        var AllAnsStr = "";//numCorectAns + "#" + buildAnsQuestStr(numAns);
         $.ajax({
             type: "POST",
             url: "AddQuestion.aspx/saveAndDisplay_ClientClick",
@@ -602,14 +632,14 @@ function validAmericanQ() {
     var idCheckChecked=0;
     StrAns = '';
   
-    if (document.getElementById('MainContent_answer1').value.toString().length == 0) {
+    if (document.getElementById('answer1').value.toString().length == 0) {
         document.getElementById('err').style.display = 'inline';
         document.getElementById('err').value = "מלא לפחות תשובה אחת*";
         return -1;
     }
     else {
         numAns=1;
-        StrAns = document.getElementById('MainContent_answer1').value.toString();
+        StrAns = document.getElementById('answer1').value.toString();
     }
     if (document.getElementById('answer2').value.toString() == '') {
       
@@ -659,24 +689,29 @@ function IsAnsChoose(idCheckChecked, numAns) {
         return -1;
     }
 }
-//$(document).ready(function () {
-//    $("#MainContent_TextBox1").on("click", function () { $("#MainContent_TextBox1").css("visibility", "hidden"); })
-//});
 
 $(document).ready(function () {
     $("#MainContent_TextBoxFromDate").click(function () {
-
-        document.getElementById('divCalendar').style.display = 'inline';
-        document.getElementById('divCalendar2').style.display = 'none';
+        if (document.getElementById('divCalendar2').style.display == 'none') {
+            document.getElementById('divCalendar2').style.display = 'inline';
+        }
+        else if (document.getElementById('divCalendar2').style.display == 'inline') {
+            document.getElementById('divCalendar2').style.display = 'none';
+        }
+        document.getElementById('divCalendar1').style.display = 'none'
 
     });
 });
 
 $(document).ready(function () {
     $("#MainContent_TextBoxToDate").click(function () {
-
-        document.getElementById('divCalendar2').style.display = 'inline';
-        document.getElementById('divCalendar').style.display = 'none';
+        if (document.getElementById('divCalendar1').style.display == 'none') {
+            document.getElementById('divCalendar1').style.display = 'inline';
+        }
+        else if (document.getElementById('divCalendar1').style.display == 'inline') {
+                document.getElementById('divCalendar1').style.display = 'none';
+            }
+        document.getElementById('divCalendar2').style.display = 'none';
 
     });
 });

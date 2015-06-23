@@ -41,6 +41,10 @@ namespace Clicker.BL
             QuestionList = questionDAL.getAllQuestionByQuestionnaire(IdQuestionnaire);
             return QuestionList;
         }
+         public List<Question> getAllQuestionByIDAndQuestionnaire(int IdQuestionnaire, int Id)
+        {
+            return questionDAL.getAllQuestionByIDAndQuestionnaire(IdQuestionnaire, Id);
+        }
 
         //get All Question By Type
         public List<Question> getAllQuestionByType(int Type)
