@@ -93,7 +93,8 @@ namespace Clicker.Pages
 
             if (displayType == 1)// display on question
             {
-                //
+                //question to display
+                //listQuestion = displayBL.getDisplayQuestionByQuestionnaire(idCourse);
 
                 //get all display question
                 listDisplay = displayBL.getDisplayByQuestion();

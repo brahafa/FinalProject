@@ -57,5 +57,17 @@ namespace Clicker.BL
             return displatDAL.getDisplayByQuestionnaire();
         }
 
+        //get to display questions (questionnaire)
+        public List<Question> getDisplayQuestionsByQuestionnaire(int IdCourse)
+        {
+            return displatDAL.getDisplayQuestionsByQuestionnaire(IdCourse);
+        }
+
+                //get to display one question
+        public List<Question> getDisplayQuestionByQuestionnaire(int IdCourse)
+        {
+            return displatDAL.getDisplayQuestionByQuestionnaire(IdCourse);
+        }
+
     }
 }

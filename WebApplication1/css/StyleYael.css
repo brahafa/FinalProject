@@ -8,9 +8,10 @@
 }
 
 #MainContent_NameQuestion{
-    background-color:white;
-    border:none;
-    width:550px;
+    background-color:Coral;
+    width:100%;
+      font-size: 22px;
+  text-align: right;
 }
 #stockQuestionText{
     color:#FF0000;
@@ -18,8 +19,14 @@
 
 #MainContent_removeCourseBtnFromQ{
 
-    margin-right: 310px;
+      margin-right: 550px;
+  float: left;
 }
+
+/*.p0 li{
+
+    display:initial;
+}*/
 
 .indentStock{
 
@@ -70,6 +77,22 @@ border: none;
 .buttonStock:hover {
 
     color: black;
+}
+
+#codeCourse{
+
+font-size: 25px;
+
+  color: gray;
+    width: 100%;
+  text-align: right;
+
+}
+
+#answers{
+
+      font-size: 18px;
+  color: black;
 }
 
 /*#MainContent_classDisplayBtnCourse{

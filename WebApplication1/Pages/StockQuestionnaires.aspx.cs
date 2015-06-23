@@ -19,7 +19,7 @@ namespace Clicker.Pages
         public List<Answer> listAnswer;
         public AnswerBL answerBL;
         public static List<Question> listQuestion;
-        private static int idCourse = 0;
+        public static int idCourse = 0;
         private String CourseName;
         private static GlobalFunction global;
         private static IList<Course> listCourse;
@@ -73,6 +73,8 @@ namespace Clicker.Pages
                 idCourse = 0;
                 //staticBtn.Style.Add("display", "none");
                 removeCourseBtnFromQ.Style.Add("display", "none");
+                //codeCourse.Style.Add("display", "none");
+                
 
                 //removeQuestionnaireBtn.Style.Add("display", "none");
                 //copyQuestionnaireBtn.Style.Add("display", "none");
@@ -121,6 +123,9 @@ namespace Clicker.Pages
             if (idCourse != 0)
             {
                 removeQuestionnaireBtn.Style.Add("display", "inline");
+                //classDisplayBtn.Style.Add("display", "inline");
+                displayQuestFromCourseBtn.Style.Add("display", "inline");
+                deletDisplayQuestFromCourseBtn.Style.Add("display", "inline");
 
                 //Response.Write("<script>document.getElementById('MainContent_displayQuestFromCourseBtn').style.display = 'inline';</script>");
 
@@ -173,17 +178,17 @@ namespace Clicker.Pages
             AnswerBL answerBL = new AnswerBL();
             QuestionAskedBL questionAskedBL = new QuestionAskedBL();
 
-            int idQuestionnaire = questionnaireBL.getIdQuestionnaireByIdCourseAndName(idCourse, questionnaireName);//find idQuestionnaire
+            //int idQuestionnaire = questionnaireBL.getIdQuestionnaireByIdCourseAndName(idCourse, questionnaireName);//find idQuestionnaire
 
-            listQuestions = questionBL.getAllQuestionByQuestionnaire(idQuestionnaire);
+            listQuestions = questionBL.getAllQuestionByQuestionnaire(questionnaireId);
             for (int j = 0; j < listQuestions.Count; j++)
             {
                 questionAskedBL.deleteQuestionAskedByIdQuestion(listQuestions[j].getId()); // delete all QuestionAsked By IdQuestion
                 answerBL.deleteAnswerByIdQuestion(listQuestions[j].getId()); // delete all answer By IdQuestion
             }
 
-            questionBL.deleteQuestionByQuestionnaire(idQuestionnaire); //delete all Question By Questionnaire
-            questionnaireBL.deleteQuestionnaire(idQuestionnaire);//delet questionnaire
+            questionBL.deleteQuestionByQuestionnaire(questionnaireId); //delete all Question By Questionnaire
+            questionnaireBL.deleteQuestionnaire(questionnaireId);//delet questionnaire
 
             //"free" object
             questionnaireBL = null;
@@ -291,6 +296,15 @@ namespace Clicker.Pages
             displayBL.AddNewDisplay(maxIdDisplay+1, idQuestZero, idQ);
 
         }
+
+        //check if this questionnaire display student- display stop btn
+        [System.Web.Services.WebMethod(EnableSession = true)]
+        public static void displayStopBtn(String idQuestionnaire)
+        {
+
+
+        }
+        
 
 
         //free session and redirect to login page.

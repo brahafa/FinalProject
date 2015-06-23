@@ -29,6 +29,22 @@ function setQuestionnaireName(nameAndId) {
     $("#MainContent_QuestionnaireName").val(nameAndIdArry[0]);
     $("#MainContent_idQuestnaire").val(nameAndIdArry[1].trim());
 
+    //check if this questionnaire display student- for stop btn
+    $.ajax({
+        type: "POST",
+        url: "StockQuestionnaires.aspx/displayStopBtn",
+        data: '{idQuestionnaire: "' + nameAndIdArry[1].trim() + '"}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+
+            //alert("display to class");
+        },
+        failure: function (response) {
+            alert("ajax failure");
+
+        }
+    });
 }
 
 function setQuestionId(id) {
@@ -46,7 +62,7 @@ function setQuestionId(id) {
 //}
 
 $(document).ready(function () {
-    $("#MainContent_classDisplayBtnCourse").click(function () {
+    $("#MainContent_displayQuestFromCourseBtn").click(function () {
 
 
         var idQuestionnaire = $("#MainContent_idQuestnaire").val();
@@ -59,7 +75,7 @@ $(document).ready(function () {
             dataType: "json",
             success: function (result) {
 
-
+                alert("display to class");
             },
             failure: function (response) {
                 alert("ajax failure");
@@ -609,8 +625,12 @@ $(document).ready(function () {
 
         document.getElementById('MainContent_StockQuestion').style.display = 'none';
         document.getElementById('MainContent_stockQuestionnaire').style.display = 'inline';
+        //$("#displayQuestFromCourseBtn").css("display", "none");
+        document.getElementById('MainContent_displayQuestFromCourseBtn').style.display = 'none';
+        document.getElementById('MainContent_deletDisplayQuestFromCourseBtn').style.display = 'none';
         document.getElementById('MainContent_removeQuestionnaireBtn').style.display = 'none';
         document.getElementById('MainContent_selectCourse').style.display = 'none';
+        
 
     });
 });

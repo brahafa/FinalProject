@@ -182,5 +182,50 @@ namespace Clicker.DAL
             return listDisplayQuestion;
 
         }
+
+        //get to display questions (questionnaire)
+        public List<Question> getDisplayQuestionsByQuestionnaire(int IdCourse)
+        {
+
+            con.Open();
+            string sqlString = "select qu.Id, qu.Question, qu.IdQuestionnaire, qu.Type, qu.File1 from Display d, Questionnaire q, Question qu where d.IdQuestionnaire = q.Id and q.IdCours = " + IdCourse + " and q.Id = qu.IdQuestionnaire;";
+            MySqlCommand com = new MySqlCommand(sqlString, con);
+            List<Question> listDisplayQuestions = new List<Question>();
+            using (MySqlDataReader rdr = com.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    listDisplayQuestions.Add(new Question(Convert.ToInt32(rdr["Id"]), Convert.ToString(rdr["Question"]), Convert.ToInt32(rdr["IdQuestionnaire"])
+                        , Convert.ToInt32(rdr["Type"]), Convert.ToString(rdr["File1"])));
+                }
+            }
+            con.Close();
+            return listDisplayQuestions;
+
+        }
+
+        //get to display one question
+        public List<Question> getDisplayQuestionByQuestionnaire(int IdCourse)
+        {
+
+            con.Open();
+            string sqlString = "select qu.Id, qu.Question, qu.IdQuestionnaire, qu.Type, qu.File1 from Display d, Questionnaire q, Question qu where d.IdQuestion = qu.Id and q.IdCours = " + IdCourse + " and q.Id = qu.IdQuestionnaire;";
+            MySqlCommand com = new MySqlCommand(sqlString, con);
+            List<Question> listDisplayQuestions = new List<Question>();
+            using (MySqlDataReader rdr = com.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    listDisplayQuestions.Add(new Question(Convert.ToInt32(rdr["Id"]), Convert.ToString(rdr["Question"]), Convert.ToInt32(rdr["IdQuestionnaire"])
+                        , Convert.ToInt32(rdr["Type"]), Convert.ToString(rdr["File1"])));
+                }
+            }
+            con.Close();
+            return listDisplayQuestions;
+
+        }
+
+
+
     }
 }
