@@ -18,7 +18,7 @@
                <br />
               <%if (Request.QueryString["IdCourse"] != null)
                 { %>
-                  <h2 id="codeCourse" class="p0" >קוד קורס = <% =idCourse %></h2>
+                  <h2 id="codeCourse" class="p0" >קוד קורס - <% =idCourse %></h2>
               
                       <%} %>     
               

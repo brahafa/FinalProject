@@ -31,6 +31,7 @@
 
       margin-right: 550px;
   float: left;
+  margin-top:90px;
 }
 
 /*.p0 li{
@@ -91,9 +92,9 @@ border: none;
 
 #codeCourse{
 
-font-size: 25px;
+font-size: 24px;
 
-  color: gray;
+  color: black;
     width: 100%;
   text-align: right;
 
