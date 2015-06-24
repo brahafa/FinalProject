@@ -1,4 +1,14 @@
 ﻿
+
+
+
+    #MainContent_courseName{
+
+    text-align: right;
+     
+     direction: rtl;
+    }
+
 #questionText{
 
     color:red;
