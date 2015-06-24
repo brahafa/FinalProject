@@ -20,6 +20,7 @@ namespace Clicker.Pages
         public AnswerBL answerBL;
         public static List<Question> listQuestion;
         public static int idCourse = 0;
+        public static int idLecturer = 0;
         private String CourseName;
         private static GlobalFunction global;
         private static IList<Course> listCourse;
@@ -44,6 +45,8 @@ namespace Clicker.Pages
             listCourse = new List<Course>();
             displayBL = new DisplayBL();
 
+
+            idLecturer = Convert.ToInt32(Session["id"]);
 
             if (Request.QueryString["IdCourse"] != null)// came from click on course
             {
@@ -78,10 +81,10 @@ namespace Clicker.Pages
 
                 //removeQuestionnaireBtn.Style.Add("display", "none");
                 //copyQuestionnaireBtn.Style.Add("display", "none");
-                listQuestionnaire = questionnaireBL.getAllQuestionnaireByPermit();
+                listQuestionnaire = questionnaireBL.getAllQuestionnaireByPermitExeptLecturer(idLecturer);
 
                 selectCourse.Items.Clear();
-                listCourse = courseBL.getCoursesByIdLecturer(Convert.ToInt32(Session["id"]));
+                listCourse = courseBL.getCoursesByIdLecturer(idLecturer);
                 selectCourse.Items.Add(new ListItem("בחר קורס", "-1"));
                 foreach (Course c in listCourse)
                 {
@@ -116,8 +119,9 @@ namespace Clicker.Pages
 
                 questionnaireId = 0;
             }
-            
 
+
+            List<Question> listQuest = new List<Question>();
 
 
             if (idCourse != 0)
@@ -128,7 +132,18 @@ namespace Clicker.Pages
                 deletDisplayQuestFromCourseBtn.Style.Add("display", "inline");
 
                 //Response.Write("<script>document.getElementById('MainContent_displayQuestFromCourseBtn').style.display = 'inline';</script>");
+                listQuest = displayBL.getDisplayQuestionsByQuestionnaire(idCourse);
 
+                if (listQuest.Count != 0)
+                {
+                    deletDisplayQuestFromCourseBtn.Style.Add("display", "inline");
+                    displayQuestFromCourseBtn.Style.Add("display", "none");
+                }
+                else
+                {
+                    deletDisplayQuestFromCourseBtn.Style.Add("display", "none");
+                    displayQuestFromCourseBtn.Style.Add("display", "inline");
+                }
                 
                 //questionnaireId = questionnaireBL.getIdQuestionnaireByIdCourseAndName(idCourse, questionnaireName);
                 listQuestion = questionBL.getAllQuestionByQuestionnaire(questionnaireId);
@@ -138,6 +153,8 @@ namespace Clicker.Pages
                 removeQuestionnaireBtn.Style.Add("display", "none");
                 copyQuestionnaireBtn.Style.Add("display", "inline");
                 selectCourse.Style.Add("display", "inline");
+
+                listQuestion = questionBL.getAllQuestionByQuestionnaire(questionnaireId);
 
 
             }
@@ -294,14 +311,6 @@ namespace Clicker.Pages
             
 
             displayBL.AddNewDisplay(maxIdDisplay+1, idQuestZero, idQ);
-
-        }
-
-        //check if this questionnaire display student- display stop btn
-        [System.Web.Services.WebMethod(EnableSession = true)]
-        public static void displayStopBtn(String idQuestionnaire)
-        {
-
 
         }
         

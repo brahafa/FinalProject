@@ -46,27 +46,31 @@
                             <div id="Americananswer" runat="server" class="answer" style="display: none">
                                 <ul>
                                     <%  
-                                        if (listDisplay != null && listDisplay.Count != 0)
+                                        if (listQuestion != null && listQuestion.Count != 0)
                                         {
+
+                                            listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[indexQuestion].getId());
+                                            numAns.Value = listAnswer.Count.ToString();
+
                                             if (listQuestion[indexQuestion]._Type == 2)//yes no question like american question
                                             {
-
                                                 Response.Write("<script>document.getElementById('MainContent_Americananswer').style.display = 'inline';</script>");
                                                 //yesNoDiv.Style.Add("display", "inline");
                                             }
                                             else if (listQuestion[indexQuestion]._Type == 3)//open question
                                             {
+                                                listAnswer = null;
                                                 Response.Write("<script>document.getElementById('MainContent_OpenDiv').style.display = 'inline';</script>");
                                                 //OpenDiv.Style.Add("display", "inline");
                                             }
-                                            else// american question
+                                            else if (listQuestion[indexQuestion]._Type == 1)// american question
                                             {
+
                                                 Response.Write("<script>document.getElementById('MainContent_Americananswer').style.display = 'inline';</script>");
                                                 //Americananswer.Style.Add("display", "inline");
                                             }
 
-                                            listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[indexQuestion].getId());
-                                            numAns.Value = listAnswer.Count.ToString();
+                                        }
                                     %>
                                     <li>
                                     <input type="text" id="numAns" style="display: none" runat="server" value="0" />
@@ -129,7 +133,7 @@
                                     </li>
                                     <%} %>
                                     <% 
-                }
+               
                                  %>
                                 </ul>
                             </div>

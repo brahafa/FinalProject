@@ -2,7 +2,7 @@
 //global 
 var numAnswer;
 var isGetAnswer = 0;// = false;
-var checkAns = 0;
+var checkAns = -1;
 
 
 function onClickQuestionnaire() {
@@ -29,22 +29,6 @@ function setQuestionnaireName(nameAndId) {
     $("#MainContent_QuestionnaireName").val(nameAndIdArry[0]);
     $("#MainContent_idQuestnaire").val(nameAndIdArry[1].trim());
 
-    //check if this questionnaire display student- for stop btn
-    $.ajax({
-        type: "POST",
-        url: "StockQuestionnaires.aspx/displayStopBtn",
-        data: '{idQuestionnaire: "' + nameAndIdArry[1].trim() + '"}',
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (result) {
-
-            //alert("display to class");
-        },
-        failure: function (response) {
-            alert("ajax failure");
-
-        }
-    });
 }
 
 function setQuestionId(id) {
@@ -90,7 +74,9 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#MainContent_nextQuestionBtn").click(function () {
        
-        if (checkAns != 0) {
+        //alert(checkAns);
+
+        if (checkAns != -1) {
 
             $.ajax({
                 type: "POST",
@@ -107,7 +93,7 @@ $(document).ready(function () {
 
                 }
             });
-        }
+        }//check ans
         //hidden nextBtn
         $("#MainContent_nextQuestionBtn").css("display", "none");
 
@@ -133,10 +119,13 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (result) {
 
-                    if (result.d == null) {
+                    if (result.d == "finish") {
 
                         $("#QuestionnaireTitle").text("ברכות! סיימת לענות על השאלון");
                         $("#questionText").empty();
+                        setTimeout('window.location.reload()', 5000);
+
+                        window.location = "HomePageStudent.aspx";
 
                         document.getElementById('MainContent_nextQuestionBtn').style.display = 'none';
 
@@ -250,11 +239,11 @@ function cleanCheckBox1() {
 
     if (document.getElementById('checkbox1').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
-        checkAns = 1;
+        checkAns = 0;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
-        checkAns = 0;
+        checkAns = -1;
     }
 
     numAnswer = $('#MainContent_numAns').val();
@@ -281,11 +270,11 @@ function cleanCheckBox2() {
     //check = 2;
     if (document.getElementById('checkbox2').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
-        checkAns = 2;
+        checkAns = 1;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
-        checkAns = 0;
+        checkAns = -1;
     }
 
     numAnswer = $('#MainContent_numAns').val();
@@ -310,11 +299,11 @@ function cleanCheckBox3() {
     //check = 3;
     if (document.getElementById('checkbox3').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
-        checkAns = 3;
+        checkAns = 2;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
-        checkAns = 0;
+        checkAns = -1;
     }
 
     numAnswer = $('#MainContent_numAns').val();
@@ -339,11 +328,11 @@ function cleanCheckBox4() {
     //check = 4;
     if (document.getElementById('checkbox4').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
-        checkAns = 4;
+        checkAns = 3;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
-        checkAns = 0;
+        checkAns = -1;
     }
 
     numAnswer = $('#MainContent_numAns').val();
@@ -368,11 +357,11 @@ function cleanCheckBox5() {
     //check = 5;
     if (document.getElementById('checkbox5').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
-        checkAns = 5;
+        checkAns = 4;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
-        checkAns = 0;
+        checkAns = -1;
     }
 
     numAnswer = $('#MainContent_numAns').val();
@@ -397,11 +386,11 @@ function cleanCheckBox6() {
     //check = 6;
     if (document.getElementById('checkbox6').checked == true) {
         $("#MainContent_nextQuestionBtn").css("display", "inline");
-        checkAns = 6;
+        checkAns = 5;
     }
     else {
         $("#MainContent_nextQuestionBtn").css("display", "none");
-        checkAns = 0;
+        checkAns = -1;
     }
 
     numAnswer = $('#MainContent_numAns').val();

@@ -22,7 +22,7 @@
               
                       <%} %>     
               
-
+            <%--  <input id="displayMyQuestionnaire" runat="server" class="myButton" type="button" value="הצג את השאלונים שלי" />--%>
               
                
             <div class="indent" id="stockQuestionnaire" style="display: inline" runat="server">
