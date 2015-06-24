@@ -10,9 +10,23 @@
  <div class="padding">
         <div class="wrapper margin-bot">
           <div  class="col-3" id="stockList">
-                            <h2 class="p0"> מאגר שאלונים  <% =getCourseName() %></h2> 
+
+                       <h2 class="p0"> מאגר שאלונים - <% =getCourseName() %> </h2> 
+              
+              <br />
+              <br />
+               <br />
+              <%if (Request.QueryString["IdCourse"] != null)
+                { %>
+                  <h2 id="codeCourse" class="p0" >קוד קורס - <% =idCourse %></h2>
+              
+                      <%} %>     
+              
+            <%--  <input id="displayMyQuestionnaire" runat="server" class="myButton" type="button" value="הצג את השאלונים שלי" />--%>
+              
+               
             <div class="indent" id="stockQuestionnaire" style="display: inline" runat="server">
-                <br /><br /><br /><br /><br />
+                <br />
                 <div class="QuestionnaireIndent">
                         <input type="text" id="idQuestnaire" name="idQuestnaire" style="display: none" runat="server" value="0" />
                         <input type="text" id="QuestionnaireName" style="display: none" runat="server" value="0" />
@@ -25,13 +39,17 @@
                                         %>
                             <li >
                                 <div id="QuestionnaireLiDiv" class="liDive">
+                                   
                                  <div id='<% =listQuestionnaire[i].getName()+","+ listQuestionnaire[i].getId()%>'>
                                     <asp:Button runat="server" id="NameQuestionnaire" OnClientClick="setQuestionnaireName($(this).last().parent().prop('id'));" OnClick ="onClick_Questionnaire" Text=""></asp:Button>
                                         </div>
                                 </div>
                             </li>
 
-                            <%}%>
+                            <%}
+                              
+                              
+                                %>
                         </ul>
                     </div>
 </div>
@@ -59,11 +77,16 @@
                                 <li>
                                    <% 
                                        
+                                        listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[j].getId());
+                                        
                                     for(int k=0; k<listAnswer.Count; k++)
                                         {
-                                        answer.Value = listAnswer[k].getAnswer();
+                                       // answer.Value = listAnswer[k].getAnswer();
                                          %>
-                                    <input id="answer" type="text" runat="server" value="0"/>
+                                   <%-- <input id="answer" type="text" runat="server" value="0"/>--%>
+                                    <label id="answers"><% =listAnswer[k].getAnswer() %></label>
+                                    <br />
+                                    <br />
                                     <%}%>
                                 </li>
 
@@ -80,13 +103,17 @@
            
               <div id="buttonAddRemoveQ" class="buttonAddRemove" >
                   <ol>
-                         <li>
-                        <input id="removeCourseBtnFromQ" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>  
+                         
 
+                      <li>
                               <input id="copyQuestionnaireBtn" class="myButton" runat="server" name="copyQuestionnaireBtn" type="button" value="העתקת שאלון" style="display:none"/>
-                        <input id="removeQuestionnaireBtn" class="myButton" runat="server" name="removeQuestionnaireBtn" type="button" value="הסרת שאלון" style="display:none"/>  
-
-</li>                      
+                        <input id="removeQuestionnaireBtn" class="myButton" runat="server" name="removeQuestionnaireBtn" type="button" value="הסרת שאלון" style="display:none"/> 
+                             <input id="deletDisplayQuestFromCourseBtn" runat="server" class="myButton" type="button" value="סיום שאלון" style="display:none" /> 
+                             <input id="displayQuestFromCourseBtn" class="myButton" runat="server" name="displayQuestFromCourseBtn" type="button" value="הצג לכיתה" style="display:none"/>  
+</li>    
+                                                   <li>
+                        <input id="removeCourseBtnFromQ" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>  
+</li>                   
                      <li class="styled-select" id="inputSelectCourse" >
                           <select class="styled-select" id="selectCourse" onchange="selectCourseForCopy()" runat="server" style="display:none">
                                         <option value="-1">:בחר קורס</option>

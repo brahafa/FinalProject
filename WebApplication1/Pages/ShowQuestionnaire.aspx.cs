@@ -91,60 +91,87 @@ namespace Clicker.Pages
                 }
             }
 
+            indexQuestion = 0;
+
             if (displayType == 1)// display on question
             {
-                //
+                //question to display
+                listQuestion = displayBL.getDisplayQuestionByQuestionnaire(idCourse);
 
                 //get all display question
-                listDisplay = displayBL.getDisplayByQuestion();
+                //listDisplay = displayBL.getDisplayByQuestion();
 
             }
             else// display questionnaire
             {
-                //get all display questionnnaire
-                listDisplay = displayBL.getDisplayByQuestionnaire();
 
-                if(listDisplay.Count != 0)
+                //questions to display
+                listQuestion = displayBL.getDisplayQuestionsByQuestionnaire(idCourse);
+
+                
+
+                if (listQuestion.Count != 0)
                 {
-                    //find right questionnnaire by idCourse
-                    for (int i = 0; i < listDisplay.Count; i++)
-                    {
+                    questionnaireId = listQuestion[indexQuestion].getIdQuestionnaire();
 
-                        questionnaire = questionnaireBL.getQuestionnaireById(listDisplay[i].getIdQuestionnnaire());
-                        if (questionnaire.getIdCours() == idCourse)
-                        {
-                            findRightCourse = true;
-                            break;
-                        }
-                    }
-
-                    if (findRightCourse)
-                    {
-                        questionnaireId = questionnaire.getId();
-                        
-                        questionName = questionnaireBL.getNameById(questionnaireId);
-                        questionName += " :שאלון";
-
-                        //get question by questionnaire
-                        listQuestion = questionBL.getAllQuestionByQuestionnaire(questionnaireId);
-
-                        indexQuestion = 0;
-
-                    }
-                    else
-                    {
-                       
-                        questionName = "המתן עד להצגת השאלה :)";
-                        //Response.Write("<script>document.getElementById('MainContent_waitQuestion').style.display = 'inline';</script>");
-                    }
-          
+                    questionName = questionnaireBL.getNameById(questionnaireId);
+                    questionName += " :שאלון";
                 }
                 else
                 {
-                   
+
                     questionName = "המתן עד להצגת השאלה :)";
+
+                    
+                    Response.Write("<script>setTimeout('window.location.reload()', 10000);</script>");
                     //Response.Write("<script>document.getElementById('MainContent_waitQuestion').style.display = 'inline';</script>");
                 }
+               
+
+                ////get all display questionnnaire
+                //listDisplay = displayBL.getDisplayByQuestionnaire();
+
+                //if(listDisplay.Count != 0)
+                //{
+                //    //find right questionnnaire by idCourse
+                //    for (int i = 0; i < listDisplay.Count; i++)
+                //    {
+
+                //        questionnaire = questionnaireBL.getQuestionnaireById(listDisplay[i].getIdQuestionnnaire());
+                //        if (questionnaire.getIdCours() == idCourse)
+                //        {
+                //            findRightCourse = true;
+                //            break;
+                //        }
+                //    }
+
+                //    if (findRightCourse)
+                //    {
+                //        questionnaireId = questionnaire.getId();
+                        
+                //        questionName = questionnaireBL.getNameById(questionnaireId);
+                //        questionName += " :שאלון";
+
+                //        //get question by questionnaire
+                //        listQuestion = questionBL.getAllQuestionByQuestionnaire(questionnaireId);
+
+                //        indexQuestion = 0;
+
+                //    }
+                //    else
+                //    {
+                       
+                //        questionName = "המתן עד להצגת השאלה :)";
+                //        //Response.Write("<script>document.getElementById('MainContent_waitQuestion').style.display = 'inline';</script>");
+                //    }
+          
+                //}
+                //else
+                //{
+                   
+                //    questionName = "המתן עד להצגת השאלה :)";
+                //    //Response.Write("<script>document.getElementById('MainContent_waitQuestion').style.display = 'inline';</script>");
+                //}
                    
                     
             }
@@ -164,7 +191,7 @@ namespace Clicker.Pages
             try
             {
                 //index array start with index=0
-                numAnswer = Convert.ToInt32(checkAns)-1;
+                numAnswer = Convert.ToInt32(checkAns);
                 
             }
             catch (FormatException)
@@ -179,13 +206,24 @@ namespace Clicker.Pages
              idStudent = Convert.ToInt32(HttpContext.Current.Session["id"]);
              dateNow = DateTime.Now.ToString("dd/MM/yyyy"); 
              //american and yesqno question
-             idAns = listAnswer[numAnswer].getId();
+             try
+             {
+                 idAns = listAnswer[numAnswer].getId();
+             }
+             catch (Exception)
+             {
+                 idAns = 0;
+             }
+             
              
              //open question
+             if (listQuestion[indexQuestion].getType() != 3)
+             {
+                 //insert new row to questionAsked table in DB
+                 questionAskedBL.AddNewQuestionAsked(maxIdQuestionAsked + 1, idQuestion, idStudent, dateNow, idAns);
 
-             //insert new row to questionAsked table in DB
-             questionAskedBL.AddNewQuestionAsked(maxIdQuestionAsked + 1, idQuestion, idStudent, dateNow, idAns);
-
+             }
+         
 
         }
         
@@ -196,14 +234,18 @@ namespace Clicker.Pages
 
             String strReturn = "";
 
-            if (listQuestion.Count-1 > indexQuestion)
+            if (listQuestion.Count > indexQuestion)
             {
                 indexQuestion++;
             }
-            else// finish to pass list
+            if (listQuestion.Count == indexQuestion)
             {
                 indexQuestion = 0;
-                return null;
+                return "finish";
+            }
+            else // finish to pass list
+            {
+              
             }
 
             if (listQuestion[indexQuestion] != null && listQuestion[indexQuestion]._Type == 3)// open question

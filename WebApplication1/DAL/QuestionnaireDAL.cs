@@ -219,6 +219,25 @@ namespace Clicker.DAL
             return listQuestionnaire;
         }
 
+        //for serch and copy in stock page
+        public List<Questionnaire> getAllQuestionnaireByPermitExeptLecturer(int idLecturer)
+        {
+            con.Open();
+            string sqlString = "select * from Questionnaire q where q.Permit = 1 and Not Exists (select * from Course c where q.IdCours = c.Id and c.LecturerID = " + idLecturer + " );";
+            MySqlCommand com = new MySqlCommand(sqlString, con);
+            List<Questionnaire> listQuestionnaire = new List<Questionnaire>();
+            using (MySqlDataReader rdr = com.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    listQuestionnaire.Add(new Questionnaire(Convert.ToInt32(rdr["Id"]), rdr["Name"].ToString(),
+                        Convert.ToInt32(rdr["IdCours"]), Convert.ToInt32(rdr["Permit"])));
+                }
+            }
+            con.Close();
+            return listQuestionnaire;
+        }
+
 
         public string getNameById(int id)
         {

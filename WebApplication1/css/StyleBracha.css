@@ -133,8 +133,9 @@ li{
 .Question{
     /*float:right;*/
     text-align: right;
-     Width:500px;
+     
      direction: rtl;
+     Width:500px;
 
 }
 .QuestionUplode{

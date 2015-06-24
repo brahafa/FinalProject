@@ -50,23 +50,23 @@ namespace Clicker.Pages
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText QuestionnaireName;
 
-        /// <summary>
-        /// classDisplayBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton classDisplayBtn;
+        ///// <summary>
+        ///// classDisplayBtn control.
+        ///// </summary>
+        ///// <remarks>
+        ///// Auto-generated field.
+        ///// To modify move field declaration from designer file to code-behind file.
+        ///// </remarks>
+        //protected global::System.Web.UI.HtmlControls.HtmlInputButton classDisplayBtn;
 
-        /// <summary>
-        /// staticBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton staticBtn;
+        ///// <summary>
+        ///// staticBtn control.
+        ///// </summary>
+        ///// <remarks>
+        ///// Auto-generated field.
+        ///// To modify move field declaration from designer file to code-behind file.
+        ///// </remarks>
+        //protected global::System.Web.UI.HtmlControls.HtmlInputButton staticBtn;
 
         /// <summary>
         /// NameQuestionnaire control.
@@ -148,6 +148,24 @@ namespace Clicker.Pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton removeQuestionnaireBtn;
+
+        /// <summary>
+        /// displayQuestFromCourseBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton displayQuestFromCourseBtn;
+
+        /// <summary>
+        /// deletDisplayQuestFromCourseBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton deletDisplayQuestFromCourseBtn;
 
         /// <summary>
         /// addQuestionnaireBtn control.

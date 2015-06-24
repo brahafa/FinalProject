@@ -91,5 +91,11 @@ namespace Clicker.BL
                     return QuestionnaireList[i].getId();
             return 0;
         }
+
+                //for serch and copy in stock page
+        public List<Questionnaire> getAllQuestionnaireByPermitExeptLecturer(int idCourse)
+        {
+            return questionnaireDAL.getAllQuestionnaireByPermitExeptLecturer(idCourse);
+        }
     }
 }
