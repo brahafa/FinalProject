@@ -45,6 +45,7 @@ namespace Clicker.Pages
             listCourse = new List<Course>();
             displayBL = new DisplayBL();
 
+            UserNameLabel.InnerText = Session["Name"].ToString();
 
             idLecturer = Convert.ToInt32(Session["id"]);
 

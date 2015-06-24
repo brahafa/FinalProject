@@ -60,9 +60,9 @@ namespace Clicker.Pages
             //listDisplayQuestionnaire = new List<Display>();
 
             int questionnaireId = 0;
-            Boolean findRightCourse = false;
-            
+            //Boolean findRightCourse = false;
 
+            UserNameLabel.InnerText = Session["Name"].ToString();
             //1-one question. 0-questionnaire
            
             int displayType;

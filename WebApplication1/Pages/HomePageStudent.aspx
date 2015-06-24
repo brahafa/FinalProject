@@ -74,28 +74,28 @@
                          </ol>
                         </div> 
                  </div>  
-             <div class="col-4">
-           
-             
-          </div>
-             <div class="block-newsHomPage" id="conectedUser" runat="server"    >
-              <h3 class="color-4 p2">:אתה מחובר כ</h3>
+  <div class="col-4">
+                        <div class="block-news" id="conectedUser" runat="server">
+                             <h3 class="color-4 p2">:אתה מחובר כ</h3>
                 <br/><br/>
                <h3 class="color-4 p2"><label id="UserNameLabels" runat="server"> </label></h3> 
             <br/><br/>
-                  <ul class="list-2">
-                   <li>  
-                     <div   id="profile">
-                     <asp:Image runat="server" ID="userImages"  ImageUrl="~/images/profile.gif"  CssClass="userImage" />
-                   </div>
-                </li>   
-                      <li>
-                           <asp:Button ID="logoutBtns" runat="server" CssClass="myButton" OnClick="logout_click" Text="התנתק"></asp:Button>
-                      </li>  
-            
-              </ul>
-                
-            </div>
+                            <ul class="list-2">
+                                <li>
+                                    <div id="profile">
+                                        <asp:Image runat="server" ImageUrl="~/images/profile.gif" ID="userImages" CssClass="userImage" />
+                                    </div>
+                                </li>
+                                <li>
+                                    <asp:Button ID="logoutBtns" runat="server" OnClick="logout_click" CssClass="myButton" Text="התנתק"></asp:Button>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
         </div>
   
       </div>
