@@ -45,6 +45,9 @@ function setQuestionId(id) {
 //    }
 //}
 
+
+// set questionnaire to display
+
 $(document).ready(function () {
     $("#MainContent_displayQuestFromCourseBtn").click(function () {
 
@@ -59,7 +62,36 @@ $(document).ready(function () {
             dataType: "json",
             success: function (result) {
 
-                alert("display to class");
+                alert("השאלון הוצג לכיתה");
+                location.reload();
+            },
+            failure: function (response) {
+                alert("ajax failure");
+
+            }
+        });
+    });
+});
+
+
+// delet questionnaire from display
+
+$(document).ready(function () {
+    $("#MainContent_deletDisplayQuestFromCourseBtn").click(function () {
+
+
+        var idQuestionnaire = $("#MainContent_idQuestnaire").val();
+
+        $.ajax({
+            type: "POST",
+            url: "StockQuestionnaires.aspx/deletDisplayBtnCourse_click",
+            data: '{idQuestionnaire: "' + idQuestionnaire + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                alert("הסתיימה הצגת השאלון");
+                location.reload();
             },
             failure: function (response) {
                 alert("ajax failure");

@@ -130,10 +130,10 @@ namespace Clicker.Pages
                 removeQuestionnaireBtn.Style.Add("display", "inline");
                 //classDisplayBtn.Style.Add("display", "inline");
                 displayQuestFromCourseBtn.Style.Add("display", "inline");
-                deletDisplayQuestFromCourseBtn.Style.Add("display", "inline");
+                deletDisplayQuestFromCourseBtn.Style.Add("display", "none");
 
                 //Response.Write("<script>document.getElementById('MainContent_displayQuestFromCourseBtn').style.display = 'inline';</script>");
-                listQuest = displayBL.getDisplayQuestionsByQuestionnaire(idCourse);
+                listQuest = displayBL.getDisplayQuestionsByQuestionnaire(questionnaireId);
 
                 if (listQuest.Count != 0)
                 {
@@ -292,6 +292,8 @@ namespace Clicker.Pages
 
         }
 
+        // set questionnaire to display
+
         [System.Web.Services.WebMethod(EnableSession = true)]
         public static void displayBtnCourse_click(String idQuestionnaire)
         {
@@ -314,6 +316,28 @@ namespace Clicker.Pages
             displayBL.AddNewDisplay(maxIdDisplay+1, idQuestZero, idQ);
 
         }
+
+        // delet questionnaire from display
+
+        [System.Web.Services.WebMethod(EnableSession = true)]
+        public static void deletDisplayBtnCourse_click(String idQuestionnaire)
+        {
+
+            int idQ;
+
+            try
+            {
+                idQ = Convert.ToInt32(idQuestionnaire);
+            }
+            catch (FormatException)
+            {
+                idQ = 0;
+            }
+
+            displayBL.deleteDisplayByIdQuestionnaire(idQ);
+
+        }
+        
         
 
 
