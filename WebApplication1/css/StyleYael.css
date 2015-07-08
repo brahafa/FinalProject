@@ -75,7 +75,9 @@ color:white;
     color: black;
 }
 
-
+#MainContent_logoutBtns{
+    margin-top: 30px;
+}
 
 .buttonStock{
     background:none;
@@ -282,6 +284,6 @@ float:right;
 #QuestionnaireTitle{
 
     font-size: 30px;
-margin-right: -187px;
-  color: gray;
+margin-right: -262px;
+
 }

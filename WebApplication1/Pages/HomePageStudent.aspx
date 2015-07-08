@@ -75,7 +75,8 @@
                         </div> 
                  </div>  
   <div class="col-4">
-                        <div class="block-news" id="conectedUser" runat="server">
+       </div>
+                        <div class="block-newsHomPage" id="conectedUser" runat="server">
                              <h3 class="color-4 p2">:אתה מחובר כ</h3>
                 <br/><br/>
                <h3 class="color-4 p2"><label id="UserNameLabels" runat="server"> </label></h3> 
@@ -94,7 +95,7 @@
 
                         </div>
 
-                    </div>
+                   
 
         </div>
   
