@@ -35,7 +35,7 @@
                                     <div>
                                         
 
-                                        <label id="questionText"><% =listQuestion[indexQuestion].getQuestion() %></label>
+                                        <label id="questionText" class="Question"><% =listQuestion[indexQuestion].getQuestion() %></label>
                                         
                                     </div>
                                     <%--<asp:Label  ></asp:Label>--%>
@@ -166,18 +166,14 @@
                    
                     <div class="col-4">
                         <div class="block-news" id="conectedUser" runat="server">
-                            <h3 class="color-4 p2">:אתה מחובר כ</h3>
-                            <br />
-                            <br />
-                            <h3 class="color-4 p2">
-                                <label id="UserNameLabel" runat="server"></label>
-                            </h3>
-                            <br />
-                            <br />
+                             <h3 class="color-4 p2">:אתה מחובר כ</h3>
+                <br/><br/>
+               <h3 class="color-4 p2"><label id="UserNameLabel" runat="server"> </label></h3> 
+            <br/><br/>
                             <ul class="list-2">
                                 <li>
                                     <div id="profile">
-                                        <asp:Image runat="server" ID="userImage" CssClass="userImage" />
+                                        <asp:Image runat="server" ImageUrl="~/images/profile.gif" ID="userImage" CssClass="userImage" />
                                     </div>
                                 </li>
                                 <li>
