@@ -126,24 +126,8 @@ namespace Clicker.Pages
                 listQuestionnarie = questionnaireBL.getAllQuestionnaireByIdCourse(idCurse);
                 for (int i = listQuestionnarie.Count - 1; i >= 0; i--)
                 {
-                    dr = new TableRow();
-                    cell = new TableCell();
-                    cell.Text = "";
-                    dr.Cells.Add(cell); 
-                    dr.CssClass = "lineClass";
-                    cell = new TableCell();
-                    cell.Text = listQuestionnarie[i].getName().ToString();
-
-                    dr.Cells.Add(cell);
-
-                    cell = new TableCell();
-                    cell.Text = "-שם שאלון      " + "";
-
-                    dr.Cells.Add(cell);
-                    dr.BackColor = Color.LightSalmon;
-                    table1.Rows.Add(dr);
-
-
+                    //מדפיס שורה בטבלה עם שם השאלון
+                    printTableLine("-שם שאלון      " + "", listQuestionnarie[i].getName().ToString(), "", "lineClass");
                     printChart(listQuestionnarie[i].getId(), "");
 
                 }
@@ -162,6 +146,7 @@ namespace Clicker.Pages
            string date1,date2;   
             int countAnswer=0;
             bool validTime=false;
+            string persent, tytle, str, cssclass;
 
 
             //מוצא שאלות שנשאלו משאלון idQuestionnare0
@@ -181,25 +166,15 @@ namespace Clicker.Pages
 
             for (int i = listQuestion.Count - 1; i >= 0; i--)
             {
-                dr = new TableRow();
-                cell = new TableCell();
-                cell.Text = "";
-                dr.Cells.Add(cell);
-
                 //עבור כל שאלה---הדפס את השאלה עצמה
-                dr.CssClass = "lineClass";
-                cell = new TableCell();
-                cell.Text =  listQuestion[i].getQuestion().ToString();
-                cell.BackColor = Color.Red;
-                dr.Cells.Add(cell);
+                str = listQuestion[i].getQuestion().ToString();
+                tytle = ":שאלה";
+               
 
-                cell = new TableCell();
-                dr.BackColor = Color.Red;
-                cell.Text = ":שאלה      " + "";
-                dr.Cells.Add(cell);
-                table1.Rows.Add(dr);
+                printTableLine(tytle, str, "", "cellQuestionTxt");
 
-                countAnswer = 0;
+
+                
                 if (TextBoxFromDate.Text.ToString().Trim().Equals("00/00/00") || TextBoxToDate.Text.ToString().Trim().Equals("00/00/00"))
                 {
                     validTime = true;
@@ -212,13 +187,14 @@ namespace Clicker.Pages
                     
                 if (!TextBoxFromDate.Text.ToString().Trim().Equals("00/00/00")) {
                      date2 = TextBoxFromDate.Text.ToString().Trim();
-                     dateFromDate = Convert.ToDateTime(date2);  
+                     dateFromDate = Convert.ToDateTime(date2);
+                    // Convert.ToDateTime(Calendar2.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("dd/MM/yyyy");  
                 }
                 //finde the true ans id
-               
 
+                countAnswer = 0;
                 listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdQuestion(listQuestion[i]._Id);
-                for (int j = listQuestionAsked.Count - 1; j >= 0; j--)
+                for (int j =0; j< listQuestionAsked.Count ; j ++)
                 {
                     DateTime between = new DateTime(Convert.ToDateTime(listQuestionAsked[j]._Date.ToString()).Ticks);
 
@@ -232,14 +208,15 @@ namespace Clicker.Pages
                     }
 
                 }
-                int numAns;
+                double numAns;
+                
                 listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[i].getId());
                 //הדפס את כל התשובות של אותה שאלה
 
                 for (int j = 0; j < listAnswer.Count; j++)
                 {
                     numAns = 0;
-                    for (int x = listQuestionAsked.Count - 1; x >= 0; x--)
+                    for (int x =0; x < listQuestionAsked.Count ; x++)
                     {
                         //סופר את מספר העונים עבור כל תשובה
                         if (listQuestionAsked[x]._YN == listAnswer[j].getId() && validTime == true)
@@ -248,7 +225,7 @@ namespace Clicker.Pages
                         }
                     }
 
-                    if (countAnswer != 0)
+                    if (countAnswer != 0 )
                     {
                         numAns = (numAns * 100) / countAnswer;
 
@@ -257,32 +234,48 @@ namespace Clicker.Pages
                     {
                         numAns = 0;
                     }
-                    dr = new TableRow();
-                    cell = new TableCell();
-                    cell.Text = Convert.ToString(numAns)+"%";
-                    dr.Cells.Add(cell);
 
+
+
+                    persent = Convert.ToString(Math.Round((decimal)numAns, 1)) + "%";
+                    cssclass="answerClass";
+                    str = listAnswer[j].getAnswer().ToString();
                     int idAns;
                     idAns = j + 1;
-                   
-                    cell = new TableCell();
-                    cell.Text = listAnswer[j].getAnswer().ToString();
-                    dr.CssClass = "lineClass";
-                    dr.BackColor = Color.White;
-                    dr.Cells.Add(cell);
-                    cell = new TableCell();
+                    tytle = "תשובה "+""+idAns;
+
+                    //אם התשובה היא נכונה
                     if (listAnswer[j].getCorrectAnswer() != 0)
                     {
-                        dr.CssClass = "cellClass";
+                        cssclass = "truAnsClass";
                     }
-                    cell.Text = "תשובה " + idAns;
-                    dr.Cells.Add(cell);
-                    
-                    table1.Rows.Add(dr);
-
+                    printTableLine(tytle, str, persent, cssclass);
                 }
          
             }
+        }
+        public void printTableLine(String tytle, String str,String percent, String cssclass)
+        {
+            dr = new TableRow();
+            dr.CssClass = cssclass;
+
+            cell = new TableCell();
+            cell.Text = percent;
+            dr.Cells.Add(cell);
+
+            cell = new TableCell();
+            cell.Text = str;
+            dr.Cells.Add(cell);
+
+            
+
+            cell = new TableCell();
+            cell.Text = tytle;
+            cell.Width=77;
+            dr.Cells.Add(cell);
+
+            table1.Rows.Add(dr);
+
         }
         bool TimeBetween(DateTime datetime, DateTime start, DateTime end)
         {
