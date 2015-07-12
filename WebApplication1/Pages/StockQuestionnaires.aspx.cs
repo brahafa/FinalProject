@@ -300,6 +300,8 @@ namespace Clicker.Pages
 
             HttpContext.Current.Session["displayType"] = 0;
 
+            int displayType = (int)HttpContext.Current.Session["displayType"];
+
             int maxIdDisplay, idQ;
 
             maxIdDisplay = displayBL.maxIdDisplay();
@@ -344,7 +346,13 @@ namespace Clicker.Pages
         //free session and redirect to login page.
         protected void logout_click(object sender, EventArgs e)
         {
+            int displayType = (int)Session["displayType"];
+
             Session.Abandon();
+
+            Session["displayType"] = displayType;
+            Response.Write("<script>alert('"+displayType+"');</script>");
+
             Response.Redirect("logIn.aspx");
         }
 

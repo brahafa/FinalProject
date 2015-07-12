@@ -68,12 +68,12 @@ namespace Clicker.Pages
             int displayType;
             try{
 
-              displayType  = (int)Session["displayType"];
+              displayType  = Convert.ToInt32(Session["displayType"]);
             }
             catch(NullReferenceException){
 
                 displayType = -1;
-                //Response.Write("<script>alert('asas');</script>");
+                Response.Write("<script>alert('displayType = -1');</script>");
             }
             
 
@@ -93,10 +93,10 @@ namespace Clicker.Pages
 
             indexQuestion = 0;
 
-            if (displayType == 1)// display on question
+            if (displayType == 1)// display one question
             {
                 //question to display
-                listQuestion = displayBL.getDisplayQuestionByQuestionnaire(idCourse);
+                listQuestion = displayBL.getDisplayQuestionByIdCourse(idCourse);
 
                 //get all display question
                 //listDisplay = displayBL.getDisplayByQuestion();
@@ -267,6 +267,10 @@ namespace Clicker.Pages
                 //index3= all answers
                 switch (listAnswer.Count)
                 {
+                    case 0:
+                        //strReturn = "2#" + listQuestion[indexQuestion]._Question.ToString() + "#1#"
+                        //    + listAnswer[0].getAnswer().ToString() + "";
+                        break;
                     case 1:
                         strReturn = "2#" + listQuestion[indexQuestion]._Question.ToString() + "#1#"
                             + listAnswer[0].getAnswer().ToString() +"";

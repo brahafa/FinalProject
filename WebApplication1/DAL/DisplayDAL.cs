@@ -184,11 +184,11 @@ namespace Clicker.DAL
         }
 
         //get to display questions (questionnaire)
-        public List<Question> getDisplayQuestionsByQuestionnaire(int IdQuestionnaire)
+        public List<Question> getDisplayQuestionsByQuestionnaire(int IdCourse)
         {
 
             con.Open();
-            string sqlString = "select qu.Id, qu.Question, qu.IdQuestionnaire, qu.Type, qu.File1 from Display d, Questionnaire q, Question qu where d.IdQuestionnaire = q.Id and q.Id = " + IdQuestionnaire + " and q.Id = qu.IdQuestionnaire;";
+            string sqlString = "select qu.Id, qu.Question, qu.IdQuestionnaire, qu.Type, qu.File1 from Display d, Questionnaire q, Question qu where d.IdQuestionnaire = q.Id and q.IdCours = " + IdCourse + " and q.Id = qu.IdQuestionnaire;";
             MySqlCommand com = new MySqlCommand(sqlString, con);
             List<Question> listDisplayQuestions = new List<Question>();
             using (MySqlDataReader rdr = com.ExecuteReader())
@@ -205,7 +205,7 @@ namespace Clicker.DAL
         }
 
         //get to display one question
-        public List<Question> getDisplayQuestionByQuestionnaire(int IdCourse)
+        public List<Question> getDisplayQuestionByIdCourse(int IdCourse)
         {
 
             con.Open();

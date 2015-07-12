@@ -64,9 +64,9 @@ namespace Clicker.BL
         }
 
                 //get to display one question
-        public List<Question> getDisplayQuestionByQuestionnaire(int IdCourse)
+        public List<Question> getDisplayQuestionByIdCourse(int IdCourse)
         {
-            return displatDAL.getDisplayQuestionByQuestionnaire(IdCourse);
+            return displatDAL.getDisplayQuestionByIdCourse(IdCourse);
         }
 
     }
