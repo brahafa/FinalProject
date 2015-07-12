@@ -113,7 +113,7 @@ namespace Clicker.Pages
                  Session["Degree"] = degree;
                 lecturerBL.AddNewLecturer(index, name, email, image, password,degree);
                 Session["degree"] = degree;
-                initSessions(name, image, index, email);
+                initSessions(name, image, index, email, password);
                 Response.Redirect("HomePage.aspx");
 
             }
@@ -121,18 +121,20 @@ namespace Clicker.Pages
             {
                 index = studentBL.maxIdStudent() + 1;
                 studentBL.AddNewStudent(index, name, email, image, password);
-                initSessions(name, image, index, email);
+                initSessions(name, image, index, email, password);
                 Response.Redirect("HomePageStudent.aspx");
             }
             
         }
 
-        public void initSessions(String name , String image, int index, String email )
+        public void initSessions(String name , String image, int index, String email , String password )
         {
             Session["id"] = index;
             Session["Name"] = name;
             Session["Image"] = image;
             Session["email"] = email;
+           // Session["pass"] =password ;
+
         }
 
         //send email whith the register ditayls

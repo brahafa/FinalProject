@@ -60,6 +60,8 @@ namespace Clicker.Pages
                     selected_Type.Style.Add("display", "none");
 
                 }
+
+                UserName.Value = Session["Name"].ToString();
                // selected_Type.Value = Session["userType"].ToString();
             }
         

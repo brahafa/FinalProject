@@ -24,9 +24,11 @@ namespace Clicker.Pages
             lecturerBL = new LecturerBL();
             studentBL = new StudentBL();
             Email.Disabled = true;
-            Avatar.ImageUrl = Session["Image"].ToString();
-
-
+            //Avatar.ImageUrl = Session["Image"].ToString();
+         //   pass.Value = Session["pass"].ToString();
+          //  pass1.Value = Session["pass"].ToString();
+            UserName.Value = Session["Name"].ToString();
+            Email.Value = Session["email"].ToString();
         }
 
         protected void Register_Click(object sender, EventArgs e)

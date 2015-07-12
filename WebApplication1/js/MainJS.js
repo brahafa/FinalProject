@@ -682,7 +682,7 @@ function validAmericanQ() {
 }
 //בודק האם נבחרה תשובה אחת נכונה לפחות ושהיא אכן חלק מהתשובות שהמשתמש הכניס
 function IsAnsChoose(idCheckChecked, numAns) {
-    alert(idCheckChecked + "  and  " + numAns);
+    //alert(idCheckChecked + "  and  " + numAns);
     if (idCheckChecked > numAns || idCheckChecked == 0) {
         document.getElementById('err').style.display = 'inline';
         document.getElementById('err').value = "יש לבחור תשובה נכונה*";

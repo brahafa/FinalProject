@@ -92,6 +92,7 @@ namespace Clicker.Pages
             listQuestionnarie = new List<Questionnaire>();
             int idCurse;//get from textBox =none
             int idQuestionna = 0;
+            String quest = "";
             if (!selectQuestion.Text.Equals(""))
             {
                 idQuestionna = Convert.ToInt32(selectQuestion.Text.ToString());
@@ -123,22 +124,9 @@ namespace Clicker.Pages
                     listQuestion = questionBL.getAllQuestionByIDAndQuestionnaire(idQuestionna, listQuestionAsked[i]._IdQuestion);
                     if (listQuestion.Count() > 0)
                     {
-                        //dr = new TableRow();
-                       
-                        //dr.CssClass = "lineClass";
-                        //cell = new TableCell();
-                        //cell.Text = listQuestion[0].getQuestion().ToString();
-
-                        //dr.Cells.Add(cell);
-
-                        //cell = new TableCell();
-                        //cell.Text = "-שאלה      " + "";
-
-                        //dr.Cells.Add(cell);
-                        //dr.BackColor = Color.LightSalmon;
-                        //table1.Rows.Add(dr);
-
-                        printTableLine("-שאלה      " + "", listQuestion[0].getQuestion().ToString(), "", "cellQuestionTxt");
+                        //questStr
+                        quest = questStr(listQuestion[0].getQuestion().ToString());
+                        printTableLine("-שאלה      " + "", quest, "", "cellQuestionTxt");
 
                         //
                         printAnswer(listQuestion[0].getId(), listQuestionAsked[i]._YN);
@@ -171,7 +159,15 @@ namespace Clicker.Pages
                 printTableLine("תשובה " + idAns, listAnswer[j].getAnswer().ToString(), "", cssclass);
             }
         }
-
+        public string questStr(string quest)
+        {
+            char c1 = quest[quest.Length - 1];
+            if (c1.Equals('?'))
+            {
+                quest = '?' + quest.Substring(0, quest.Length - 1);
+            }
+            return quest;
+        }
         public void printTableLine(String tytle, String str, String percent, String cssclass)
         {
             dr = new TableRow();
