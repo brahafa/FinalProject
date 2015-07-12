@@ -346,7 +346,7 @@ namespace Clicker.Pages
         //free session and redirect to login page.
         protected void logout_click(object sender, EventArgs e)
         {
-            int displayType = (int)Session["displayType"];
+            int displayType = Convert.ToInt32(Session["displayType"]);
 
             Session.Abandon();
 

@@ -30,12 +30,25 @@
                                     <asp:Label runat="server" ID="questionTitle" Font-Size="Medium"></asp:Label>
                                 </li>
                                 <% if(listQuestion.Count != 0)
-                                           { %>
+                                           {
+                                               String Quest = listQuestion[indexQuestion].getQuestion();
+
+                                               char c1 = Quest[Quest.Length - 1];
+                                               if (c1.Equals('?'))
+                                               {
+                                                   Quest = '?' + Quest.Substring(0, Quest.Length - 1);
+                                               }
+                                               else if (c1.Equals('.'))
+                                               {
+                                                   Quest = '.' + Quest.Substring(0, Quest.Length - 1);
+                                               }
+
+                                                %>
                                 <li>
                                     <div>
                                         
 
-                                        <label id="questionText" class="Question"><% =listQuestion[indexQuestion].getQuestion() %></label>
+                                        <label id="questionText" class="Question"><% =Quest %></label>
                                         
                                     </div>
                                     <%--<asp:Label  ></asp:Label>--%>
