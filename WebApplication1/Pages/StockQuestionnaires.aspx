@@ -65,7 +65,18 @@
                             <ul class="Questionnaire">
                                 <%  for (int j = 0; j < listQuestion.Count; j++)
                                     {
-                                        NameQuestion.Text = listQuestion[j].getQuestion();
+                                       // NameQuestion.Text = listQuestion[j].getQuestion();
+
+                                        String Quest = listQuestion[j].getQuestion();
+                                        
+                                        char c1 = Quest[Quest.Length-1];
+                                        if (c1.Equals('?'))
+                                        {
+                                            Quest = '?' + Quest.Substring(0, Quest.Length - 1);
+                                        }
+
+                                        NameQuestion.Text = Quest;
+                                        
                                         %>
                                 <li id="QuestionLiDiv">
                                     
