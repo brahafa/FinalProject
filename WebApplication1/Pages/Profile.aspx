@@ -30,7 +30,7 @@
                         </select>
                     </li>
                     <li>
-                           <label class="RegisterLabel">*שם:</label>
+                           <label class="RegisterLabel">*שם</label>
 
                         <input id="UserName" class="RegisterField" runat="server" name="ContactName" type="text" />
                    <select class="DropeDownListServer" id="selected_Degree" runat="server" onchange="Degree()" style="display: none">
@@ -43,15 +43,15 @@
                     <li>
                         <input id="ImagePath" type="hidden" runat="server" />
                         <input id="InputPassword" type="hidden" runat="server" />
-                        <label class="RegisterLabel">*אימייל:</label>
+                        <label class="RegisterLabel">*אימייל</label>
                         <input id="Email" class="RegisterField" runat="server" name="Email" type="text" />
                     </li>
                     <li>
-                        <label class="RegisterLabel">*סיסמה:</label>
+                        <label class="RegisterLabel">*סיסמה</label>
                         <input id="pass" class="RegisterField" runat="server" name="password" type="password" />
                     </li>
                     <li>
-                        <label class="RegisterLabel">*אימות סיסמה:</label>
+                        <label class="RegisterLabel">*אימות סיסמה</label>
                         <input id="pass1" class="RegisterField" runat="server" name="password" type="password" />
                     </li>
                     <li>

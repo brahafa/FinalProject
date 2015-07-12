@@ -89,6 +89,7 @@ namespace Clicker.Pages
                     Session["Image"] = listLecturer[0]._image.ToString();
                     Session["email"] = Email.Value.ToString();
                     Session["degree"] = listLecturer[0]._degree.ToString();
+                    //Session["pass"] = password;
                     Response.Redirect("HomePage.aspx");
 
                 }
@@ -100,6 +101,7 @@ namespace Clicker.Pages
                     Session["Name"] = name;
                    Session["Image"] = listStudent[0]._image.ToString();
                     Session["email"] = Email.Value.ToString();
+                   // Session["pass"] = password;
                     Response.Redirect("HomePageStudent.aspx");
 
 

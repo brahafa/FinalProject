@@ -134,6 +134,7 @@ namespace Clicker.Pages
             }
             else
             {
+                
                 printChart(idQuestionna, "");
             }
 
@@ -145,7 +146,8 @@ namespace Clicker.Pages
         {
            string date1,date2;   
             int countAnswer=0;
-            bool validTime=false;
+            bool validTime=true;
+            bool checkTime = true;
             string persent, tytle, str, cssclass;
 
 
@@ -167,7 +169,8 @@ namespace Clicker.Pages
             for (int i = listQuestion.Count - 1; i >= 0; i--)
             {
                 //עבור כל שאלה---הדפס את השאלה עצמה
-                str = listQuestion[i].getQuestion().ToString();
+
+                str = questStr(listQuestion[i].getQuestion().ToString());
                 tytle = ":שאלה";
                
 
@@ -177,17 +180,18 @@ namespace Clicker.Pages
                 
                 if (TextBoxFromDate.Text.ToString().Trim().Equals("00/00/00") || TextBoxToDate.Text.ToString().Trim().Equals("00/00/00"))
                 {
-                    validTime = true;
+                   // validTime = true;
+                    checkTime = false;
                 }
                 if (!TextBoxToDate.Text.ToString().Trim().Equals("00/00/00"))
                 {
                     date1 = TextBoxToDate.Text.ToString().Trim();
-                    dateToDate = Convert.ToDateTime(date1);
+                    dateToDate = (Convert.ToDateTime(date1 , CultureInfo.GetCultureInfo("ru-RU")));
                 }
                     
                 if (!TextBoxFromDate.Text.ToString().Trim().Equals("00/00/00")) {
                      date2 = TextBoxFromDate.Text.ToString().Trim();
-                     dateFromDate = Convert.ToDateTime(date2);
+                     dateFromDate = (Convert.ToDateTime(date2, CultureInfo.GetCultureInfo("ru-RU")));
                     // Convert.ToDateTime(Calendar2.SelectedDate, CultureInfo.GetCultureInfo("ru-RU")).ToString("dd/MM/yyyy");  
                 }
                 //finde the true ans id
@@ -196,9 +200,10 @@ namespace Clicker.Pages
                 listQuestionAsked = questionAskedBL.getAllQuestionAskedByIdQuestion(listQuestion[i]._Id);
                 for (int j =0; j< listQuestionAsked.Count ; j ++)
                 {
+                    //validTime = false;
                     DateTime between = new DateTime(Convert.ToDateTime(listQuestionAsked[j]._Date.ToString()).Ticks);
 
-                    if (validTime == false)
+                    if (checkTime == true)
                     {
                         validTime = TimeBetween(between, dateFromDate, dateToDate);
                     }
@@ -209,20 +214,35 @@ namespace Clicker.Pages
 
                 }
                 double numAns;
-                
+                validTime = true;
                 listAnswer = answerBL.getAllAnswerByIdQuestion(listQuestion[i].getId());
                 //הדפס את כל התשובות של אותה שאלה
 
                 for (int j = 0; j < listAnswer.Count; j++)
                 {
+                   // validTime = false;
                     numAns = 0;
                     for (int x =0; x < listQuestionAsked.Count ; x++)
                     {
-                        //סופר את מספר העונים עבור כל תשובה
+                        DateTime between = new DateTime(Convert.ToDateTime(listQuestionAsked[x]._Date.ToString()).Ticks);
+
+                       if (checkTime == true)
+                        {
+                            validTime = TimeBetween(between, dateFromDate, dateToDate);
+                        }
                         if (listQuestionAsked[x]._YN == listAnswer[j].getId() && validTime == true)
                         {
                             numAns++;
+                        //if (validTime == true)
+                        //{
+                            //countAnswer++;
                         }
+
+                        //סופר את מספר העונים עבור כל תשובה
+                        //if (listQuestionAsked[x]._YN == listAnswer[j].getId() && validTime == true)
+                        //{
+                        //    numAns++;
+                        //}
                     }
 
                     if (countAnswer != 0 )
@@ -253,6 +273,16 @@ namespace Clicker.Pages
                 }
          
             }
+        }
+
+        public string questStr(string quest)
+        {
+            char c1 = quest[quest.Length - 1];
+            if (c1.Equals('?'))
+            {
+                quest = '?' + quest.Substring(0, quest.Length - 1);
+            }
+            return quest;
         }
         public void printTableLine(String tytle, String str,String percent, String cssclass)
         {
