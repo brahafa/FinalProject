@@ -80,11 +80,11 @@ namespace Clicker.Pages
                 return;
             }
             //send email 
-            //if (sendRegisterEmail(image, name, email, password) == -1)
-            //{
-            //    sendErrorMesege("כתובת דואר אלקטרוני לא קיים*" + Email.Value.ToString());
-            //    return;
-            //}
+            if (sendRegisterEmail(image, name, email, password) == -1)
+            {
+                sendErrorMesege("כתובת דואר אלקטרוני לא קיים*" + Email.Value.ToString());
+                return;
+            }
 
             if (valid.checkPassword(password) == false)
             {

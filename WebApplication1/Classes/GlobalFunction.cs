@@ -26,7 +26,7 @@ namespace Clicker.Classes
             int portNumber = 587;
             bool enableSSL = true;
 
-            string emailFrom = "brachafab@gmail.com";
+            string emailFrom = "klickertrivia@gmail.com";
             string emailpassword = "0503389483";
             using (MailMessage mail = new MailMessage())
             {

@@ -1066,9 +1066,9 @@ footer {
 .phone strong {
 	color:#fff
 }
-.lineClass{
+.answerClass{
   height: 30px;
-  font-size: 22px;
+  font-size: 16px;
   color: black;
   margin-top: 7px;
 	line-height:2.2em;
@@ -1077,19 +1077,86 @@ footer {
 	margin-bottom:5px
 
 }
-.cellClass{
+
+.truAnsClass{
       height: 30px;
-  font-size: 22px;
-  color:green;
+  font-size: 16px;
+  color:#1fd30b;
   text-decoration-color:white;
   margin-top: 7px;
-	line-height:2.2em;
+	line-height:1.6em;
 	text-transform:uppercase;
 	font-weight:400;
 	margin-bottom:5px;
-    background-color:#1fd30b;
+   // background-color:#1fd30b;
 }
 
+.cellQuestionTxt{
+
+
+
+               height: 30px;
+  font-size:16px;
+  color:#f9f9f9;
+  text-decoration-color:white;
+  margin-top: 7px;
+	line-height:1.6em;
+	text-transform:uppercase;
+	font-weight:400;
+	margin-bottom:5px;
+      font-weight: bold;
+      background-color:black;
+}
+
+.lineClass{
+           height: 30px;
+  font-size:16px;
+  color:#ff002b;
+  text-decoration-color:white;
+  margin-top: 7px;
+	line-height:1.6em;
+	text-transform:uppercase;
+	font-weight:400;
+	margin-bottom:5px;
+      font-weight: bold;
+      background-color: bisque;
+}
+.studentAns {
+         height: 30px;
+  font-size: 16px;
+  color:black;
+  text-decoration-color:white;
+  margin-top: 7px;
+	line-height:1.6em;
+	text-transform:uppercase;
+	font-weight:400;
+	margin-bottom:5px;
+}
+.trueAnsStudent{
+      height: 30px;
+  font-size:16px;
+  color:#48d53d;
+  text-decoration-color:white;
+  margin-top: 7px;
+	line-height:1.6em;
+	text-transform:uppercase;
+	font-weight:400;
+	margin-bottom:5px;
+      font-weight: bold;
+}
+.wrongAnsStudent{
+       height: 30px;
+  font-size:16px;
+  color:#ff002b;
+  text-decoration-color:white;
+  margin-top: 7px;
+	line-height:1.6em;
+	text-transform:uppercase;
+	font-weight:400;
+	margin-bottom:5px;
+      font-weight: bold;
+      background-color: bisque;
+}
 #divCalendar1{
      float:right;
       width: 390px;
